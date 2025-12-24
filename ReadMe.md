@@ -52,9 +52,41 @@ Welcome to the ASHRAE MLOps project! This repository is designed to streamline a
    ./start.sh
    ```
 
-5. Create a .env file referencing the .env_sample provided inside the mlops directory 
+5. Create a .env file referencing the .env_sample provided inside the mlops directory
 
-6. 
+## Dataset Download & Setup
+
+### Dataset Source
+
+https://www.kaggle.com/competitions/ashrae-energy-prediction/data
+
+Steps to Download and Move the Dataset
+
+- Visit the link above.
+
+- Download all the files (train.csv, building_metadata.csv, weather_train.csv, etc.).
+
+- Extract the downloaded ZIP file.
+
+- Move all extracted CSV files into the Raw_Data/ folder.
+
+Final structure should look like this:
+
+```bash
+mlops/
+│
+├── Raw_Data/
+│   ├── train.csv
+│   ├── test.csv
+│   ├── building_metadata.csv
+│   ├── weather_train.csv
+│   └── weather_test.csv
+│
+├── dags/
+├── notebooks/
+├── README.md
+└── docker-compose.yml
+```
 
 ## Usage
 
@@ -87,9 +119,7 @@ Welcome to the ASHRAE MLOps project! This repository is designed to streamline a
    python monitor.py
    ```
 
-## Orchestration Using Airflow 
-
-
+## Orchestration Using Airflow
 
 ## Contributing
 
