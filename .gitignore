@@ -1,0 +1,6 @@
+.env
+.ipynb_checkpoints
+__pycache__
+
+Raw_Data/*
+!Raw_Data/.gitkeep

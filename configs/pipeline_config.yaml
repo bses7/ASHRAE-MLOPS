@@ -1,0 +1,23 @@
+ingestion:
+  source_directory: "./Raw_Data/"
+  batch_size: 200000
+  files:
+    - name: "train"
+      path: "./Raw_Data/train.csv"
+      table: "fact_energy_usage"  
+    - name: "building"
+      path: "./Raw_Data/building_metadata.csv"
+      table: "dim_building"       
+    - name: "weather"
+      path: "./Raw_Data/weather_train.csv"
+      table: "dim_weather"         
+db:
+  dialect: "mysql+pymysql"
+  host: "localhost"
+  port: 3306
+  database: "ashrae_db"  
+  user: "student"
+  password: "Student%40123%21"
+redis: 
+  host: "127.0.0.1"
+  port: 6379

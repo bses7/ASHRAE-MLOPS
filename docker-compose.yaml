@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  mariadb:
+    image: mariadb/columnstore
+    container_name: mcs_container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: ashrae_db
+      MYSQL_USER: student
+      MYSQL_PASSWORD: Student@123!
+    ports:
+      - "3306:3306"
+    networks:
+      - analytics-net
+
+  metabase:
+    image: metabase/metabase
+    container_name: metabase
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mariadb
+    networks:
+      - analytics-net
+
+networks:
+  analytics-net:
