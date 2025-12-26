@@ -12,6 +12,9 @@ done
 
 echo "MariaDB is up"
 
+echo "Provisioning ColumnStore..."
+docker exec -it mcs_container provision 
+
 docker exec -i mcs_container mariadb <<EOF
 GRANT ALL PRIVILEGES ON *.* TO 'student'@'%' IDENTIFIED BY 'Student@123!';
 GRANT ALL PRIVILEGES ON *.* TO 'student'@'localhost' IDENTIFIED BY 'Student@123!';

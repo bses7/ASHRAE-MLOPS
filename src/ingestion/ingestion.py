@@ -3,6 +3,7 @@ from typing import Dict, Any, List
 from src.ingestion.base import IngestionMetrics
 from src.ingestion.csv_reader import CSVIngestor
 from src.database.connection import DBClient
+from src.database.schema_manager import SchemaManager
 from src.ingestion.db_writer import StagingWriter
 from src.ingestion.transform import DataTransformer
 from src.common.logger import get_logger
@@ -15,35 +16,33 @@ class IngestionStage:
         self.db_client = DBClient(config.get("db", {}))
         self.writer = StagingWriter(self.db_client)
         self.transformer = DataTransformer() 
+        self.schema_manager = SchemaManager(self.db_client)
 
     def run(self) -> List[IngestionMetrics]:
-        logger.info("Starting Direct ETL Ingestion...")
-        metrics_report = []
+        logger.info("Starting Direct-to-ColumnStore Ingestion Stage...")
         
+        self.schema_manager.create_production_tables()
+        
+        metrics_report = []
         for file_info in self.ingestion_cfg.get("files", []):
             metrics = self._ingest_file(file_info)
             metrics_report.append(metrics)
         
-        self._summarize(metrics_report)
         return metrics_report
 
     def _ingest_file(self, file_info: Dict) -> IngestionMetrics:
         start_time = time.time()
-        name, path, table = file_info['name'], file_info['path'], file_info['table']
+        name, table = file_info['name'], file_info['table']
+        
+        self.writer.truncate_table(table)
+
+        reader = CSVIngestor(file_info['path'], name, batch_size=200000)
         total_rows = 0
-        
-        logger.info(f"Extract-Transform-Load process for {name} -> {table}")
-        reader = CSVIngestor(path, name, batch_size=200000)
-        
-        is_first = True
         for raw_chunk in reader.read_chunks():
-            
+            # ETL: Extract -> Transform -> Load
             clean_chunk = self.transformer.transform(raw_chunk, name)
-            
-            self.writer.write_chunk(clean_chunk, table, is_first_chunk=is_first)
-            
+            self.writer.write_chunk(clean_chunk, table)
             total_rows += len(clean_chunk)
-            is_first = False 
             
         return IngestionMetrics(name, total_rows, round(time.time()-start_time, 2), "SUCCESS")
     

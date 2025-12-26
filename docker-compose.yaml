@@ -6,9 +6,9 @@ services:
     container_name: mcs_container
     environment:
       MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: ashrae_db
-      MYSQL_USER: student
-      MYSQL_PASSWORD: Student@123!
+    volumes:
+      - columnstore_data:/var/lib/columnstore
+      - mariadb_data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
@@ -23,6 +23,10 @@ services:
       - mariadb
     networks:
       - analytics-net
+
+volumes:
+  columnstore_data:
+  mariadb_data:
 
 networks:
   analytics-net:

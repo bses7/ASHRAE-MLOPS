@@ -121,6 +121,11 @@ mlops/
 
 ## Orchestration Using Airflow
 
+The dags folder contain the dag of the project. 
+
+You can copy this dag to your airflow folder's dag 
+
+
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request.

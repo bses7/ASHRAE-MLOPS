@@ -249,3 +249,190 @@ sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't co
 2025-12-24 10:16:45 - IngestionOrchestrator - INFO - TABLE: BUILDING | ROWS: 1449 | STATUS: SUCCESS
 2025-12-24 10:16:45 - IngestionOrchestrator - INFO - TABLE: WEATHER | ROWS: 139773 | STATUS: SUCCESS
 2025-12-24 10:16:45 - MainPipeline - INFO - Ingestion stage completed successfully.
+2025-12-24 17:20:07 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2025-12-24 17:20:07 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2025-12-24 17:20:07 - IngestionOrchestrator - INFO - Starting Direct ETL Ingestion...
+2025-12-24 17:20:07 - IngestionOrchestrator - INFO - Extract-Transform-Load process for train -> fact_energy_usage
+2025-12-24 17:20:07 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/train.csv
+2025-12-24 17:20:11 - CSVIngestor - INFO - Processed batch 1 (200000 rows)...
+2025-12-24 17:20:35 - CSVIngestor - INFO - Processed batch 6 (1200000 rows)...
+2025-12-24 17:20:51 - CSVIngestor - INFO - Processed batch 11 (2200000 rows)...
+2025-12-24 17:21:07 - CSVIngestor - INFO - Processed batch 16 (3200000 rows)...
+2025-12-24 17:21:24 - CSVIngestor - INFO - Processed batch 21 (4200000 rows)...
+2025-12-24 17:21:40 - CSVIngestor - INFO - Processed batch 26 (5200000 rows)...
+2025-12-24 17:21:56 - CSVIngestor - INFO - Processed batch 31 (6200000 rows)...
+2025-12-24 17:22:13 - CSVIngestor - INFO - Processed batch 36 (7200000 rows)...
+2025-12-24 17:22:33 - CSVIngestor - INFO - Processed batch 41 (8200000 rows)...
+2025-12-24 17:22:53 - CSVIngestor - INFO - Processed batch 46 (9200000 rows)...
+2025-12-24 17:23:09 - CSVIngestor - INFO - Processed batch 51 (10200000 rows)...
+2025-12-24 17:23:25 - CSVIngestor - INFO - Processed batch 56 (11200000 rows)...
+2025-12-24 17:23:41 - CSVIngestor - INFO - Processed batch 61 (12200000 rows)...
+2025-12-24 17:23:57 - CSVIngestor - INFO - Processed batch 66 (13200000 rows)...
+2025-12-24 17:24:19 - CSVIngestor - INFO - Processed batch 71 (14200000 rows)...
+2025-12-24 17:24:43 - CSVIngestor - INFO - Processed batch 76 (15200000 rows)...
+2025-12-24 17:25:03 - CSVIngestor - INFO - Processed batch 81 (16200000 rows)...
+2025-12-24 17:25:19 - CSVIngestor - INFO - Processed batch 86 (17200000 rows)...
+2025-12-24 17:25:34 - CSVIngestor - INFO - Processed batch 91 (18200000 rows)...
+2025-12-24 17:25:50 - CSVIngestor - INFO - Processed batch 96 (19200000 rows)...
+2025-12-24 17:26:06 - CSVIngestor - INFO - Processed batch 101 (20200000 rows)...
+2025-12-24 17:26:06 - IngestionOrchestrator - INFO - Extract-Transform-Load process for building -> dim_building
+2025-12-24 17:26:06 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/building_metadata.csv
+2025-12-24 17:26:06 - CSVIngestor - INFO - Processed batch 1 (200000 rows)...
+2025-12-24 17:26:06 - IngestionOrchestrator - INFO - Extract-Transform-Load process for weather -> dim_weather
+2025-12-24 17:26:06 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/weather_train.csv
+2025-12-24 17:26:06 - DataTransformer - INFO - Transforming weather data: Imputing missing values...
+2025-12-24 17:26:12 - CSVIngestor - INFO - Processed batch 1 (200000 rows)...
+2025-12-24 17:26:12 - IngestionOrchestrator - INFO - --- INGESTION SUMMARY ---
+2025-12-24 17:26:12 - IngestionOrchestrator - INFO - TABLE: TRAIN | ROWS: 20216100 | STATUS: SUCCESS
+2025-12-24 17:26:12 - IngestionOrchestrator - INFO - TABLE: BUILDING | ROWS: 1449 | STATUS: SUCCESS
+2025-12-24 17:26:12 - IngestionOrchestrator - INFO - TABLE: WEATHER | ROWS: 139773 | STATUS: SUCCESS
+2025-12-24 17:26:12 - MainPipeline - INFO - Ingestion stage completed successfully.
+2025-12-24 21:26:49 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-24 21:26:49 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2025-12-24 21:26:49 - IngestionOrchestrator - INFO - Starting Direct-to-ColumnStore Ingestion Stage...
+2025-12-24 21:26:49 - MainPipeline - CRITICAL - Pipeline failed at stage [ingestion]: 'IngestionStage' object has no attribute 'schema_manager'
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 54, in main
+    metrics = run_ingestion_stage(config)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/ingestion/ingestion.py", line 58, in run_ingestion_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/ingestion/ingestion.py", line 23, in run
+    self.schema_manager.create_production_tables()
+    ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IngestionStage' object has no attribute 'schema_manager'
+2025-12-24 21:28:02 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-24 21:28:02 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2025-12-24 21:28:02 - IngestionOrchestrator - INFO - Starting Direct-to-ColumnStore Ingestion Stage...
+2025-12-24 21:28:08 - MainPipeline - CRITICAL - Pipeline failed at stage [ingestion]: (pymysql.err.OperationalError) (1178, "The storage engine for the table doesn't support The syntax or the data type(s) is not supported by Columnstore. Please check the Columnstore syntax guide for supported syntax or data types.")
+[SQL: 
+            CREATE TABLE IF NOT EXISTS fact_energy_usage (
+                building_id INT,
+                meter INT,
+                timestamp DATETIME,
+                meter_reading FLOAT,
+                ingested_at DATETIME
+            ) ENGINE=ColumnStore;
+            ]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1178, "The storage engine for the table doesn't support The syntax or the data type(s) is not supported by Columnstore. Please check the Columnstore syntax guide for supported syntax or data types.")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 54, in main
+    metrics = run_ingestion_stage(config)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/ingestion/ingestion.py", line 60, in run_ingestion_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/ingestion/ingestion.py", line 25, in run
+    self.schema_manager.create_production_tables()
+  File "/home/bishesh/mlops/src/database/schema_manager.py", line 65, in create_production_tables
+    conn.execute(text(query))
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+           ^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 575, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 826, in _read_query_result
+    result.read()
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 1203, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 782, in _read_packet
+    packet.raise_for_error()
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1178, "The storage engine for the table doesn't support The syntax or the data type(s) is not supported by Columnstore. Please check the Columnstore syntax guide for supported syntax or data types.")
+[SQL: 
+            CREATE TABLE IF NOT EXISTS fact_energy_usage (
+                building_id INT,
+                meter INT,
+                timestamp DATETIME,
+                meter_reading FLOAT,
+                ingested_at DATETIME
+            ) ENGINE=ColumnStore;
+            ]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-12-24 21:30:19 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-24 21:30:19 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2025-12-24 21:30:19 - IngestionOrchestrator - INFO - Starting Direct-to-ColumnStore Ingestion Stage...
+2025-12-24 21:30:19 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/train.csv
+2025-12-24 21:30:34 - CSVIngestor - INFO - Processed batch 1 (200000 rows)...
+2025-12-24 21:31:41 - CSVIngestor - INFO - Processed batch 6 (1200000 rows)...
+2025-12-24 21:32:49 - CSVIngestor - INFO - Processed batch 11 (2200000 rows)...
+2025-12-24 21:33:58 - CSVIngestor - INFO - Processed batch 16 (3200000 rows)...
+2025-12-24 21:35:06 - CSVIngestor - INFO - Processed batch 21 (4200000 rows)...
+2025-12-24 21:36:12 - CSVIngestor - INFO - Processed batch 26 (5200000 rows)...
+2025-12-24 21:37:21 - CSVIngestor - INFO - Processed batch 31 (6200000 rows)...
+2025-12-24 21:38:28 - CSVIngestor - INFO - Processed batch 36 (7200000 rows)...
+2025-12-24 21:39:36 - CSVIngestor - INFO - Processed batch 41 (8200000 rows)...
+2025-12-24 21:40:45 - CSVIngestor - INFO - Processed batch 46 (9200000 rows)...
+2025-12-24 21:41:49 - CSVIngestor - INFO - Processed batch 51 (10200000 rows)...
+2025-12-24 21:42:55 - CSVIngestor - INFO - Processed batch 56 (11200000 rows)...
+2025-12-24 21:43:59 - CSVIngestor - INFO - Processed batch 61 (12200000 rows)...
+2025-12-24 21:45:04 - CSVIngestor - INFO - Processed batch 66 (13200000 rows)...
+2025-12-24 21:46:08 - CSVIngestor - INFO - Processed batch 71 (14200000 rows)...
+2025-12-24 21:47:12 - CSVIngestor - INFO - Processed batch 76 (15200000 rows)...
+2025-12-24 21:48:17 - CSVIngestor - INFO - Processed batch 81 (16200000 rows)...
+2025-12-24 21:49:22 - CSVIngestor - INFO - Processed batch 86 (17200000 rows)...
+2025-12-24 21:50:37 - CSVIngestor - INFO - Processed batch 91 (18200000 rows)...
+2025-12-24 21:51:44 - CSVIngestor - INFO - Processed batch 96 (19200000 rows)...
+2025-12-24 21:52:59 - CSVIngestor - INFO - Processed batch 101 (20200000 rows)...
+2025-12-24 21:53:01 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/building_metadata.csv
+2025-12-24 21:53:01 - CSVIngestor - INFO - Processed batch 1 (200000 rows)...
+2025-12-24 21:53:01 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/weather_train.csv
+2025-12-24 21:53:01 - DataTransformer - INFO - Transforming weather data: Imputing missing values...
+2025-12-24 21:53:29 - CSVIngestor - INFO - Processed batch 1 (200000 rows)...
+2025-12-24 21:53:29 - MainPipeline - INFO - Ingestion stage completed successfully.
