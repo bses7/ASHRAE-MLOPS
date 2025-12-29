@@ -15,7 +15,7 @@ class CSVIngestor(BaseReader):
     2. Dynamic Downcasting (via _reduce_mem_usage)
     """
 
-    def __init__(self, file_path: str, file_key: str, batch_size: int = 100000): 
+    def __init__(self, file_path: str, file_key: str, batch_size: int = 500000): 
         self.file_path = file_path
         self.file_key = file_key
         self.batch_size = batch_size

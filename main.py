@@ -5,6 +5,8 @@ from pathlib import Path
 
 from src.common.config_loader import load_yaml_config
 from src.ingestion.ingestion import run_ingestion_stage
+from src.preprocessing.preprocessor import run_preprocessing_stage
+
 
 logger = get_logger("MainPipeline")
 
@@ -60,7 +62,7 @@ def main():
 
         elif args.stage == "preprocessing":
             logger.info("--- STAGE: DATA PREPROCESSING ---")
-            # run_preprocessing_stage(config['preprocessing'])
+            run_preprocessing_stage(config)
             logger.warning("Preprocessing stage logic not yet implemented.")
 
         elif args.stage == "train":

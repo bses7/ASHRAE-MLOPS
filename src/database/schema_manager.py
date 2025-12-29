@@ -5,41 +5,34 @@ from src.database.connection import DBClient
 logger = logging.getLogger(__name__)
 
 class SchemaManager:
-    """Creates ColumnStore tables. """
+    """Creates ColumnStore tables if they do not exist."""
 
     def __init__(self, db_client: DBClient):
         self.engine = db_client.get_engine()
 
     def create_production_tables(self):
-        """
-        Creates the Star Schema tables. 
-        """
         logger.info("Verifying ColumnStore Production Schema...")
         
-        # Define the exact SQL for each table (Cleanest possible syntax)
         table_definitions = {
             "fact_energy_usage": """
-                CREATE TABLE `fact_energy_usage` (
+                CREATE TABLE IF NOT EXISTS `fact_energy_usage` (
                     `building_id` INT,
                     `meter` INT,
                     `timestamp` DATETIME,
-                    `meter_reading` FLOAT,
-                    `ingested_at` DATETIME
+                    `meter_reading` FLOAT
                 ) ENGINE=ColumnStore;
             """,
             "dim_building": """
-                CREATE TABLE `dim_building` (
+                CREATE TABLE IF NOT EXISTS `dim_building` (
                     `building_id` INT,
                     `site_id` INT,
                     `primary_use` VARCHAR(255),
                     `square_feet` INT,
-                    `year_built` INT,
-                    `floor_count` INT,
-                    `ingested_at` DATETIME
+                    `year_built` INT
                 ) ENGINE=ColumnStore;
             """,
             "dim_weather": """
-                CREATE TABLE `dim_weather` (
+                CREATE TABLE IF NOT EXISTS `dim_weather` (
                     `site_id` INT,
                     `timestamp` DATETIME,
                     `air_temperature` FLOAT,
@@ -52,28 +45,14 @@ class SchemaManager:
                     `datetime` DATETIME,
                     `day` INT,
                     `month` INT,
-                    `week` INT,
-                    `ingested_at` DATETIME
+                    `week` INT
                 ) ENGINE=ColumnStore;
             """
         }
 
-        # Use SQLAlchemy Inspector to check what tables already exist
-        inspector = inspect(self.engine)
-        existing_tables = inspector.get_table_names()
-
-        try:
-            with self.engine.begin() as conn:
-                conn.execute(text("USE ashrae_db"))
-                
-                for table_name, ddl_query in table_definitions.items():
-                    if table_name in existing_tables:
-                        logger.info(f"Table '{table_name}' already exists. Skipping creation.")
-                    else:
-                        logger.info(f"Creating table '{table_name}'...")
-                        conn.execute(text(ddl_query))
-                        
-            logger.info("ColumnStore Star Schema is synchronized.")
-        except Exception as e:
-            logger.error(f"Failed to create ColumnStore tables: {e}")
-            raise
+        with self.engine.connect() as conn:
+            for table_name, ddl_query in table_definitions.items():
+                logger.debug(f"Ensuring table exists: {table_name}")
+                conn.execute(text(ddl_query))
+            conn.commit()
+        logger.info("Schema verification complete.")

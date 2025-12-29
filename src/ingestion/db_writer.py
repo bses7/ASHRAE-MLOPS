@@ -1,38 +1,56 @@
 import pandas as pd
 import logging
+import os
 from sqlalchemy import text
 from src.database.connection import DBClient
 from src.ingestion.base import BaseWriter
 
 class StagingWriter(BaseWriter):
-    """Appends data into existing ColumnStore tables."""
-
     def __init__(self, db_client: DBClient):
         self.engine = db_client.get_engine()
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger("StagingWriter")
+
+    def bulk_load_csv(self, file_path: str, table_name: str, columns: list):
+        """High-performance bulk load for ColumnStore via LOAD DATA LOCAL INFILE."""
+        abs_path = os.path.abspath(file_path)
+        col_list = ", ".join([f"`{c}`" for c in columns])
+        
+        load_query = text(f"""
+            LOAD DATA LOCAL INFILE '{abs_path}'
+            INTO TABLE `{table_name}`
+            FIELDS TERMINATED BY ',' 
+            OPTIONALLY ENCLOSED BY '"'
+            LINES TERMINATED BY '\n'
+            IGNORE 1 LINES
+            ({col_list});
+        """)
+        
+        self.logger.info(f"Executing Bulk Load for {table_name}...")
+        with self.engine.connect() as conn:
+            # ColumnStore works best with autocommit for bulk loads
+            conn.execution_options(isolation_level="AUTOCOMMIT").execute(load_query)
 
     def truncate_table(self, table_name: str) -> None:
-        """Clears the table for idempotency."""
-        self.logger.info(f"Truncating table {table_name}...")
-        with self.engine.begin() as conn:
-            conn.execute(text(f"TRUNCATE TABLE `ashrae_db`.`{table_name}`"))
-
-    def write_chunk(self, df: pd.DataFrame, table_name: str, is_first_chunk: bool = False) -> None:
-        """
-        Appends a chunk to the table.
-        is_first_chunk is no longer needed for 'replace' since we use truncate.
-        """
+        """Truncates table. If table doesn't exist, ignore the error."""
+        self.logger.info(f"Clearing table {table_name}")
         try:
             with self.engine.connect() as conn:
-                df.to_sql(
-                    name=table_name,
-                    con=conn,
-                    schema='ashrae_db',
-                    if_exists='append', 
-                    index=False,
-                    method='multi',
-                    chunksize=100000 
-                )
+                conn.execute(text(f"TRUNCATE TABLE `{table_name}`;"))
+                conn.commit()
         except Exception as e:
-            self.logger.error(f"Error loading data into {table_name}: {e}")
-            raise
+            if "1146" in str(e): # Table doesn't exist error code
+                self.logger.warning(f"Table {table_name} does not exist. Skipping truncate.")
+            else:
+                raise
+
+    def write_chunk(self, df: pd.DataFrame, table_name: str) -> None:
+        """Standard insert for dimension tables."""
+        with self.engine.connect() as conn:
+            df.to_sql(
+                name=table_name,
+                con=conn,
+                if_exists='append',
+                index=False,
+                method='multi',
+                chunksize=5000 
+            )
