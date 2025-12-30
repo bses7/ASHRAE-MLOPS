@@ -6,6 +6,7 @@ from pathlib import Path
 from src.common.config_loader import load_yaml_config
 from src.ingestion.ingestion import run_ingestion_stage
 from src.preprocessing.preprocessor import run_preprocessing_stage
+from src.training.trainer import run_training_stage
 
 
 logger = get_logger("MainPipeline")
@@ -63,11 +64,11 @@ def main():
         elif args.stage == "preprocessing":
             logger.info("--- STAGE: DATA PREPROCESSING ---")
             run_preprocessing_stage(config)
-            logger.warning("Preprocessing stage logic not yet implemented.")
+            logger.info("Preprocessing stage completed successfully.")
 
         elif args.stage == "train":
-            logger.info("--- STAGE: MODEL TRAINING ---")
-            # run_training_stage(config['training'])
+            logger.info("Starting Model Training...")
+            metrics = run_training_stage(config)
             logger.warning("Training stage logic not yet implemented.")
 
         # Add other stages as the pipeline grows...

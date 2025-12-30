@@ -4,6 +4,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from src.common.logger import get_logger
 import gc
+from src.preprocessing.base import BaseMLPreprocessor
+
 
 class MLPreprocessor:
     """
@@ -16,7 +18,7 @@ class MLPreprocessor:
         self.target_column = target_column
         self.scaler_map = {} # Store scalers for each column
 
-    def prepare_ml_features(self, df: pd.DataFrame):
+    def prepare_ml_features(self, df):
         """
         Transforms the dataframe IN-PLACE. Does not create copies.
         """

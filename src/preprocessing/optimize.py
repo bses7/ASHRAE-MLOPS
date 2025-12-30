@@ -3,8 +3,9 @@ import numpy as np
 import re
 import gc 
 from src.common.logger import get_logger
+from src.preprocessing.base import BaseDataAssembler
 
-class Optimizer:
+class Optimizer(BaseDataAssembler):
     """
     Handles high-performance assembly.
     Optimized for low-memory environments (VirtualBox/Docker).
@@ -53,7 +54,7 @@ class Optimizer:
         self.logger.info(f"Final memory: {end_mem:.2f} MB (Reduced by {100 * (start_mem - end_mem) / start_mem:.1f}%)")
         return df
 
-    def process(self, df_power_meter: pd.DataFrame, df_building: pd.DataFrame, df_weather: pd.DataFrame) -> pd.DataFrame:
+    def process(self, df_power_meter, df_building, df_weather):
         """
         Executes merge with aggressive garbage collection to prevent 'Killed' status.
         """

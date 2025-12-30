@@ -31,7 +31,6 @@ class PreprocessingStage:
         df_building = self.reader.read_dim_table("dim_building")
         df_weather = self.reader.read_dim_table("dim_weather")
         
-
         # Validate
         if not self.validator.validate_ingested_data(df_energy, df_building, df_weather):
             raise ValueError("Data Validation Failed. Check Great Expectations Data Docs.")
@@ -48,8 +47,11 @@ class PreprocessingStage:
 
         logger.info("Caching split data in Redis...")
 
-        self.redis_client.store_dataframe(pd.DataFrame.sparse.from_spmatrix(X_train), "X_train")
-        self.redis_client.store_dataframe(pd.DataFrame(y_train), "y_train")
+        self.redis_client.store_dataframe(X_train, "X_train")
+        self.redis_client.store_dataframe(pd.DataFrame(y_train, columns=['target']), "y_train")
+
+        self.redis_client.store_dataframe(X_test, "X_test")
+        self.redis_client.store_dataframe(pd.DataFrame(y_test, columns=['target']), "y_test")
 
         return X_train, X_test, y_train, y_test
 

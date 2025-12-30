@@ -21,3 +21,12 @@ db:
 redis:
   host: "127.0.0.1"
   port: 6379
+mlflow:
+  tracking_uri: "http://localhost:5000"
+  experiment_name: "ASHRAE_Energy_Prediction"
+  model_name: "LGBM_Energy_Model"
+training:
+  model_save_path: "saved_models/model.pkl"
+  sample_size: 500000
+  use_sample: True
+
