@@ -1993,3 +1993,479 @@ sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1146, "Table 'a
 2025-12-27 15:36:21 - IngestionOrchestrator - INFO - TABLE: BUILDING | ROWS: 1449 | TIME: 0.36s
 2025-12-27 15:36:21 - IngestionOrchestrator - INFO - TABLE: WEATHER | ROWS: 139773 | TIME: 29.59s
 2025-12-27 15:36:21 - MainPipeline - INFO - Ingestion stage completed successfully.
+2025-12-29 13:07:50 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:07:50 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:07:50 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:07:50 - DatabaseReader - INFO - Retrieving fact_energy_usage via ConnectorX...
+2025-12-29 13:08:03 - DatabaseReader - INFO - Retrieving dim_building via SQLAlchemy...
+2025-12-29 13:08:03 - DatabaseReader - INFO - Retrieving dim_weather via SQLAlchemy...
+2025-12-29 13:08:05 - DataValidator - INFO - Starting Data Validation with Great Expectations...
+2025-12-29 13:08:22 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: ExpectationSuite with name energy_suite was not found.
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 65, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 39, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 29, in run
+    if not self.validator.validate_ingested_data(df_energy, df_building, df_weather):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 15, in validate_ingested_data
+    self._validate_energy(df_energy),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 30, in _validate_energy
+    validator = self._get_validator(df, "energy_suite")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 54, in _get_validator
+    return self.context.get_validator(batch=batch, expectation_suite_name=suite_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1153, in get_validator
+    expectation_suite = self._get_expectation_suite_from_inputs(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1314, in _get_expectation_suite_from_inputs
+    expectation_suite = self.suites.get(
+                        ^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/core/factory/suite_factory.py", line 105, in get
+    raise DataContextError(f"ExpectationSuite with name {name} was not found.")  # noqa: TRY003 # FIXME CoP
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+great_expectations.exceptions.exceptions.DataContextError: ExpectationSuite with name energy_suite was not found.
+2025-12-29 13:13:32 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:13:32 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:13:32 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:13:32 - DatabaseReader - INFO - Retrieving fact_energy_usage via ConnectorX...
+2025-12-29 13:13:43 - DatabaseReader - INFO - Retrieving dim_building via SQLAlchemy...
+2025-12-29 13:13:43 - DatabaseReader - INFO - Retrieving dim_weather via SQLAlchemy...
+2025-12-29 13:13:44 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:13:48 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 13:13:48 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: Data Validation Failed. Check Great Expectations Data Docs.
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 65, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 39, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 30, in run
+    raise ValueError("Data Validation Failed. Check Great Expectations Data Docs.")
+ValueError: Data Validation Failed. Check Great Expectations Data Docs.
+2025-12-29 13:22:25 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:22:25 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:22:25 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:22:25 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:22:36 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:22:36 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:22:38 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:22:43 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: unsupported format string passed to NoneType.__format__
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 65, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 39, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 29, in run
+    if not self.validator.validate_ingested_data(df_energy, df_building, df_weather):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 27, in validate_ingested_data
+    self._run_validation(df_energy, "energy_suite", "energy_asset", self._add_energy_expectations),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 83, in _run_validation
+    self._print_detailed_report(validation_result, suite_name)
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 118, in _print_detailed_report
+    print(f"{'SUCCESS RATE':<20}: {stats['success_percent']:.2f}%")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported format string passed to NoneType.__format__
+2025-12-29 13:24:21 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:24:21 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:24:21 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:24:21 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:24:32 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:24:32 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:24:33 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:24:39 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: unsupported format string passed to NoneType.__format__
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 65, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 39, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 29, in run
+    if not self.validator.validate_ingested_data(df_energy, df_building, df_weather):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 27, in validate_ingested_data
+    self._run_validation(df_energy, "energy_suite", "energy_asset", self._add_energy_expectations),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 83, in _run_validation
+    self._print_detailed_report(validation_result, suite_name)
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 118, in _print_detailed_report
+    print(f"{'SUCCESS RATE':<20}: {stats['success_percent']:.2f}%")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported format string passed to NoneType.__format__
+2025-12-29 13:25:31 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:25:31 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:25:31 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:25:31 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:25:42 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:25:42 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:25:43 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:25:49 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: unsupported format string passed to NoneType.__format__
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 65, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 39, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 29, in run
+    if not self.validator.validate_ingested_data(df_energy, df_building, df_weather):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 27, in validate_ingested_data
+    self._run_validation(df_energy, "energy_suite", "energy_asset", self._add_energy_expectations),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 83, in _run_validation
+    self._print_detailed_report(validation_result, suite_name)
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 118, in _print_detailed_report
+    print(f"{'SUCCESS RATE':<20}: {stats['success_percent']:.2f}%")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported format string passed to NoneType.__format__
+2025-12-29 13:26:48 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:26:48 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:26:48 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:26:48 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:27:00 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:27:00 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:27:01 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:27:07 - DataValidator - INFO - Building Visual Data Docs...
+2025-12-29 13:27:07 - DataValidator - INFO - ✅ Visual Data Docs updated and saved.
+2025-12-29 13:27:07 - Optimizer - INFO - Starting merge and feature assembly...
+2025-12-29 13:27:10 - Optimizer - INFO - Mem optimization: 1272.45MB -> 674.79MB
+2025-12-29 13:27:11 - Optimizer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 13:34:56 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:34:56 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:34:56 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:34:56 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:35:07 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:35:07 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:35:08 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:35:14 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: unsupported format string passed to NoneType.__format__
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 65, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 39, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessing.py", line 29, in run
+    if not self.validator.validate_ingested_data(df_energy, df_building, df_weather):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 27, in validate_ingested_data
+    self._run_validation(df_energy, "energy_suite", "energy_asset", self._add_energy_expectations),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 83, in _run_validation
+    self._print_detailed_report(validation_result, suite_name)
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 118, in _print_detailed_report
+    print(f"{'SUCCESS RATE':<20}: {stats['success_percent']:.2f}%")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported format string passed to NoneType.__format__
+2025-12-29 13:35:47 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:35:47 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:35:47 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:35:47 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:35:58 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:35:58 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:35:59 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:36:03 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 13:36:03 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 13:36:03 - ASHRAETransformer - INFO - Memory usage of dataframe is 655.51 MB
+2025-12-29 13:36:03 - ASHRAETransformer - INFO - Memory usage after optimization is: 385.59 MB
+2025-12-29 13:36:03 - ASHRAETransformer - INFO - Decreased by 41.2%
+2025-12-29 13:36:03 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 13:36:05 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 13:36:06 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 13:37:28 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:37:28 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:37:28 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:37:28 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:37:39 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:37:39 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:37:40 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:37:44 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 13:37:44 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 13:37:44 - ASHRAETransformer - INFO - Memory usage of dataframe is 655.51 MB
+2025-12-29 13:37:44 - ASHRAETransformer - INFO - Memory usage after optimization is: 385.59 MB
+2025-12-29 13:37:44 - ASHRAETransformer - INFO - Decreased by 41.2%
+2025-12-29 13:37:44 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 13:37:46 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 13:37:47 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 13:38:54 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:38:54 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:38:54 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:38:54 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:39:05 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:39:06 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:39:07 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:39:11 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 13:39:11 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 13:39:11 - ASHRAETransformer - INFO - Memory usage of dataframe is 655.51 MB
+2025-12-29 13:39:11 - ASHRAETransformer - INFO - Memory usage after optimization is: 385.59 MB
+2025-12-29 13:39:11 - ASHRAETransformer - INFO - Decreased by 41.2%
+2025-12-29 13:39:11 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 13:39:13 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 13:39:14 - MainPipeline - WARNING - Preprocessing stage logic not yet implemented.
+2025-12-29 13:40:23 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:40:23 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:40:23 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:40:23 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:40:35 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:40:35 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:40:37 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:40:42 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 13:40:42 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 13:40:42 - ASHRAETransformer - INFO - Memory usage of dataframe is 655.51 MB
+2025-12-29 13:40:42 - ASHRAETransformer - INFO - Memory usage after optimization is: 385.59 MB
+2025-12-29 13:40:42 - ASHRAETransformer - INFO - Decreased by 41.2%
+2025-12-29 13:40:42 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 13:41:36 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:41:36 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:41:36 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:41:36 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:41:47 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:41:47 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:41:49 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:41:52 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 13:41:52 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 13:41:52 - ASHRAETransformer - INFO - Memory usage of dataframe is 655.51 MB
+2025-12-29 13:41:53 - ASHRAETransformer - INFO - Memory usage after optimization is: 385.59 MB
+2025-12-29 13:41:53 - ASHRAETransformer - INFO - Decreased by 41.2%
+2025-12-29 13:41:53 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 13:41:54 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 13:41:55 - MainPipeline - WARNING - Preprocessing stage logic not yet implemented.
+2025-12-29 13:46:53 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:46:53 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:46:53 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:46:53 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:47:06 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:47:06 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:47:07 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:47:20 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 13:47:20 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 13:47:20 - ASHRAETransformer - INFO - Memory usage of dataframe is 655.51 MB
+2025-12-29 13:47:20 - ASHRAETransformer - INFO - Memory usage after optimization is: 385.59 MB
+2025-12-29 13:47:20 - ASHRAETransformer - INFO - Decreased by 41.2%
+2025-12-29 13:47:20 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 13:47:22 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 13:47:23 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 13:47:30 - ASHRAETransformer - INFO - Memory usage of dataframe is 2140.03 MB
+2025-12-29 13:50:35 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 13:50:35 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 13:50:35 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 13:50:35 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 13:50:47 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 13:50:47 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 13:50:48 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 13:50:52 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 13:50:52 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 13:50:52 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-29 13:50:52 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-29 13:50:52 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 13:50:54 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 13:50:55 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 13:51:00 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-29 13:51:01 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 2140.03 MB
+2025-12-29 13:51:02 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 36.0%)
+2025-12-29 13:51:02 - MainPipeline - WARNING - Preprocessing stage logic not yet implemented.
+2025-12-29 15:41:51 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 15:41:51 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 15:41:51 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-29 15:41:51 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 15:41:51 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 15:42:02 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 15:42:02 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 15:42:04 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 15:42:07 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 15:42:07 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 15:42:07 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-29 15:42:08 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-29 15:42:08 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 15:42:10 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 15:42:11 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 15:42:18 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-29 15:47:04 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 15:47:04 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 15:47:04 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-29 15:47:04 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 15:47:04 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 15:47:25 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 15:47:25 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 15:47:28 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 15:47:32 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 15:47:32 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 15:47:32 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-29 15:47:32 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-29 15:47:32 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 15:47:35 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 15:47:36 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 15:47:42 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-29 15:47:43 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 2140.03 MB
+2025-12-29 15:47:43 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 36.0%)
+2025-12-29 15:47:43 - MLPreprocessor - INFO - Starting Scaling and One-Hot Encoding...
+2025-12-29 15:47:45 - MLPreprocessor - INFO - Categorical features: ['primary_use']
+2025-12-29 15:47:45 - MLPreprocessor - INFO - Numeric features: ['building_id', 'meter', 'site_id', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week']
+2025-12-29 15:47:45 - MLPreprocessor - INFO - Fitting and transforming features...
+2025-12-29 15:50:40 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 15:50:40 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 15:50:40 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-29 15:50:40 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 15:50:40 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 15:50:54 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 15:50:54 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 15:50:55 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 15:50:59 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 15:50:59 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 15:50:59 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-29 15:50:59 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-29 15:50:59 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 15:51:01 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 15:51:02 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 15:51:07 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-29 15:51:08 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 2140.03 MB
+2025-12-29 15:51:09 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 36.0%)
+2025-12-29 15:51:09 - MLPreprocessor - INFO - Starting Memory-Optimized Feature Engineering...
+2025-12-29 15:51:10 - MLPreprocessor - INFO - Label Encoding: primary_use
+2025-12-29 15:58:24 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 15:58:24 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 15:58:24 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-29 15:58:24 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 15:58:24 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 15:58:36 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 15:58:36 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 15:58:38 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 15:58:41 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 15:58:41 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 15:58:41 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-29 15:58:42 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-29 15:58:42 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 15:58:43 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 15:58:44 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 15:58:50 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-29 15:58:51 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 2140.03 MB
+2025-12-29 15:58:52 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 36.0%)
+2025-12-29 15:58:52 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-29 15:58:52 - MLPreprocessor - INFO - Target extracted.
+2025-12-29 15:58:53 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-29 15:58:53 - MLPreprocessor - INFO - Scaling numeric: building_id
+2025-12-29 15:58:53 - MLPreprocessor - INFO - Scaling numeric: meter
+2025-12-29 15:58:54 - MLPreprocessor - INFO - Scaling numeric: site_id
+2025-12-29 15:58:54 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2025-12-29 15:58:54 - MLPreprocessor - INFO - Scaling numeric: year_built
+2025-12-29 15:58:54 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2025-12-29 15:58:55 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2025-12-29 15:58:55 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2025-12-29 15:58:55 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2025-12-29 15:58:55 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2025-12-29 15:58:56 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2025-12-29 15:58:56 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2025-12-29 15:58:56 - MLPreprocessor - INFO - Scaling numeric: day
+2025-12-29 15:58:57 - MLPreprocessor - INFO - Scaling numeric: month
+2025-12-29 15:58:57 - MLPreprocessor - INFO - Scaling numeric: week
+2025-12-29 15:58:57 - MLPreprocessor - INFO - Feature engineering complete. In-memory shape: (20216100, 16)
+2025-12-29 15:58:57 - MLPreprocessor - INFO - Performing final split on 20M rows...
+2025-12-29 15:59:01 - MLPreprocessor - INFO - Split successful. Train: (16172880, 16), Test: (4043220, 16)
+2025-12-29 15:59:01 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: 'PreprocessingStage' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 65, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 54, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 48, in run
+    self.logger.info("Caching split data in Redis...")
+    ^^^^^^^^^^^
+AttributeError: 'PreprocessingStage' object has no attribute 'logger'
+2025-12-29 16:00:40 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 16:00:40 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 16:00:40 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-29 16:00:40 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 16:00:40 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 16:00:53 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 16:00:53 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 16:00:55 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 16:00:59 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 16:00:59 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 16:00:59 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-29 16:01:00 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-29 16:01:00 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 16:01:03 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 16:01:05 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 16:01:12 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-29 16:01:14 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 2140.03 MB
+2025-12-29 16:01:16 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 36.0%)
+2025-12-29 16:01:16 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-29 16:01:16 - MLPreprocessor - INFO - Target extracted.
+2025-12-29 16:01:18 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-29 16:01:18 - MLPreprocessor - INFO - Scaling numeric: building_id
+2025-12-29 16:01:18 - MLPreprocessor - INFO - Scaling numeric: meter
+2025-12-29 16:01:19 - MLPreprocessor - INFO - Scaling numeric: site_id
+2025-12-29 16:01:19 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2025-12-29 16:01:19 - MLPreprocessor - INFO - Scaling numeric: year_built
+2025-12-29 16:01:19 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2025-12-29 16:01:20 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2025-12-29 16:01:20 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2025-12-29 16:01:20 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2025-12-29 16:01:21 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2025-12-29 16:01:21 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2025-12-29 16:01:21 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2025-12-29 16:01:22 - MLPreprocessor - INFO - Scaling numeric: day
+2025-12-29 16:01:22 - MLPreprocessor - INFO - Scaling numeric: month
+2025-12-29 16:01:22 - MLPreprocessor - INFO - Scaling numeric: week
+2025-12-29 16:01:23 - MLPreprocessor - INFO - Feature engineering complete. In-memory shape: (20216100, 16)
+2025-12-29 16:01:23 - MLPreprocessor - INFO - Performing final split on 20M rows...
+2025-12-29 16:01:28 - MLPreprocessor - INFO - Split successful. Train: (16172880, 16), Test: (4043220, 16)
+2025-12-29 16:01:28 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: 'PreprocessingStage' object has no attribute 'logger'
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 65, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 55, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 49, in run
+    self.logger.info("Caching split data in Redis...")
+    ^^^^^^^^^^^
+AttributeError: 'PreprocessingStage' object has no attribute 'logger'
+2025-12-29 16:03:13 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-29 16:03:13 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-29 16:03:13 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-29 16:03:13 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-29 16:03:13 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-29 16:03:25 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-29 16:03:25 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-29 16:03:26 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-29 16:03:30 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-29 16:03:30 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-29 16:03:30 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-29 16:03:30 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-29 16:03:30 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-29 16:03:32 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-29 16:03:33 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-29 16:03:39 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-29 16:03:39 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 2140.03 MB
+2025-12-29 16:03:40 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 36.0%)
+2025-12-29 16:03:40 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-29 16:03:40 - MLPreprocessor - INFO - Target extracted.
+2025-12-29 16:03:41 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-29 16:03:42 - MLPreprocessor - INFO - Scaling numeric: building_id
+2025-12-29 16:03:42 - MLPreprocessor - INFO - Scaling numeric: meter
+2025-12-29 16:03:42 - MLPreprocessor - INFO - Scaling numeric: site_id
+2025-12-29 16:03:42 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2025-12-29 16:03:42 - MLPreprocessor - INFO - Scaling numeric: year_built
+2025-12-29 16:03:43 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2025-12-29 16:03:43 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2025-12-29 16:03:43 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2025-12-29 16:03:43 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2025-12-29 16:03:44 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2025-12-29 16:03:44 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2025-12-29 16:03:44 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2025-12-29 16:03:45 - MLPreprocessor - INFO - Scaling numeric: day
+2025-12-29 16:03:45 - MLPreprocessor - INFO - Scaling numeric: month
+2025-12-29 16:03:45 - MLPreprocessor - INFO - Scaling numeric: week
+2025-12-29 16:03:46 - MLPreprocessor - INFO - Feature engineering complete. In-memory shape: (20216100, 16)
+2025-12-29 16:03:46 - MLPreprocessor - INFO - Performing final split on 20M rows...
+2025-12-29 16:03:50 - MLPreprocessor - INFO - Split successful. Train: (16172880, 16), Test: (4043220, 16)
+2025-12-29 16:03:50 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2025-12-29 16:03:50 - MainPipeline - WARNING - Preprocessing stage logic not yet implemented.
