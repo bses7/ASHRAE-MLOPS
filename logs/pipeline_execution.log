@@ -4372,3 +4372,119 @@ UnboundLocalError: cannot access local variable 'chunks' where it is not associa
 2026-01-01 13:25:21 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_y_train
 2026-01-01 13:25:21 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: ashrae_pipeline_y_train
 2026-01-01 13:25:21 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-01 14:07:45 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-01 14:07:45 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2026-01-01 14:07:45 - IngestionOrchestrator - INFO - Starting Ingestion Stage...
+2026-01-01 14:07:45 - IngestionOrchestrator - INFO - Direct Bulk Loading train -> fact_energy_usage
+2026-01-01 14:08:11 - IngestionOrchestrator - INFO - Chunked ETL process for building -> dim_building
+2026-01-01 14:08:11 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/building_metadata.csv
+2026-01-01 14:08:12 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-01 14:08:12 - IngestionOrchestrator - INFO - Chunked ETL process for weather -> dim_weather
+2026-01-01 14:08:12 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/weather_train.csv
+2026-01-01 14:08:12 - DataTransformer - INFO - Transforming weather data: Using column-specific imputation...
+2026-01-01 14:08:12 - DataTransformer - INFO - Weather imputation complete.
+2026-01-01 14:08:43 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-01 14:08:43 - IngestionOrchestrator - INFO - --- INGESTION SUMMARY ---
+2026-01-01 14:08:43 - IngestionOrchestrator - INFO - TABLE: TRAIN | ROWS: N/A (Bulk) | TIME: 25.57s
+2026-01-01 14:08:43 - IngestionOrchestrator - INFO - TABLE: BUILDING | ROWS: 1449 | TIME: 0.56s
+2026-01-01 14:08:43 - IngestionOrchestrator - INFO - TABLE: WEATHER | ROWS: 139773 | TIME: 31.65s
+2026-01-01 14:08:43 - MainPipeline - INFO - Ingestion stage completed successfully.
+2026-01-01 14:08:48 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-01 14:08:48 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 14:08:48 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-01 14:08:48 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 14:08:48 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 14:08:48 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 14:09:01 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 14:09:01 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 14:09:03 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 14:09:07 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-01 14:09:07 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 14:09:07 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 14:09:08 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 14:09:08 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 14:09:13 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 14:09:14 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 14:09:14 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 14:09:14 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 14:10:48 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-01 14:10:48 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 14:10:48 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-01 14:10:48 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 14:10:48 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 14:10:48 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 14:11:00 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 14:11:00 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 14:11:02 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 14:11:06 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-01 14:11:06 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 14:11:06 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 14:11:06 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 14:11:06 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 14:11:09 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 14:11:10 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 14:11:10 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 14:11:10 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 14:14:16 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-01 14:14:16 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2026-01-01 14:14:16 - IngestionOrchestrator - INFO - Starting Ingestion Stage...
+2026-01-01 14:14:16 - IngestionOrchestrator - INFO - Direct Bulk Loading train -> fact_energy_usage
+2026-01-01 14:14:41 - IngestionOrchestrator - INFO - Chunked ETL process for building -> dim_building
+2026-01-01 14:14:41 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/building_metadata.csv
+2026-01-01 14:14:41 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-01 14:14:41 - IngestionOrchestrator - INFO - Chunked ETL process for weather -> dim_weather
+2026-01-01 14:14:41 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/weather_train.csv
+2026-01-01 14:14:41 - DataTransformer - INFO - Transforming weather data: Using column-specific imputation...
+2026-01-01 14:14:41 - DataTransformer - INFO - Weather imputation complete.
+2026-01-01 14:15:12 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-01 14:15:12 - IngestionOrchestrator - INFO - --- INGESTION SUMMARY ---
+2026-01-01 14:15:12 - IngestionOrchestrator - INFO - TABLE: TRAIN | ROWS: N/A (Bulk) | TIME: 24.55s
+2026-01-01 14:15:12 - IngestionOrchestrator - INFO - TABLE: BUILDING | ROWS: 1449 | TIME: 0.4s
+2026-01-01 14:15:12 - IngestionOrchestrator - INFO - TABLE: WEATHER | ROWS: 139773 | TIME: 31.01s
+2026-01-01 14:15:12 - MainPipeline - INFO - Ingestion stage completed successfully.
+2026-01-01 14:15:16 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-01 14:15:16 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 14:15:16 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-01 14:15:16 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 14:15:16 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 14:15:16 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 14:15:28 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 14:15:28 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 14:15:30 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 14:15:34 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-01 14:15:34 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 14:15:34 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 14:15:34 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 14:15:34 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 14:15:37 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 14:15:38 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 14:15:38 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 14:15:38 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 14:16:28 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2026-01-01 14:16:28 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2026-01-01 14:16:28 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-01 14:16:29 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-01 14:16:29 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-01 14:16:30 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-01 14:16:32 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-01 14:16:32 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-01 14:16:32 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-01 14:16:33 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-01 14:16:33 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-01 14:16:34 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-01 14:16:34 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-01 14:16:34 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-01 14:16:35 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-01 14:16:35 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-01 14:16:35 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-01 14:16:36 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-01 14:16:36 - MLPreprocessor - INFO - Training features ready. Total features: 16
+2026-01-01 14:16:36 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-01 14:16:36 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_X_train
+2026-01-01 14:16:39 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: ashrae_pipeline_X_train
+2026-01-01 14:16:39 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_y_train
+2026-01-01 14:16:40 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: ashrae_pipeline_y_train
+2026-01-01 14:16:40 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-01 14:16:48 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-01 14:16:48 - MainPipeline - INFO - Starting Model Training...
+2026-01-01 14:16:48 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379

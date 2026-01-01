@@ -17,7 +17,6 @@ class MLPreprocessor:
         self.scaler_map = {}          
         self.category_maps = {}      
 
-
         self.categorical_cols = []
         self.numeric_scaled_cols = []
         self.feature_columns_ = None
