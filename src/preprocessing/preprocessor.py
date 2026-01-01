@@ -3,10 +3,12 @@ from src.database.db_reader import DatabaseReader
 from src.validation.data_validator import DataValidator
 from src.preprocessing.optimize import Optimizer
 from src.common.logger import get_logger
-from src.preprocessing.preprocessing import MLPreprocessor   
+from src.preprocessing.preprocessing import MLPreprocessor  
+from src.preprocessing.feature_engineering import FeatureEngineer   
 from src.common.redis_client import RedisClient
 import gc
 import pandas as pd
+import joblib
 
 logger = get_logger("PreprocessingOrchestrator")
 
@@ -22,6 +24,7 @@ class PreprocessingStage:
         self.transformer = Optimizer()
         self.ml_prep = MLPreprocessor() 
         self.redis_client = RedisClient(config['redis'])
+        self.feature_eng = FeatureEngineer()
 
     def run(self):
         logger.info("--- PREPROCESSING STAGE START ---")
@@ -41,19 +44,29 @@ class PreprocessingStage:
         del df_energy, df_building, df_weather
         gc.collect()
 
-        X, y = self.ml_prep.prepare_ml_features(df_joined)
+        df_engineered = self.feature_eng.engineer(df_joined)
 
-        X_train, X_test, y_train, y_test = self.ml_prep.split_data(X, y)
+        del df_joined
+        gc.collect()
+
+        X, y = self.ml_prep.prepare_ml_features(df_engineered)
+
+        joblib.dump(self.ml_prep, "saved_models/preprocessor.joblib")
+
+        # X_train, X_test, y_train, y_test = self.ml_prep.split_data(X, y)
 
         logger.info("Caching split data in Redis...")
 
-        self.redis_client.store_dataframe(X_train, "X_train")
-        self.redis_client.store_dataframe(pd.DataFrame(y_train, columns=['target']), "y_train")
+        self.redis_client.store_dataframe(X, "X_train")
+        self.redis_client.store_dataframe(pd.DataFrame(y, columns=['target']), "y_train")
 
-        self.redis_client.store_dataframe(X_test, "X_test")
-        self.redis_client.store_dataframe(pd.DataFrame(y_test, columns=['target']), "y_test")
+        # self.redis_client.store_dataframe(X_test, "X_test")
+        # self.redis_client.store_dataframe(pd.DataFrame(y_test, columns=['target']), "y_test")
 
-        return X_train, X_test, y_train, y_test
+        del X, y
+        gc.collect()
+
+        return
 
 def run_preprocessing_stage(config: dict):
     stage = PreprocessingStage(config)

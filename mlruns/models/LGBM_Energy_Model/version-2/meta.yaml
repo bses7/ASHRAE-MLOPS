@@ -1,0 +1,15 @@
+creation_timestamp: 1767202663751
+current_stage: None
+deployment_job_state: null
+description: ''
+last_updated_timestamp: 1767202663751
+model_id: m-1b3bbbb243ba4b70b8baa9753b66e610
+name: LGBM_Energy_Model
+run_id: 4b5e0be75aa54ff2990bb44c07c1d92b
+run_link: ''
+source: models:/m-1b3bbbb243ba4b70b8baa9753b66e610
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/168964639291199438/models/m-1b3bbbb243ba4b70b8baa9753b66e610/artifacts
+user_id: null
+version: 2

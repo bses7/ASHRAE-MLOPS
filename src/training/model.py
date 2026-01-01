@@ -8,20 +8,22 @@ from src.training.base import BaseModel
 from src.common.logger import get_logger
 
 class LGBMModel(BaseModel):
+    """
+    LightGBM implementation optimized for K-Fold cross-validation.
+    """
     def __init__(self):
         self.logger = get_logger("LGBMModel")
         self.model = None
 
     def train(self, X_train, y_train, X_val, y_val, params):
-        self.logger.info("Starting LightGBM Training...")
-        
+        """Trains a single fold."""
         lgb_train = lgb.Dataset(X_train, label=y_train)
         lgb_eval = lgb.Dataset(X_val, label=y_val, reference=lgb_train)
 
-        self.model = lgb.train(
+        model = lgb.train(
             params,
             lgb_train,
-            num_boost_round=500,
+            num_boost_round=1000, 
             valid_sets=[lgb_train, lgb_eval],
             valid_names=['train', 'eval'],
             callbacks=[
@@ -29,16 +31,16 @@ class LGBMModel(BaseModel):
                 lgb.log_evaluation(period=50)
             ]
         )
-        return self.model
+        return model
 
-    def predict(self, X):
-        return self.model.predict(X, num_iteration=self.model.best_iteration)
+    def predict(self, model, X):
+        """Predicts using a specific fold model."""
+        return model.predict(X, num_iteration=model.best_iteration)
 
-    def save_model(self, path: str):
-        """Saves the model locally using joblib."""
+    def save_model(self, model, path: str):
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        joblib.dump(self.model, path)
-        self.logger.info(f"Model saved locally at: {path}")
+        joblib.dump(model, path)
+        self.logger.info(f"Fold model saved locally at: {path}")
 
     def evaluate(self, y_true, y_pred):
         """Calculates regression metrics for MLflow logging."""

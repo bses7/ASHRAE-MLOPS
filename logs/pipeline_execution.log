@@ -2781,3 +2781,1059 @@ TypeError: got an unexpected keyword argument 'squared'
 2025-12-30 14:35:00 - MLflowTracker - INFO - Model logged to MLflow Registry as 'LGBM_Energy_Model'
 2025-12-30 14:35:00 - TrainingOrchestrator - INFO - Training Stage Complete. R2: 0.8395
 2025-12-30 14:35:00 - MainPipeline - WARNING - Training stage logic not yet implemented.
+2025-12-31 14:36:59 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 14:36:59 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 14:36:59 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 14:36:59 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 14:36:59 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 14:37:12 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 14:37:12 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 14:37:13 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 14:37:18 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 14:37:18 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 14:37:18 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 14:37:18 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 14:37:18 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 14:37:21 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 14:37:22 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 14:37:28 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 14:48:02 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 14:48:02 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 14:48:02 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 14:48:02 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 14:48:02 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 14:49:49 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 14:49:49 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 14:49:50 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 14:49:50 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 14:49:50 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 14:50:00 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 14:50:00 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 14:50:02 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 14:50:06 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 14:50:06 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 14:50:06 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 14:50:07 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 14:50:07 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 14:50:09 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 14:50:09 - ASHRAETransformer - INFO - Performing chunked merge with weather data...
+2025-12-31 14:50:15 - ASHRAETransformer - INFO - Cleaning up before final concatenation...
+2025-12-31 14:50:15 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 14:52:27 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 14:52:27 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 14:52:27 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 14:52:27 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 14:52:27 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 14:52:38 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 14:52:38 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 14:52:40 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 14:52:45 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 14:52:45 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 14:52:45 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 14:52:45 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 14:52:45 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 14:52:47 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 14:52:49 - ASHRAETransformer - INFO - Performing chunked merge with weather data...
+2025-12-31 14:52:55 - ASHRAETransformer - INFO - Cleaning up before final concatenation...
+2025-12-31 14:52:55 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 14:55:43 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 14:55:43 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 14:55:43 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 14:55:43 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 14:55:43 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 14:55:54 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 14:55:54 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 14:55:55 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 14:55:59 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 14:55:59 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 14:56:02 - ASHRAETransformer - INFO - Performing Incremental Batch Merge...
+2025-12-31 14:56:03 - ASHRAETransformer - INFO - Consolidating batch 1 / 5...
+2025-12-31 14:56:04 - ASHRAETransformer - INFO - Consolidating batch 2 / 5...
+2025-12-31 14:56:04 - ASHRAETransformer - INFO - Consolidating batch 3 / 5...
+2025-12-31 14:56:05 - ASHRAETransformer - INFO - Consolidating batch 4 / 5...
+2025-12-31 14:56:06 - ASHRAETransformer - INFO - Consolidating batch 5 / 5...
+2025-12-31 14:56:06 - ASHRAETransformer - INFO - Final Concatenation...
+2025-12-31 14:57:05 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 14:57:05 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 14:57:05 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 14:57:05 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 14:57:05 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 14:57:16 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 14:57:16 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 14:57:18 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 14:57:21 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 14:57:21 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 14:57:21 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 14:57:22 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 14:57:22 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 14:57:23 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 14:57:24 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 14:57:30 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 14:57:31 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 2140.03 MB
+2025-12-31 14:57:32 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 36.0%)
+2025-12-31 14:57:32 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: 'PreprocessingStage' object has no attribute 'feature_eng'
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 66, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 62, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 44, in run
+    df_engineered = self.feature_eng.engineer(df_joined)
+                    ^^^^^^^^^^^^^^^^
+AttributeError: 'PreprocessingStage' object has no attribute 'feature_eng'
+2025-12-31 14:58:52 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 14:58:52 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 14:58:52 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 14:58:52 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 14:58:52 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 14:59:04 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 14:59:04 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 14:59:06 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 14:59:09 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 14:59:09 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 14:59:09 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 14:59:10 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 14:59:10 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 14:59:11 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 14:59:12 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 14:59:18 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 14:59:56 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 14:59:56 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 14:59:56 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 14:59:56 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 14:59:56 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:00:06 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:00:08 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:00:09 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:00:13 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:00:13 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:00:13 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:00:13 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:00:13 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:00:15 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:00:16 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:00:54 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:01:41 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:01:41 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:01:41 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:01:41 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:01:41 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:01:51 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:01:51 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:01:53 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:01:56 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:01:56 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:01:56 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:01:57 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:01:57 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:01:58 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:01:59 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:04:50 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:04:50 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:04:50 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:04:50 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:04:50 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:05:01 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:05:02 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:05:03 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:05:07 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:05:07 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:05:07 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:05:07 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:05:07 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:05:09 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:05:10 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:05:12 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:05:43 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:05:43 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:05:43 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:05:43 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:05:43 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:05:54 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:05:55 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:05:56 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:06:00 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:06:00 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:06:00 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:06:00 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:06:00 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:06:02 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:06:03 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:06:09 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:12:20 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:12:20 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:12:21 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:12:21 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:12:21 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:12:31 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:12:32 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:12:33 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:12:37 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:12:37 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:12:37 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:12:37 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:12:37 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:12:39 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:12:40 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 15:12:40 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 15:12:40 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:12:45 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:12:45 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 15:12:46 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 15:12:46 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 15:12:46 - MainPipeline - ERROR - Configuration error: Missing key 'dayofweek' in configs/pipeline_config.yaml
+2025-12-31 15:18:10 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:18:10 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:18:10 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:18:10 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:18:10 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:18:21 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:18:21 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:18:22 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:18:26 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:18:26 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:18:26 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:18:26 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:18:26 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:18:28 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:18:29 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 15:18:29 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 15:18:29 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:18:34 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:18:35 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 15:18:35 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 15:18:35 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 15:18:36 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'dayofweek', 'is_weekend']
+2025-12-31 15:18:36 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 15:18:36 - MLPreprocessor - INFO - Target extracted.
+2025-12-31 15:18:37 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 15:22:07 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:22:07 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:22:07 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:22:07 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:22:07 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:22:18 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:22:19 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:22:21 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:22:24 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:22:24 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:22:24 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:22:25 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:22:25 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:22:27 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:22:28 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 15:22:28 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 15:22:28 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:22:33 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:22:33 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 15:22:34 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 15:22:34 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 15:22:34 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'dayofweek', 'is_weekend']
+2025-12-31 15:22:34 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 15:22:35 - MLPreprocessor - INFO - Target extracted and removed from main DataFrame.
+2025-12-31 15:22:35 - MLPreprocessor - INFO - Metadata columns dropped.
+2025-12-31 15:22:35 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 15:26:11 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:26:11 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:26:11 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:26:11 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:26:11 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:26:22 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:26:22 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:26:24 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:26:27 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:26:27 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:26:27 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:26:28 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:26:28 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:26:29 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:26:30 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 15:26:30 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 15:26:30 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:26:36 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:26:36 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 15:26:36 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 15:26:37 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 15:26:37 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'dayofweek', 'is_weekend']
+2025-12-31 15:26:37 - MLPreprocessor - INFO - Starting Pop-and-Process Feature Engineering...
+2025-12-31 15:26:37 - MLPreprocessor - INFO - Target popped and converted to float32.
+2025-12-31 15:26:38 - MLPreprocessor - INFO - Metadata columns dropped.
+2025-12-31 15:26:38 - MLPreprocessor - INFO - Processing column: building_id
+2025-12-31 15:26:39 - MLPreprocessor - INFO - Processing column: meter
+2025-12-31 15:26:39 - MLPreprocessor - INFO - Processing column: site_id
+2025-12-31 15:26:40 - MLPreprocessor - INFO - Processing column: primary_use
+2025-12-31 15:26:40 - MLPreprocessor - INFO - Processing column: square_feet
+2025-12-31 15:26:40 - MLPreprocessor - INFO - Processing column: air_temperature
+2025-12-31 15:26:41 - MLPreprocessor - INFO - Processing column: cloud_coverage
+2025-12-31 15:26:41 - MLPreprocessor - INFO - Processing column: dew_temperature
+2025-12-31 15:26:42 - MLPreprocessor - INFO - Processing column: precip_depth_1_hr
+2025-12-31 15:26:42 - MLPreprocessor - INFO - Processing column: sea_level_pressure
+2025-12-31 15:26:43 - MLPreprocessor - INFO - Processing column: wind_direction
+2025-12-31 15:26:43 - MLPreprocessor - INFO - Processing column: wind_speed
+2025-12-31 15:26:44 - MLPreprocessor - INFO - Processing column: day
+2025-12-31 15:26:44 - MLPreprocessor - INFO - Processing column: month
+2025-12-31 15:26:45 - MLPreprocessor - INFO - Processing column: week
+2025-12-31 15:26:45 - MLPreprocessor - INFO - Processing column: dayofweek
+2025-12-31 15:26:45 - MLPreprocessor - INFO - Processing column: is_weekend
+2025-12-31 15:26:45 - MLPreprocessor - INFO - Rebuilding optimized DataFrame...
+2025-12-31 15:28:54 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:28:54 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:28:54 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:28:54 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:28:54 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:29:04 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:29:05 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:29:06 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:29:09 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:29:09 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:29:09 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:29:10 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:29:10 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:29:12 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:29:13 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 15:29:13 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 15:29:13 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:29:17 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:29:18 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 15:29:18 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 15:29:18 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 15:29:19 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'dayofweek', 'is_weekend']
+2025-12-31 15:29:19 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 15:29:19 - MLPreprocessor - INFO - Target extracted.
+2025-12-31 15:29:20 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 15:32:47 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:32:47 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:32:47 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:32:47 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:32:47 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:32:58 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:32:58 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:32:59 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:33:03 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:33:03 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:33:03 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:33:03 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:33:03 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:33:05 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:33:06 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 15:33:06 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 15:33:06 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:33:11 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:33:11 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 15:33:11 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 15:33:11 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 15:33:12 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2025-12-31 15:33:12 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 15:33:12 - MLPreprocessor - INFO - Target extracted.
+2025-12-31 15:33:14 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 15:34:41 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:34:41 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:34:41 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:34:41 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:34:41 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:34:52 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:34:52 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:34:54 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:34:59 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:34:59 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:34:59 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:34:59 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:34:59 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:35:02 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:35:04 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 15:35:04 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 15:35:04 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:35:11 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:35:11 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 15:35:12 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 15:35:12 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 15:35:13 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2025-12-31 15:35:13 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 15:35:13 - MLPreprocessor - INFO - Target extracted.
+2025-12-31 15:35:15 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 15:35:49 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:35:49 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:35:49 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:35:49 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:35:49 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:36:01 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:36:01 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:36:02 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:36:06 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:36:06 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:36:06 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:36:07 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:36:07 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:36:09 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:36:10 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 15:36:10 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 15:36:10 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:36:15 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:36:16 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 15:36:16 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 15:36:16 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 15:36:17 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2025-12-31 15:36:17 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 15:36:17 - MLPreprocessor - INFO - Target extracted.
+2025-12-31 15:36:19 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 15:36:20 - MLPreprocessor - INFO - Scaling numeric: building_id
+2025-12-31 15:36:20 - MLPreprocessor - INFO - Scaling numeric: meter
+2025-12-31 15:36:21 - MLPreprocessor - INFO - Scaling numeric: site_id
+2025-12-31 15:36:21 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2025-12-31 15:36:21 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2025-12-31 15:36:22 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2025-12-31 15:36:22 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2025-12-31 15:36:22 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2025-12-31 15:36:23 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2025-12-31 15:36:23 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2025-12-31 15:36:23 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2025-12-31 15:36:24 - MLPreprocessor - INFO - Scaling numeric: day
+2025-12-31 15:36:24 - MLPreprocessor - INFO - Scaling numeric: month
+2025-12-31 15:36:24 - MLPreprocessor - INFO - Scaling numeric: week
+2025-12-31 15:36:25 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2025-12-31 15:36:25 - MLPreprocessor - INFO - Feature engineering complete. In-memory shape: (20216100, 16)
+2025-12-31 15:36:25 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2025-12-31 15:36:25 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: X_train
+2025-12-31 15:36:28 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: X_train
+2025-12-31 15:36:28 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
+2025-12-31 15:36:29 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
+2025-12-31 15:36:29 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2025-12-31 15:38:06 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:38:06 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 15:38:06 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:38:06 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 15:38:06 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 15:38:17 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 15:38:18 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 15:38:19 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 15:38:23 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 15:38:23 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 15:38:23 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 15:38:23 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 15:38:23 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 15:38:25 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 15:38:26 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 15:38:26 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 15:38:26 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 15:38:32 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 15:38:33 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 15:38:33 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 15:38:33 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 15:38:34 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2025-12-31 15:38:34 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 15:38:34 - MLPreprocessor - INFO - Target extracted.
+2025-12-31 15:38:36 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 15:38:37 - MLPreprocessor - INFO - Scaling numeric: building_id
+2025-12-31 15:38:37 - MLPreprocessor - INFO - Scaling numeric: meter
+2025-12-31 15:38:38 - MLPreprocessor - INFO - Scaling numeric: site_id
+2025-12-31 15:38:38 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2025-12-31 15:38:38 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2025-12-31 15:38:39 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2025-12-31 15:38:39 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2025-12-31 15:38:39 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2025-12-31 15:38:40 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2025-12-31 15:38:40 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2025-12-31 15:38:40 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2025-12-31 15:38:41 - MLPreprocessor - INFO - Scaling numeric: day
+2025-12-31 15:38:41 - MLPreprocessor - INFO - Scaling numeric: month
+2025-12-31 15:38:42 - MLPreprocessor - INFO - Scaling numeric: week
+2025-12-31 15:38:42 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2025-12-31 15:38:42 - MLPreprocessor - INFO - Feature engineering complete. In-memory shape: (20216100, 16)
+2025-12-31 15:38:42 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2025-12-31 15:38:42 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: X_train
+2025-12-31 15:38:45 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: X_train
+2025-12-31 15:38:45 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
+2025-12-31 15:38:46 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
+2025-12-31 15:38:46 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2025-12-31 15:40:59 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:40:59 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 15:40:59 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:42:56 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 15:42:56 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 15:42:56 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 15:42:56 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2025-12-31 15:42:56 - RedisClient - INFO - Retrieving binary data from Redis key: X_train
+2025-12-31 15:42:57 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: X_train
+2025-12-31 15:42:57 - RedisClient - INFO - Retrieving binary data from Redis key: y_train
+2025-12-31 15:42:57 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: y_train
+2025-12-31 15:42:57 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 15:42:57 - MainPipeline - CRITICAL - Pipeline failed at stage [train]: Supported target types are: ('binary', 'multiclass'). Got 'continuous' instead.
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 71, in main
+    metrics = run_training_stage(config)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/training/trainer.py", line 86, in run_training_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/training/trainer.py", line 44, in run
+    for fold, (train_idx, val_idx) in enumerate(skf.split(X, strat_target), 1):
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sklearn/model_selection/_split.py", line 411, in split
+    for train, test in super().split(X, y, groups):
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sklearn/model_selection/_split.py", line 142, in split
+    for test_index in self._iter_test_masks(X, y, groups):
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sklearn/model_selection/_split.py", line 844, in _iter_test_masks
+    test_folds = self._make_test_folds(X, y)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sklearn/model_selection/_split.py", line 787, in _make_test_folds
+    raise ValueError(
+ValueError: Supported target types are: ('binary', 'multiclass'). Got 'continuous' instead.
+2025-12-31 16:15:08 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 16:15:08 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 16:15:08 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 16:15:08 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 16:15:08 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 16:15:19 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 16:15:19 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 16:15:21 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 16:15:25 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 16:15:25 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 16:15:25 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 16:15:25 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 16:15:25 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 16:15:30 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 16:15:31 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 16:15:31 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 16:15:31 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 16:15:37 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 16:15:39 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 16:15:39 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 16:15:39 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 16:15:41 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2025-12-31 16:15:41 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 16:15:41 - MLPreprocessor - INFO - Target extracted.
+2025-12-31 16:15:42 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 16:16:49 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 16:16:49 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 16:16:49 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 16:16:49 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 16:16:49 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 16:17:07 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 16:17:07 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 16:17:09 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 16:17:14 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 16:17:14 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 16:17:14 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 16:17:14 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 16:17:14 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 16:17:18 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 16:17:20 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 16:17:20 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 16:17:20 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 16:17:29 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 16:17:30 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 16:17:30 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 16:17:31 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 16:17:32 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2025-12-31 16:17:32 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 16:17:32 - MLPreprocessor - INFO - Target extracted.
+2025-12-31 16:17:34 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 16:17:37 - MLPreprocessor - INFO - Scaling numeric: meter
+2025-12-31 16:17:37 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2025-12-31 16:17:37 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2025-12-31 16:17:38 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2025-12-31 16:17:38 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2025-12-31 16:17:38 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2025-12-31 16:17:39 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2025-12-31 16:17:39 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2025-12-31 16:17:39 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2025-12-31 16:17:40 - MLPreprocessor - INFO - Scaling numeric: day
+2025-12-31 16:17:40 - MLPreprocessor - INFO - Scaling numeric: month
+2025-12-31 16:17:41 - MLPreprocessor - INFO - Scaling numeric: week
+2025-12-31 16:17:41 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2025-12-31 16:17:41 - MLPreprocessor - INFO - Feature engineering complete. In-memory shape: (20216100, 16)
+2025-12-31 16:17:41 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2025-12-31 16:17:41 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: X_train
+2025-12-31 16:17:44 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: X_train
+2025-12-31 16:17:44 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
+2025-12-31 16:17:45 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
+2025-12-31 16:17:45 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2025-12-31 16:18:33 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 16:18:33 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 16:18:33 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 16:18:34 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2025-12-31 16:18:34 - RedisClient - INFO - Retrieving binary data from Redis key: X_train
+2025-12-31 16:18:34 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: X_train
+2025-12-31 16:18:34 - RedisClient - INFO - Retrieving binary data from Redis key: y_train
+2025-12-31 16:18:35 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: y_train
+2025-12-31 16:18:35 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:18:35 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2025-12-31 16:18:41 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:18:41 - TrainingOrchestrator - INFO - Fold 1 RMSE: 0.4693 | R2: 0.9573
+2025-12-31 16:18:41 - TrainingOrchestrator - INFO - --- Processing Fold 2 ---
+2025-12-31 16:18:48 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:18:48 - TrainingOrchestrator - INFO - Fold 2 RMSE: 0.4652 | R2: 0.9582
+2025-12-31 16:18:48 - TrainingOrchestrator - INFO - --- Processing Fold 3 ---
+2025-12-31 16:18:55 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:18:55 - TrainingOrchestrator - INFO - Fold 3 RMSE: 0.4569 | R2: 0.9597
+2025-12-31 16:18:55 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:18:55 - LGBMModel - INFO - Fold model saved locally at: saved_models/model.pkl
+2025-12-31 16:18:55 - MLflowTracker - INFO - Artifact saved_models/model.pkl uploaded to MLflow.
+2025-12-31 16:18:55 - MainPipeline - CRITICAL - Pipeline failed at stage [train]: API request to endpoint /api/2.0/mlflow/logged-models failed with error code 404 != 200. Response body: '<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+'
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 71, in main
+    metrics = run_training_stage(config)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/training/trainer.py", line 86, in run_training_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/training/trainer.py", line 77, in run
+    self.tracker.log_model(fold_model, model_type="lightgbm")
+  File "/home/bishesh/mlops/src/common/mlflow_tracker.py", line 32, in log_model
+    mlflow.lightgbm.log_model(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/lightgbm/__init__.py", line 370, in log_model
+    return Model.log(
+           ^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/models/model.py", line 1170, in log
+    model = _create_logged_model(
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/tracking/fluent.py", line 2323, in _create_logged_model
+    return MlflowClient()._create_logged_model(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/tracking/client.py", line 5492, in _create_logged_model
+    return self._tracking_client.create_logged_model(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/telemetry/track.py", line 30, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/tracking/_tracking_service/client.py", line 870, in create_logged_model
+    return self.store.create_logged_model(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/store/tracking/rest_store.py", line 894, in create_logged_model
+    response_proto = self._call_endpoint(CreateLoggedModel, req_body)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/store/tracking/rest_store.py", line 201, in _call_endpoint
+    return call_endpoint(
+           ^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/utils/rest_utils.py", line 592, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/mlflow/utils/rest_utils.py", line 317, in verify_rest_response
+    raise MlflowException(
+mlflow.exceptions.MlflowException: API request to endpoint /api/2.0/mlflow/logged-models failed with error code 404 != 200. Response body: '<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+'
+2025-12-31 16:43:45 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 16:43:45 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 16:43:45 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 16:43:46 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2025-12-31 16:43:46 - RedisClient - INFO - Retrieving binary data from Redis key: X_train
+2025-12-31 16:43:58 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: X_train
+2025-12-31 16:43:58 - RedisClient - INFO - Retrieving binary data from Redis key: y_train
+2025-12-31 16:43:58 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: y_train
+2025-12-31 16:43:58 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:43:59 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2025-12-31 16:44:04 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:44:04 - TrainingOrchestrator - INFO - Fold 1 RMSE: 1.93 | R2: 0.2776
+2025-12-31 16:44:04 - TrainingOrchestrator - INFO - --- Processing Fold 2 ---
+2025-12-31 16:44:08 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:44:08 - TrainingOrchestrator - INFO - Fold 2 RMSE: 1.9338 | R2: 0.2756
+2025-12-31 16:44:08 - TrainingOrchestrator - INFO - --- Processing Fold 3 ---
+2025-12-31 16:44:13 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:44:13 - TrainingOrchestrator - INFO - Fold 3 RMSE: 1.9263 | R2: 0.279
+2025-12-31 16:44:13 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:44:13 - LGBMModel - INFO - Fold model saved locally at: saved_models/model.pkl
+2025-12-31 16:44:13 - MLflowTracker - INFO - Artifact saved_models/model.pkl uploaded to MLflow.
+2025-12-31 16:44:16 - MLflowTracker - INFO - Model logged to MLflow Registry as 'LGBM_Energy_Model'
+2025-12-31 16:44:16 - TrainingOrchestrator - INFO - CV Training Complete. Average RMSE: 1.9300
+2025-12-31 16:44:16 - MainPipeline - WARNING - Training stage logic not yet implemented.
+2025-12-31 16:50:23 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 16:50:23 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 16:50:23 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 16:50:23 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2025-12-31 16:50:23 - RedisClient - INFO - Retrieving binary data from Redis key: X_train
+2025-12-31 16:50:25 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: X_train
+2025-12-31 16:50:25 - RedisClient - INFO - Retrieving binary data from Redis key: y_train
+2025-12-31 16:50:26 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: y_train
+2025-12-31 16:50:26 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:50:26 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2025-12-31 16:50:34 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:50:34 - TrainingOrchestrator - INFO - Fold 1 RMSE: 1.93 | R2: 0.2776
+2025-12-31 16:50:34 - TrainingOrchestrator - INFO - --- Processing Fold 2 ---
+2025-12-31 16:50:40 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:50:40 - TrainingOrchestrator - INFO - Fold 2 RMSE: 1.9338 | R2: 0.2756
+2025-12-31 16:50:40 - TrainingOrchestrator - INFO - --- Processing Fold 3 ---
+2025-12-31 16:50:44 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:50:44 - TrainingOrchestrator - INFO - Fold 3 RMSE: 1.9263 | R2: 0.279
+2025-12-31 16:50:44 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:50:45 - LGBMModel - INFO - Fold model saved locally at: saved_models/model.pkl
+2025-12-31 16:50:45 - MLflowTracker - INFO - Artifact saved_models/model.pkl uploaded to MLflow.
+2025-12-31 16:50:47 - MLflowTracker - INFO - Model logged to MLflow Registry as 'LGBM_Energy_Model'
+2025-12-31 16:50:47 - TrainingOrchestrator - INFO - CV Training Complete. Average RMSE: 1.9300
+2025-12-31 16:50:47 - MainPipeline - WARNING - Training stage logic not yet implemented.
+2025-12-31 16:54:41 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 16:54:41 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 16:54:41 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 16:54:41 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2025-12-31 16:54:41 - RedisClient - INFO - Retrieving binary data from Redis key: X_train
+2025-12-31 16:54:42 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: X_train
+2025-12-31 16:54:42 - RedisClient - INFO - Retrieving binary data from Redis key: y_train
+2025-12-31 16:54:42 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: y_train
+2025-12-31 16:54:42 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:55:04 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2025-12-31 16:56:29 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 16:56:29 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 16:56:29 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 16:57:01 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 16:57:01 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 16:57:01 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 16:57:01 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2025-12-31 16:57:01 - RedisClient - INFO - Retrieving binary data from Redis key: X_train
+2025-12-31 16:57:02 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: X_train
+2025-12-31 16:57:02 - RedisClient - INFO - Retrieving binary data from Redis key: y_train
+2025-12-31 16:57:02 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: y_train
+2025-12-31 16:57:02 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 16:57:22 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2025-12-31 17:00:02 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 17:00:02 - TrainingOrchestrator - INFO - Fold 1 RMSE: 2.0626 | R2: 0.0768
+2025-12-31 17:00:02 - TrainingOrchestrator - INFO - --- Processing Fold 2 ---
+2025-12-31 17:02:35 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 17:02:35 - TrainingOrchestrator - INFO - Fold 2 RMSE: 2.0633 | R2: 0.076
+2025-12-31 17:02:36 - TrainingOrchestrator - INFO - --- Processing Fold 3 ---
+2025-12-31 17:05:05 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 17:05:05 - TrainingOrchestrator - INFO - Fold 3 RMSE: 2.0621 | R2: 0.0762
+2025-12-31 17:05:05 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 17:05:05 - LGBMModel - INFO - Fold model saved locally at: saved_models/model.pkl
+2025-12-31 17:05:05 - MLflowTracker - INFO - Artifact saved_models/model.pkl uploaded to MLflow.
+2025-12-31 17:05:09 - MLflowTracker - INFO - Model logged to MLflow Registry as 'LGBM_Energy_Model'
+2025-12-31 17:05:09 - TrainingOrchestrator - INFO - CV Training Complete. Average RMSE: 2.0627
+2025-12-31 17:05:09 - MainPipeline - WARNING - Training stage logic not yet implemented.
+2025-12-31 17:08:49 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 17:08:49 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 17:08:49 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 17:08:49 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2025-12-31 17:08:49 - RedisClient - INFO - Retrieving binary data from Redis key: X_train
+2025-12-31 17:08:50 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: X_train
+2025-12-31 17:08:50 - RedisClient - INFO - Retrieving binary data from Redis key: y_train
+2025-12-31 17:08:50 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: y_train
+2025-12-31 17:08:50 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 17:08:50 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2025-12-31 17:09:03 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 17:09:03 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 17:09:03 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 17:09:03 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2025-12-31 17:09:03 - RedisClient - INFO - Retrieving binary data from Redis key: X_train
+2025-12-31 17:09:04 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: X_train
+2025-12-31 17:09:04 - RedisClient - INFO - Retrieving binary data from Redis key: y_train
+2025-12-31 17:09:04 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: y_train
+2025-12-31 17:09:04 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 17:30:23 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 17:30:23 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 17:30:24 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 17:30:24 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 17:30:24 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 17:31:09 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 17:31:09 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 17:31:09 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 17:31:09 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 17:31:09 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 17:31:26 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 17:31:26 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 17:31:28 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 17:31:32 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 17:31:32 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 17:31:32 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 17:31:32 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 17:31:32 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 17:31:35 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 17:31:36 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 17:31:36 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 17:31:36 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 17:31:40 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 17:31:41 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 17:31:41 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 17:31:41 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 17:31:42 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2025-12-31 17:31:42 - MLPreprocessor - INFO - Starting Extreme Memory-Optimized Feature Engineering...
+2025-12-31 17:31:42 - MLPreprocessor - INFO - Target extracted.
+2025-12-31 17:31:44 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 17:31:45 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2025-12-31 17:31:46 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2025-12-31 17:31:46 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2025-12-31 17:31:46 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2025-12-31 17:31:46 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2025-12-31 17:31:47 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2025-12-31 17:31:47 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2025-12-31 17:31:47 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2025-12-31 17:31:48 - MLPreprocessor - INFO - Scaling numeric: day
+2025-12-31 17:31:48 - MLPreprocessor - INFO - Scaling numeric: month
+2025-12-31 17:31:48 - MLPreprocessor - INFO - Scaling numeric: week
+2025-12-31 17:31:49 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2025-12-31 17:31:49 - MLPreprocessor - INFO - Feature engineering complete. In-memory shape: (20216100, 16)
+2025-12-31 17:31:49 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2025-12-31 17:31:49 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: X_train
+2025-12-31 17:31:52 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: X_train
+2025-12-31 17:31:52 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
+2025-12-31 17:31:52 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
+2025-12-31 17:31:52 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2025-12-31 22:50:45 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 22:52:25 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 22:53:21 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 22:53:51 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 22:54:39 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:07:58 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:09:01 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:09:01 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:11:26 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:11:26 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:14:24 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:14:24 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:15:51 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:15:51 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:16:15 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:16:15 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:17:06 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:17:06 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:17:42 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:17:42 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:18:25 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 23:18:25 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 23:18:25 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 23:18:25 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 23:18:25 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 23:18:41 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 23:18:43 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 23:19:19 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 23:19:25 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 23:19:25 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 23:19:25 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 23:19:25 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 23:19:25 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 23:19:33 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 23:19:36 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 23:19:36 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 23:19:36 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 23:19:42 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 23:19:44 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 23:19:44 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 23:19:44 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 23:19:45 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2025-12-31 23:19:46 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)...
+2025-12-31 23:19:47 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 23:20:44 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 23:20:44 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2025-12-31 23:20:44 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 23:20:44 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2025-12-31 23:20:44 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2025-12-31 23:20:56 - DatabaseReader - INFO - Retrieving dim_building
+2025-12-31 23:20:57 - DatabaseReader - INFO - Retrieving dim_weather
+2025-12-31 23:20:58 - DataValidator - INFO - Starting Data Validation Stage...
+2025-12-31 23:21:02 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2025-12-31 23:21:02 - ASHRAETransformer - INFO - Starting Processing Stage...
+2025-12-31 23:21:02 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2025-12-31 23:21:02 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2025-12-31 23:21:02 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2025-12-31 23:21:05 - ASHRAETransformer - INFO - Applying explicit type casting...
+2025-12-31 23:21:06 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2025-12-31 23:21:06 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2025-12-31 23:21:06 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2025-12-31 23:21:11 - ASHRAETransformer - INFO - Concatenating chunks...
+2025-12-31 23:21:11 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2025-12-31 23:21:12 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2025-12-31 23:21:12 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2025-12-31 23:21:13 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2025-12-31 23:21:13 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)...
+2025-12-31 23:21:15 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2025-12-31 23:21:17 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2025-12-31 23:21:17 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2025-12-31 23:21:17 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2025-12-31 23:21:18 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2025-12-31 23:21:18 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2025-12-31 23:21:18 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2025-12-31 23:21:19 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2025-12-31 23:21:19 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2025-12-31 23:21:19 - MLPreprocessor - INFO - Scaling numeric: day
+2025-12-31 23:21:20 - MLPreprocessor - INFO - Scaling numeric: month
+2025-12-31 23:21:20 - MLPreprocessor - INFO - Scaling numeric: week
+2025-12-31 23:21:20 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2025-12-31 23:21:21 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2025-12-31 23:21:21 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: X_train
+2025-12-31 23:21:24 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: X_train
+2025-12-31 23:21:24 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
+2025-12-31 23:21:24 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
+2025-12-31 23:21:24 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2025-12-31 23:22:24 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2025-12-31 23:22:24 - MainPipeline - INFO - Starting Model Training...
+2025-12-31 23:22:24 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2025-12-31 23:22:25 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2025-12-31 23:22:25 - RedisClient - INFO - Retrieving binary data from Redis key: X_train
+2025-12-31 23:22:25 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: X_train
+2025-12-31 23:22:25 - RedisClient - INFO - Retrieving binary data from Redis key: y_train
+2025-12-31 23:22:25 - RedisClient - INFO - Successfully retrieved 20216100 rows from Redis key: y_train
+2025-12-31 23:22:25 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 23:22:26 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2025-12-31 23:22:31 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 23:22:31 - TrainingOrchestrator - INFO - Fold 1 RMSE: 0.4532 | R2: 0.9603
+2025-12-31 23:22:31 - TrainingOrchestrator - INFO - --- Processing Fold 2 ---
+2025-12-31 23:22:36 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 23:22:36 - TrainingOrchestrator - INFO - Fold 2 RMSE: 0.4613 | R2: 0.9588
+2025-12-31 23:22:36 - TrainingOrchestrator - INFO - --- Processing Fold 3 ---
+2025-12-31 23:22:41 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 23:22:41 - TrainingOrchestrator - INFO - Fold 3 RMSE: 0.458 | R2: 0.9595
+2025-12-31 23:22:41 - MLflowTracker - INFO - Metadata logged to MLflow.
+2025-12-31 23:22:41 - LGBMModel - INFO - Fold model saved locally at: saved_models/model.pkl
+2025-12-31 23:22:41 - MLflowTracker - INFO - Artifact saved_models/model.pkl uploaded to MLflow.
+2025-12-31 23:22:43 - MLflowTracker - INFO - Model logged to MLflow Registry as 'LGBM_Energy_Model'
+2025-12-31 23:22:43 - TrainingOrchestrator - INFO - CV Training Complete. Average RMSE: 0.4575
+2025-12-31 23:22:43 - MainPipeline - WARNING - Training stage logic not yet implemented.
+2025-12-31 23:23:42 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:23:42 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:28:52 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:28:52 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:31:06 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:31:06 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:31:06 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:31:47 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:31:47 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:31:47 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:32:04 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:32:04 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:32:04 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:32:12 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:32:12 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:32:12 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:32:50 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:32:50 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:32:50 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:33:17 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:33:17 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:33:17 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:33:32 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:33:32 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:33:32 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:33:41 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:33:41 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:33:41 - MLPreprocessor - WARNING - Force-converting remaining object column square_feet to numeric
+2025-12-31 23:33:41 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:33:47 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:33:47 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:33:47 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:33:55 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:33:55 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:33:55 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:36:11 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:36:11 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:36:11 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:36:16 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:36:16 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:36:16 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:36:56 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:36:56 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:36:56 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:37:10 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:37:10 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:37:10 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:37:56 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:37:56 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:37:56 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:38:05 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:38:05 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:38:05 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:38:11 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:38:11 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:38:11 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:38:15 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:38:15 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:38:15 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:38:20 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:38:20 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:38:20 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:38:28 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:38:28 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:38:28 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:38:34 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:38:34 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:38:34 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:42:18 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:42:18 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:42:18 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:43:03 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:43:03 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:43:03 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:45:06 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:45:06 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:45:06 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:45:14 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:45:14 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:45:14 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:45:21 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:45:21 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:45:21 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:45:27 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:45:27 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:45:27 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:46:14 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:46:14 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:46:14 - MLPreprocessor - INFO - Preprocessing Completed
+2025-12-31 23:47:13 - MLPreprocessor - INFO - Starting Inference Preprocessing...
+2025-12-31 23:47:13 - MLPreprocessor - WARNING - Force-converting remaining object column primary_use to numeric
+2025-12-31 23:47:13 - MLPreprocessor - INFO - Preprocessing Completed
+2026-01-01 00:01:55 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 00:01:55 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 00:01:55 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 00:01:55 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 00:01:55 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 00:02:08 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 00:02:08 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 00:02:10 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 00:02:14 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2026-01-01 00:02:14 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 00:02:14 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 00:02:15 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 00:02:15 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 00:02:18 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 00:02:19 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 00:02:19 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 00:02:19 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 00:02:24 - ASHRAETransformer - INFO - Concatenating chunks...
+2026-01-01 00:03:10 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 00:03:10 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 00:03:10 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 00:03:10 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 00:03:10 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 00:03:22 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 00:03:22 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 00:03:24 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 00:03:28 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2026-01-01 00:03:28 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 00:03:28 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 00:03:28 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 00:03:28 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 00:03:31 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 00:03:32 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 00:03:32 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 00:03:32 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 00:03:37 - ASHRAETransformer - INFO - Concatenating chunks...
+2026-01-01 00:03:38 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2026-01-01 00:03:38 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2026-01-01 00:03:38 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-01 00:03:39 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-01 00:03:39 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-01 00:03:41 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-01 00:03:42 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-01 00:03:42 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-01 00:03:43 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-01 00:03:43 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-01 00:03:43 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-01 00:03:44 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-01 00:03:44 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-01 00:03:44 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-01 00:03:45 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-01 00:03:45 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-01 00:03:45 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-01 00:03:46 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-01 00:03:46 - MLPreprocessor - INFO - Training features ready. Total features: 16
+2026-01-01 00:03:46 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-01 00:03:46 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: X_train
+2026-01-01 00:03:49 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: X_train
+2026-01-01 00:03:49 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
+2026-01-01 00:03:49 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
+2026-01-01 00:03:49 - MainPipeline - INFO - Preprocessing stage completed successfully.

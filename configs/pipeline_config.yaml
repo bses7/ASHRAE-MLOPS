@@ -11,6 +11,13 @@ ingestion:
     - name: "weather"
       path: "./Raw_Data/weather_train.csv"
       table: "dim_weather"
+  test:
+    - name: "test"
+      path: "./Raw_Data/test.csv"
+    - name: "building"
+      path: "./Raw_Data/building_metadata.csv"
+    - name: "weather"
+      path: "./Raw_Data/weather_test.csv"
 db:
   dialect: "mysql+pymysql"
   host: "localhost"
@@ -29,4 +36,3 @@ training:
   model_save_path: "saved_models/model.pkl"
   sample_size: 500000
   use_sample: True
-

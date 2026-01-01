@@ -26,25 +26,36 @@ class DataTransformer:
         return df
 
     def _transform_weather_data(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Implements specific imputation rules for weather data:
+        - Mean: temperature, dew, wind_direction, wind_speed
+        - Mean + Forward Fill: cloud_coverage, sea_level, precipitation
+        """
+        self.logger.info("Transforming weather data: Using column-specific imputation...")
+
         df["datetime"] = pd.to_datetime(df["timestamp"])
         df["day"] = df["datetime"].dt.day
         df["month"] = df["datetime"].dt.month
         df["week"] = df["datetime"].dt.isocalendar().week.astype("int16")
 
         df = df.set_index(['site_id', 'day', 'month'])
-        columns_to_impute = ['air_temperature', 'cloud_coverage', 'dew_temperature',
-                             'precip_depth_1_hr', 'sea_level_pressure', 
-                             'wind_direction', 'wind_speed']
 
-        for col in columns_to_impute:
-            if col not in df.columns: continue
-            # Efficient transform-based imputation
-            df[col] = df[col].fillna(df.groupby(['site_id', 'day', 'month'])[col].transform('mean'))
+        mean_cols = ['air_temperature', 'dew_temperature', 'wind_direction', 'wind_speed']
+        for col in mean_cols:
+            if col in df.columns:
+                filler = df.groupby(['site_id', 'day', 'month'])[col].mean().to_frame(col)
+                df.update(filler, overwrite=False)
 
+        ffill_cols = ['cloud_coverage', 'sea_level_pressure', 'precip_depth_1_hr']
+        for col in ffill_cols:
+            if col in df.columns:
+                filler = df.groupby(['site_id', 'day', 'month'])[col].mean().ffill().to_frame(col)
+                df.update(filler, overwrite=False)
+
+        self.logger.info("Weather imputation complete.")
         return df.reset_index()
 
     def _transform_building_data(self, df: pd.DataFrame) -> pd.DataFrame:
-        # Match schema: drop floor_count, fill year_built
         if 'floor_count' in df.columns:
             df = df.drop(columns=['floor_count'])
         if 'year_built' in df.columns:

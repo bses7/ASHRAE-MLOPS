@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/168964639291199438/d4cbc090fe0f4f7f834fbd7b288153fc/artifacts
+end_time: 1767180232377
+entry_point_name: ''
+experiment_id: '168964639291199438'
+lifecycle_stage: active
+run_id: d4cbc090fe0f4f7f834fbd7b288153fc
+run_name: ASHRAE_KFold_Training
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767180230712
+status: 4
+tags: []
+user_id: bishesh

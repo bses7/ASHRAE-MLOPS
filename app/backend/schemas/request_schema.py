@@ -6,7 +6,6 @@ class PredictionInput(BaseModel):
     site_id: int = Field(..., example=0)
     primary_use: str = Field(..., example="Education")
     square_feet: int = Field(..., example=50000)
-    year_built: int = Field(..., example=1995)
     air_temperature: float = Field(..., example=22.5)
     cloud_coverage: float = Field(..., example=2.0)
     dew_temperature: float = Field(..., example=10.0)
@@ -17,6 +16,8 @@ class PredictionInput(BaseModel):
     day: int = Field(..., example=1)
     month: int = Field(..., example=5)
     week: int = Field(..., example=18)
+    hour: int = Field(..., example=12)
+    is_weekend: int = Field(..., example=0)
 
 class PredictionOutput(BaseModel):
     meter_reading: float

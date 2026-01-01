@@ -1,8 +1,7 @@
-# app/backend/server.py
-from fastapi import FastAPI
 import uvicorn
+from fastapi import FastAPI
 
-# Use absolute imports from the project root
+# Always import starting from the project root
 from app.backend.routes import predict, health 
 
 app = FastAPI(title="ASHRAE MLOps API")
@@ -15,5 +14,5 @@ def root():
     return {"message": "API is running"}
 
 if __name__ == "__main__":
-    # Use the string import path so reload works correctly
+    # Use the dot notation so uvicorn can find the app from the root
     uvicorn.run("app.backend.server:app", host="0.0.0.0", port=8000, reload=True)

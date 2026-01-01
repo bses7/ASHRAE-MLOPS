@@ -11,4 +11,6 @@ async def predict(data: PredictionInput):
         result = model_service.predict(data.dict())
         return PredictionOutput(meter_reading=result)
     except Exception as e:
+        import traceback
+        print(traceback.format_exc()) # This will print the EXACT error in your terminal
         raise HTTPException(status_code=500, detail=str(e))

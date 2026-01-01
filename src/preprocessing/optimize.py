@@ -87,6 +87,8 @@ class Optimizer(BaseDataAssembler):
         })
         df_train['primary_use'] = df_train['primary_use'].astype('category')
 
+        df_weather = self.reduce_mem_usage(df_weather)
+
         # Second Merge: Chunked Weather
         self.logger.info("Performing chunked merge with weather data (500 splits)...")
         chunks = []

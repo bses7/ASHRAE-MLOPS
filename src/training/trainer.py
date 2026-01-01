@@ -1,6 +1,8 @@
 import time
+import numpy as np
 from src.common.redis_client import RedisClient
 from src.training.model import LGBMModel
+from sklearn.model_selection import StratifiedKFold
 from src.common.mlflow_tracker import MLflowTracker # Use the new file
 from src.common.logger import get_logger
 
@@ -10,22 +12,24 @@ class TrainingStage:
         self.config = config
         self.redis_client = RedisClient(config['redis'])
         self.model_wrapper = LGBMModel()
-        self.tracker = MLflowTracker(config) # Initialize Tracker
+        self.tracker = MLflowTracker(config) 
 
     def run(self):
         self.logger.info("--- STARTING TRACKED TRAINING ---")
 
-        # 1. Load Data
-        X_train = self.redis_client.load_dataframe("X_train")
-        X_test = self.redis_client.load_dataframe("X_test")
-        y_train = self.redis_client.load_dataframe("y_train").iloc[:, 0]
-        y_test = self.redis_client.load_dataframe("y_test").iloc[:, 0]
+        X = self.redis_client.load_dataframe("X_train")
+        y = self.redis_client.load_dataframe("y_train").iloc[:, 0]
 
         if self.config['training']['use_sample']:
             size = self.config['training']['sample_size']
-            X_train, y_train = X_train.iloc[:size], y_train.iloc[:size]
+            X, y = X.iloc[:size], y.iloc[:size]
 
-        # 2. Hyperparameters
+        print("TRAINING SIZE", X.shape)
+
+        skf = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
+
+        strat_target = X['building_id']
+
         params = {
             'boosting_type': 'gbdt',
             'objective': 'regression',
@@ -34,34 +38,50 @@ class TrainingStage:
             'verbosity': -1
         }
 
-        # 3. Tracked Execution
-        with self.tracker.start_run(run_name="LGBM_Training_Run"):
-            
-            # Train
-            start_time = time.time()
-            self.model_wrapper.train(X_train, y_train, X_test, y_test, params)
-            duration = time.time() - start_time
+        all_fold_metrics = []
 
-            # Evaluate
-            y_pred = self.model_wrapper.predict(X_test)
-            metrics = self.model_wrapper.evaluate(y_test, y_pred)
-            metrics["training_duration"] = round(duration, 2)
+        with self.tracker.start_run(run_name="ASHRAE_KFold_Training"):
+            self.tracker.log_metadata(params=params, metrics={})
 
-            # --- USING THE SEPARATE MLFLOW FILE ---
-            # Log Params & Metrics
-            self.tracker.log_metadata(params=params, metrics=metrics)
+            for fold, (train_idx, val_idx) in enumerate(skf.split(X, strat_target), 1):
+                self.logger.info(f"--- Processing Fold {fold} ---")
+                
+                X_train, X_val = X.iloc[train_idx], X.iloc[val_idx]
+                y_train, y_val = y.iloc[train_idx], y.iloc[val_idx]
+
+                # Train
+                fold_model = self.model_wrapper.train(X_train, y_train, X_val, y_val, params)
+
+                # Evaluate
+                y_pred = self.model_wrapper.predict(fold_model, X_val)
+                metrics = self.model_wrapper.evaluate(y_val, y_pred)
+                
+                # Prefix metrics with fold number for MLflow
+                fold_logged_metrics = {f"F{fold}_{k}": v for k, v in metrics.items()}
+                self.tracker.log_metadata(params={}, metrics=fold_logged_metrics)
+                
+                all_fold_metrics.append(metrics)
+                self.logger.info(f"Fold {fold} RMSE: {metrics['RMSE']} | R2: {metrics['R2']}")
+
+            # 4. CALCULATE AVERAGE CV SCORE
+            avg_metrics = {
+                "avg_rmse": np.mean([m['RMSE'] for m in all_fold_metrics]),
+                "avg_mae": np.mean([m['MAE'] for m in all_fold_metrics]),
+                "avg_r2": np.mean([m['R2'] for m in all_fold_metrics])
+            }
             
-            # Save and Log Artifact
+            self.tracker.log_metadata(params={}, metrics=avg_metrics)
+            
+            # 5. Save the last fold's model as the production candidate
             model_path = self.config['training']['model_save_path']
-            self.model_wrapper.save_model(model_path)
+            self.model_wrapper.save_model(fold_model, model_path)
             self.tracker.log_artifact(model_path)
-            
-            # Log Model to Registry
-            self.tracker.log_model(self.model_wrapper.model, model_type="lightgbm")
+            self.tracker.log_model(fold_model, model_type="lightgbm")
 
-            self.logger.info(f"Training Stage Complete. R2: {metrics['R2']}")
+            self.logger.info(f"CV Training Complete. Average RMSE: {avg_metrics['avg_rmse']:.4f}")
 
-        return metrics
+        return avg_metrics
+
 
 def run_training_stage(config: dict):
     stage = TrainingStage(config)
