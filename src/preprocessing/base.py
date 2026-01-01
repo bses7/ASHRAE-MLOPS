@@ -7,8 +7,7 @@ import numpy as np
 @dataclass(frozen=True)
 class PreprocessingMetrics:
     """
-    Standardizes observability for the preprocessing stage.
-    Helps track data loss and memory efficiency across runs.
+    Track data loss and memory efficiency across runs.
     """
     stage_name: str
     input_rows: int

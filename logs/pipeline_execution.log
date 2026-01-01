@@ -3837,3 +3837,538 @@ mlflow.exceptions.MlflowException: API request to endpoint /api/2.0/mlflow/logge
 2026-01-01 00:03:49 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
 2026-01-01 00:03:49 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
 2026-01-01 00:03:49 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-01 12:43:57 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:43:57 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:43:57 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: root_directory must be an absolute path. Got gx instead.
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 66, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 67, in run_preprocessing_stage
+    stage = PreprocessingStage(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 21, in __init__
+    self.validator = DataValidator()
+                     ^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 39, in __init__
+    self.context = gx.get_context(project_config=context_config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 593, in get_context
+    return project_manager.get_project(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 77, in get_project
+    self.__project = self._build_context(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 248, in _build_context
+    context = context_fn(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 302, in _get_default_context
+    return self._get_ephemeral_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 408, in _get_ephemeral_context
+    return EphemeralDataContext(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/ephemeral_data_context.py", line 46, in __init__
+    super().__init__(runtime_environment=runtime_environment, user_agent_str=user_agent_str)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 234, in __init__
+    self._init_primary_stores(self.project_config_with_variables_substituted.stores)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1990, in _init_primary_stores
+    self._build_store_from_config(store_name, store_config)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1945, in _build_store_from_config
+    new_store = Store.build_store_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 378, in build_store_from_config
+    new_store = instantiate_class_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/expectations_store.py", line 93, in __init__
+    super().__init__(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 97, in __init__
+    self._store_backend = instantiate_class_from_config(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/tuple_store_backend.py", line 260, in __init__
+    raise ValueError(  # noqa: TRY003 # FIXME CoP
+ValueError: root_directory must be an absolute path. Got gx instead.
+2026-01-01 12:44:25 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:44:25 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:44:25 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: root_directory must be an absolute path. Got validation/great_expectations instead.
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 66, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 67, in run_preprocessing_stage
+    stage = PreprocessingStage(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 21, in __init__
+    self.validator = DataValidator()
+                     ^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 39, in __init__
+    self.context = gx.get_context(project_config=context_config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 593, in get_context
+    return project_manager.get_project(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 77, in get_project
+    self.__project = self._build_context(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 248, in _build_context
+    context = context_fn(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 302, in _get_default_context
+    return self._get_ephemeral_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 408, in _get_ephemeral_context
+    return EphemeralDataContext(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/ephemeral_data_context.py", line 46, in __init__
+    super().__init__(runtime_environment=runtime_environment, user_agent_str=user_agent_str)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 234, in __init__
+    self._init_primary_stores(self.project_config_with_variables_substituted.stores)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1990, in _init_primary_stores
+    self._build_store_from_config(store_name, store_config)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1945, in _build_store_from_config
+    new_store = Store.build_store_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 378, in build_store_from_config
+    new_store = instantiate_class_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/expectations_store.py", line 93, in __init__
+    super().__init__(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 97, in __init__
+    self._store_backend = instantiate_class_from_config(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/tuple_store_backend.py", line 260, in __init__
+    raise ValueError(  # noqa: TRY003 # FIXME CoP
+ValueError: root_directory must be an absolute path. Got validation/great_expectations instead.
+2026-01-01 12:45:03 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:45:03 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:45:03 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: root_directory must be an absolute path. Got ~/mlops/src/validation/great_expectations instead.
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 66, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 67, in run_preprocessing_stage
+    stage = PreprocessingStage(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 21, in __init__
+    self.validator = DataValidator()
+                     ^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 39, in __init__
+    self.context = gx.get_context(project_config=context_config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 593, in get_context
+    return project_manager.get_project(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 77, in get_project
+    self.__project = self._build_context(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 248, in _build_context
+    context = context_fn(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 302, in _get_default_context
+    return self._get_ephemeral_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 408, in _get_ephemeral_context
+    return EphemeralDataContext(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/ephemeral_data_context.py", line 46, in __init__
+    super().__init__(runtime_environment=runtime_environment, user_agent_str=user_agent_str)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 234, in __init__
+    self._init_primary_stores(self.project_config_with_variables_substituted.stores)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1990, in _init_primary_stores
+    self._build_store_from_config(store_name, store_config)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1945, in _build_store_from_config
+    new_store = Store.build_store_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 378, in build_store_from_config
+    new_store = instantiate_class_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/expectations_store.py", line 93, in __init__
+    super().__init__(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 97, in __init__
+    self._store_backend = instantiate_class_from_config(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/tuple_store_backend.py", line 260, in __init__
+    raise ValueError(  # noqa: TRY003 # FIXME CoP
+ValueError: root_directory must be an absolute path. Got ~/mlops/src/validation/great_expectations instead.
+2026-01-01 12:45:24 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:45:24 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:45:24 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: root_directory must be an absolute path. Got home/bishesh/mlops/src/validation/great_expectations instead.
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 66, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 67, in run_preprocessing_stage
+    stage = PreprocessingStage(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 21, in __init__
+    self.validator = DataValidator()
+                     ^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 39, in __init__
+    self.context = gx.get_context(project_config=context_config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 593, in get_context
+    return project_manager.get_project(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 77, in get_project
+    self.__project = self._build_context(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 248, in _build_context
+    context = context_fn(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 302, in _get_default_context
+    return self._get_ephemeral_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 408, in _get_ephemeral_context
+    return EphemeralDataContext(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/ephemeral_data_context.py", line 46, in __init__
+    super().__init__(runtime_environment=runtime_environment, user_agent_str=user_agent_str)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 234, in __init__
+    self._init_primary_stores(self.project_config_with_variables_substituted.stores)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1990, in _init_primary_stores
+    self._build_store_from_config(store_name, store_config)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1945, in _build_store_from_config
+    new_store = Store.build_store_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 378, in build_store_from_config
+    new_store = instantiate_class_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/expectations_store.py", line 93, in __init__
+    super().__init__(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 97, in __init__
+    self._store_backend = instantiate_class_from_config(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/tuple_store_backend.py", line 260, in __init__
+    raise ValueError(  # noqa: TRY003 # FIXME CoP
+ValueError: root_directory must be an absolute path. Got home/bishesh/mlops/src/validation/great_expectations instead.
+2026-01-01 12:46:57 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:46:57 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:46:57 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: root_directory must be an absolute path. Got gx instead.
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 66, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 67, in run_preprocessing_stage
+    stage = PreprocessingStage(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 21, in __init__
+    self.validator = DataValidator()
+                     ^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 39, in __init__
+    self.context = gx.get_context(project_config=context_config)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 593, in get_context
+    return project_manager.get_project(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 77, in get_project
+    self.__project = self._build_context(
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 248, in _build_context
+    context = context_fn(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 302, in _get_default_context
+    return self._get_ephemeral_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/context_factory.py", line 408, in _get_ephemeral_context
+    return EphemeralDataContext(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/ephemeral_data_context.py", line 46, in __init__
+    super().__init__(runtime_environment=runtime_environment, user_agent_str=user_agent_str)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 234, in __init__
+    self._init_primary_stores(self.project_config_with_variables_substituted.stores)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1990, in _init_primary_stores
+    self._build_store_from_config(store_name, store_config)
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/data_context/abstract_data_context.py", line 1945, in _build_store_from_config
+    new_store = Store.build_store_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 378, in build_store_from_config
+    new_store = instantiate_class_from_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/expectations_store.py", line 93, in __init__
+    super().__init__(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/store.py", line 97, in __init__
+    self._store_backend = instantiate_class_from_config(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/util.py", line 92, in instantiate_class_from_config
+    class_instance = class_(**config_with_defaults)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/great_expectations/data_context/store/tuple_store_backend.py", line 260, in __init__
+    raise ValueError(  # noqa: TRY003 # FIXME CoP
+ValueError: root_directory must be an absolute path. Got gx instead.
+2026-01-01 12:47:53 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:47:53 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:47:53 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: name 'Path' is not defined
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 66, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 67, in run_preprocessing_stage
+    stage = PreprocessingStage(config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 21, in __init__
+    self.validator = DataValidator()
+                     ^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/validation/data_validator.py", line 20, in __init__
+    PROJECT_ROOT = Path(__file__).resolve().parents[2]
+                   ^^^^
+NameError: name 'Path' is not defined
+2026-01-01 12:48:06 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:48:06 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:48:06 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/validation/great_expectations/index.html
+2026-01-01 12:48:06 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 12:48:06 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 12:48:06 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 12:49:13 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:49:13 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:49:13 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/validation/great_expectations/index.html
+2026-01-01 12:49:13 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 12:49:13 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 12:49:13 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 12:49:31 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 12:49:31 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 12:49:33 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 12:49:37 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2026-01-01 12:49:37 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 12:49:37 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 12:49:38 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 12:49:38 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 12:49:41 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 12:49:42 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 12:49:42 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 12:49:42 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 12:49:47 - ASHRAETransformer - INFO - Concatenating chunks...
+2026-01-01 12:49:48 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2026-01-01 12:49:49 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2026-01-01 12:49:49 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-01 12:49:50 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-01 12:49:50 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-01 12:49:51 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-01 12:49:53 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-01 12:49:53 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-01 12:49:53 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-01 12:49:53 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-01 12:49:54 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-01 12:49:54 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-01 12:49:54 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-01 12:49:55 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-01 12:49:55 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-01 12:49:55 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-01 12:49:56 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-01 12:49:56 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-01 12:49:56 - MLPreprocessor - INFO - Training features ready. Total features: 16
+2026-01-01 12:49:56 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-01 12:49:56 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: X_train
+2026-01-01 12:49:59 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: X_train
+2026-01-01 12:49:59 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
+2026-01-01 12:50:00 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
+2026-01-01 12:50:00 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-01 12:53:33 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:53:33 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:53:33 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-01 12:53:33 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 12:53:33 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 12:53:33 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 12:53:44 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 12:53:44 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 12:53:45 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 12:53:49 - DataValidator - INFO - Visual Data Docs generated in gx/uncommitted/data_docs/local_site/index.html
+2026-01-01 12:53:49 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 12:53:49 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 12:53:49 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 12:53:49 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 12:53:51 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 12:53:52 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 12:53:52 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 12:53:52 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 12:53:57 - ASHRAETransformer - INFO - Concatenating chunks...
+2026-01-01 12:53:57 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2026-01-01 12:53:58 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2026-01-01 12:53:58 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-01 12:53:59 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-01 12:53:59 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-01 12:54:00 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-01 12:54:02 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-01 12:54:02 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-01 12:54:02 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-01 12:54:02 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-01 12:54:03 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-01 12:54:03 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-01 12:54:03 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-01 12:54:04 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-01 12:54:04 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-01 12:54:04 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-01 12:54:05 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-01 12:54:05 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-01 12:54:05 - MLPreprocessor - INFO - Training features ready. Total features: 16
+2026-01-01 12:54:05 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-01 12:54:05 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: X_train
+2026-01-01 12:54:08 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: X_train
+2026-01-01 12:54:08 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
+2026-01-01 12:54:09 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
+2026-01-01 12:54:09 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-01 12:58:25 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 12:58:25 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 12:58:25 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-01 12:58:25 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 12:58:25 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 12:58:25 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 12:58:36 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 12:58:37 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 12:58:38 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 12:58:41 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-01 12:58:41 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 12:58:41 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 12:58:42 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 12:58:42 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 12:58:44 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 12:58:45 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 12:58:45 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 12:58:45 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 12:58:50 - ASHRAETransformer - INFO - Concatenating chunks...
+2026-01-01 12:58:50 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2026-01-01 12:58:50 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2026-01-01 12:58:50 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-01 12:58:51 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-01 12:58:52 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-01 12:58:53 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-01 12:58:54 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-01 12:58:54 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-01 12:58:55 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-01 12:58:55 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-01 12:58:55 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-01 12:58:55 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-01 12:58:56 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-01 12:58:56 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-01 12:58:56 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-01 12:58:57 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-01 12:58:57 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-01 12:58:57 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-01 12:58:57 - MLPreprocessor - INFO - Training features ready. Total features: 16
+2026-01-01 12:58:57 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-01 12:58:57 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: X_train
+2026-01-01 12:59:00 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: X_train
+2026-01-01 12:59:00 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: y_train
+2026-01-01 12:59:01 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: y_train
+2026-01-01 12:59:01 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-01 13:17:05 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 13:17:05 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 13:17:05 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-01 13:17:05 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 13:17:05 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 13:17:05 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 13:17:17 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 13:17:17 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 13:17:18 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 13:17:22 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-01 13:17:22 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 13:17:22 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 13:17:22 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 13:17:22 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 13:17:24 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 13:17:25 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 13:17:25 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 13:17:25 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 13:18:07 - ASHRAETransformer - INFO - Concatenating chunks...
+2026-01-01 13:18:07 - MainPipeline - CRITICAL - Pipeline failed at stage [preprocessing]: cannot access local variable 'chunks' where it is not associated with a value
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 66, in main
+    run_preprocessing_stage(config)
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 71, in run_preprocessing_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/preprocessor.py", line 37, in run
+    df_joined = self.transformer.process(df_energy, df_building, df_weather)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/preprocessing/optimize.py", line 101, in process
+    df_train = pd.concat(chunks, ignore_index=True)
+                         ^^^^^^
+UnboundLocalError: cannot access local variable 'chunks' where it is not associated with a value
+2026-01-01 13:19:44 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 13:19:44 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 13:19:45 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-01 13:19:45 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 13:19:45 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 13:19:45 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 13:19:55 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 13:19:55 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 13:19:57 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 13:20:00 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-01 13:20:00 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 13:20:00 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 13:20:01 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 13:20:01 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 13:20:03 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 13:20:03 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 13:20:03 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 13:20:03 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 13:20:45 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2026-01-01 13:20:46 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2026-01-01 13:20:46 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-01 13:20:46 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-01 13:20:46 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-01 13:20:48 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-01 13:20:49 - MLPreprocessor - INFO - Scaling 13 numeric columns in one pass
+2026-01-01 13:24:14 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-01 13:24:14 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-01 13:24:14 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-01 13:24:14 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-01 13:24:14 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-01 13:24:14 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-01 13:24:25 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-01 13:24:25 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-01 13:24:27 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-01 13:24:30 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-01 13:24:30 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-01 13:24:30 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-01 13:24:30 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-01 13:24:30 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-01 13:24:32 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-01 13:24:33 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-01 13:24:33 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-01 13:24:33 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-01 13:25:11 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1600.21 MB
+2026-01-01 13:25:11 - ASHRAETransformer - INFO - Final memory: 1368.85 MB (Reduced by 14.5%)
+2026-01-01 13:25:11 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-01 13:25:12 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-01 13:25:12 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-01 13:25:13 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-01 13:25:14 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-01 13:25:15 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-01 13:25:15 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-01 13:25:15 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-01 13:25:16 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-01 13:25:16 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-01 13:25:16 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-01 13:25:16 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-01 13:25:17 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-01 13:25:17 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-01 13:25:17 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-01 13:25:18 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-01 13:25:18 - MLPreprocessor - INFO - Training features ready. Total features: 16
+2026-01-01 13:25:18 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-01 13:25:18 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_X_train
+2026-01-01 13:25:21 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: ashrae_pipeline_X_train
+2026-01-01 13:25:21 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_y_train
+2026-01-01 13:25:21 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: ashrae_pipeline_y_train
+2026-01-01 13:25:21 - MainPipeline - INFO - Preprocessing stage completed successfully.

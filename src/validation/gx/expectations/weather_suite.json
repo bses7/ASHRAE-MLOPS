@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "id": "fc05d6ec-f292-4d7f-b05a-700a8b46d9f2",
+      "kwargs": {
+        "column": "site_id"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "2271f845-9f31-4854-96d5-25c8cca4ab85",
+      "kwargs": {
+        "column": "timestamp"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "0b25a85e-20cc-471f-951e-9539fae373a2",
+      "kwargs": {
+        "column": "air_temperature"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "1b9a505f-e3bd-4062-be17-f99f413c96c9",
+      "kwargs": {
+        "column": "air_temperature",
+        "max_value": 60.0,
+        "min_value": -60.0
+      },
+      "meta": {},
+      "type": "expect_column_values_to_be_between"
+    }
+  ],
+  "id": "a847d26b-1a87-4cc3-9679-73058be9d0ad",
+  "meta": {
+    "great_expectations_version": "1.4.4"
+  },
+  "name": "weather_suite",
+  "notes": null
+}

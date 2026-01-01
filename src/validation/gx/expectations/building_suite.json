@@ -1,0 +1,60 @@
+{
+  "expectations": [
+    {
+      "id": "1ef0549c-ccaa-4be7-9e96-75c302ceffc4",
+      "kwargs": {
+        "column": "building_id"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "cc13d28c-c32f-4464-8373-ec3fc2fa9270",
+      "kwargs": {
+        "column": "site_id"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "bf9a3ab6-753c-48fe-8f65-afd456d4c333",
+      "kwargs": {
+        "column": "square_feet"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "28ffd648-23ed-4f46-9203-9165846f05ba",
+      "kwargs": {
+        "column": "primary_use",
+        "value_set": [
+          "Education",
+          "Office",
+          "Entertainment/public assembly",
+          "Public services",
+          "Lodging/residential",
+          "Other",
+          "Healthcare",
+          "Parking",
+          "Warehouse/storage",
+          "Manufacturing/industrial",
+          "Retail",
+          "Services",
+          "Technology/science",
+          "Food sales and service",
+          "Utility",
+          "Religious worship"
+        ]
+      },
+      "meta": {},
+      "type": "expect_column_values_to_be_in_set"
+    }
+  ],
+  "id": "62ee8382-f299-4a03-8d9e-c79698d02e01",
+  "meta": {
+    "great_expectations_version": "1.4.4"
+  },
+  "name": "building_suite",
+  "notes": null
+}

@@ -21,12 +21,10 @@ class IngestionStage:
     def run(self) -> List[IngestionMetrics]:
         logger.info("Starting Ingestion Stage...")
         
-        # STEP 1: Ensure tables exist before trying to truncate/load
         self.schema_manager.create_production_tables()
         
         metrics_report = []
         for file_info in self.ingestion_cfg.get("files", []):
-            # STEP 2: Branch logic based on table type
             if file_info['table'] == "fact_energy_usage":
                 metrics = self._bulk_ingest_fact(file_info)
             else:
@@ -37,7 +35,7 @@ class IngestionStage:
         return metrics_report
 
     def _bulk_ingest_fact(self, file_info: Dict) -> IngestionMetrics:
-        """Fast path for Fact Table using ColumnStore Bulk Loader."""
+        """ColumnStore Bulk Loader."""
         start_time = time.time()
         table = file_info['table']
         
@@ -45,7 +43,6 @@ class IngestionStage:
         
         self.writer.truncate_table(table)
         
-        # Order must match CSV headers: building_id, meter, timestamp, meter_reading
         columns = ["building_id", "meter", "timestamp", "meter_reading"]
         
         self.writer.bulk_load_csv(file_info['path'], table, columns)
@@ -53,7 +50,7 @@ class IngestionStage:
         return IngestionMetrics(file_info['name'], -1, round(time.time()-start_time, 2), "BULK_SUCCESS")
 
     def _chunked_ingest_dim(self, file_info: Dict) -> IngestionMetrics:
-        """Standard ETL path for Dimension Tables."""
+        """Dimension Tables."""
         start_time = time.time()
         name, path, table = file_info['name'], file_info['path'], file_info['table']
         total_rows = 0
@@ -77,6 +74,5 @@ class IngestionStage:
             logger.info(f"TABLE: {r.entity_name.upper()} | ROWS: {rows} | TIME: {r.execution_time_seconds}s")
 
 def run_ingestion_stage(config: Dict[str, Any]):
-    """Entry point for main.py."""
     stage = IngestionStage(config)
     return stage.run()

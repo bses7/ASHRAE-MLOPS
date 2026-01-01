@@ -7,8 +7,7 @@ from src.preprocessing.base import BaseDataAssembler
 
 class Optimizer(BaseDataAssembler):
     """
-    Handles high-performance assembly.
-    Optimized for low-memory environments (VirtualBox/Docker).
+    Optimization for low-memory environments.
     """
 
     def __init__(self):
@@ -16,7 +15,7 @@ class Optimizer(BaseDataAssembler):
 
     def reduce_mem_usage(self, df: pd.DataFrame, use_float16: bool = False) -> pd.DataFrame:
         """
-        Memory optimization with modern Pandas type checking and logging.
+        Memory optimization with Pandas type checking and logging.
         """
         start_mem = df.memory_usage().sum() / 1024**2
         self.logger.info(f"Memory optimization pass started. Current: {start_mem:.2f} MB")
@@ -24,7 +23,6 @@ class Optimizer(BaseDataAssembler):
         for col in df.columns:
             col_type = df[col].dtype
             
-            # Use modern checks to avoid DeprecationWarnings
             if pd.api.types.is_datetime64_any_dtype(col_type) or \
                isinstance(col_type, pd.CategoricalDtype):
                 continue
@@ -56,14 +54,12 @@ class Optimizer(BaseDataAssembler):
 
     def process(self, df_power_meter, df_building, df_weather):
         """
-        Executes merge with aggressive garbage collection to prevent 'Killed' status.
+        Executes merge
         """
         self.logger.info("Starting Processing Stage...")
 
-        # Optimize initial data
         df_power_meter = self.reduce_mem_usage(df_power_meter)
 
-        # First Merge
         self.logger.info("Merging Energy and Building data...")
         df_train = df_power_meter.merge(
             df_building, 
@@ -71,11 +67,9 @@ class Optimizer(BaseDataAssembler):
             how='left'
         )
         
-        # Clear original power meter to save RAM
         del df_power_meter
         gc.collect()
 
-        # Casting logic
         self.logger.info("Applying explicit type casting...")
         df_train['year_built'] = df_train['year_built'].fillna(-1) 
         df_train = df_train.astype({
@@ -89,25 +83,26 @@ class Optimizer(BaseDataAssembler):
 
         df_weather = self.reduce_mem_usage(df_weather)
 
-        # Second Merge: Chunked Weather
         self.logger.info("Performing chunked merge with weather data (500 splits)...")
-        chunks = []
+        df_train_list = []
+
         for chunk in np.array_split(df_train, 500):
-            merged = chunk.merge(df_weather, on=['site_id', 'timestamp'], how='left')
-            chunks.append(merged)
-        
-        # Free memory from the intermediate df_train before concat
-        del df_train
+            df_train_list.append(
+                chunk.merge(df_weather, on=['site_id', 'timestamp'], how='left')
+            )
+            del chunk
+            gc.collect()
+
+        df_train = pd.concat(df_train_list, ignore_index=True)
+        del df_train_list
         gc.collect()
 
-        self.logger.info("Concatenating chunks...")
-        df_train = pd.concat(chunks, ignore_index=True)
+        # self.logger.info("Concatenating chunks...")
+        # df_train = pd.concat(chunks, ignore_index=True)
         
-        # Free the list of chunks immediately!
-        del chunks
-        gc.collect()
+        # del chunks
+        # gc.collect()
 
-        # Final cleanup
         df_train.columns = [re.sub(r'[\s\-]+', '_', col.lower().strip()) for col in df_train.columns]
         df_train = self.reduce_mem_usage(df_train)
 

@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 def load_yaml_config(config_path: str) -> Dict[str, Any]:
     """
-    Loads a YAML configuration file and resolves environment variables.
+    Loads a YAML config file and environment variables.
     """
     path = Path(config_path)
     

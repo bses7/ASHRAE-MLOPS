@@ -24,12 +24,11 @@ class CSVIngestor(BaseReader):
 
     @property
     def schema_definition(self) -> dict[str, Any]:
-        """Implementation of BaseReader property."""
         return self._dtypes
 
     def _reduce_mem_usage(self, df: pd.DataFrame, use_float16: bool = False) -> pd.DataFrame:
         """
-        Iterates through columns and modifies data types to reduce memory footprint.
+        Modifies data types to reduce memory footprint.
         """
         start_mem = df.memory_usage().sum() / 1024**2
         
@@ -70,7 +69,7 @@ class CSVIngestor(BaseReader):
         return df
 
     def read_chunks(self) -> Generator[pd.DataFrame, None, None]:
-        """Reads CSV in chunks to handle 20M+ rows without OOM."""
+        """Reads CSV in chunks"""
         self.logger.info(f"Starting chunked read for {self.file_path}")
         
         try:

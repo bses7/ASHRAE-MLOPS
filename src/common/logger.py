@@ -4,7 +4,7 @@ from pathlib import Path
 
 def get_logger(name: str, log_level: int = logging.INFO) -> logging.Logger:
     """
-    Returns a standardized logger that outputs to both console and file.
+    logger that outputs to both console and file.
     """
     logger = logging.getLogger(name)
 

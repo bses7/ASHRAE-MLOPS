@@ -6,8 +6,7 @@ import pandas as pd
 @dataclass(frozen=True)
 class IngestionMetrics:
     """
-    Standardizes the metadata returned after an ingestion task.
-    Useful for observability and lineage.
+    Standardizes the metadata
     """
     entity_name: str
     rows_processed: int
@@ -16,14 +15,14 @@ class IngestionMetrics:
 
 class BaseReader(ABC):
     """
-    Abstract Base Class for reading data from any source.
+    Class for reading data from any source.
     Ensures all readers implement a chunked reading strategy.
     """
     
     @abstractmethod
     def read_chunks(self) -> Generator[pd.DataFrame, None, None]:
         """
-        Must yield DataFrames in chunks to maintain memory efficiency.
+        Yield DataFrames in chunks to maintain memory efficiency.
         """
         pass
 
@@ -31,14 +30,14 @@ class BaseReader(ABC):
     @abstractmethod
     def schema_definition(self) -> dict[str, Any]:
         """
-        Must return the mapping of column names to data types.
+        Return the mapping of column names to data types.
         """
         pass
 
 
 class BaseWriter(ABC):
     """
-    Abstract Base Class for writing data to any sink (MariaDB, Snowflake, etc.).
+    Class for writing data to any sink (MariaDB, Snowflake, etc.).
     """
 
     @abstractmethod

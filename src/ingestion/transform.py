@@ -11,7 +11,6 @@ class DataTransformer:
         if df is None or df.empty:
             return df
 
-        # Only lowercase/snake_case naming
         df = self._standardize_column_names(df)
 
         if entity_name == "weather":
@@ -28,8 +27,6 @@ class DataTransformer:
     def _transform_weather_data(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         Implements specific imputation rules for weather data:
-        - Mean: temperature, dew, wind_direction, wind_speed
-        - Mean + Forward Fill: cloud_coverage, sea_level, precipitation
         """
         self.logger.info("Transforming weather data: Using column-specific imputation...")
 

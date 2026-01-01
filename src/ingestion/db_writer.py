@@ -11,7 +11,7 @@ class StagingWriter(BaseWriter):
         self.logger = logging.getLogger("StagingWriter")
 
     def bulk_load_csv(self, file_path: str, table_name: str, columns: list):
-        """High-performance bulk load for ColumnStore via LOAD DATA LOCAL INFILE."""
+        """Bulk load for ColumnStore via LOAD DATA LOCAL INFILE."""
         abs_path = os.path.abspath(file_path)
         col_list = ", ".join([f"`{c}`" for c in columns])
         
@@ -27,24 +27,23 @@ class StagingWriter(BaseWriter):
         
         self.logger.info(f"Executing Bulk Load for {table_name}...")
         with self.engine.connect() as conn:
-            # ColumnStore works best with autocommit for bulk loads
             conn.execution_options(isolation_level="AUTOCOMMIT").execute(load_query)
 
     def truncate_table(self, table_name: str) -> None:
-        """Truncates table. If table doesn't exist, ignore the error."""
+        """Truncates table."""
         self.logger.info(f"Clearing table {table_name}")
         try:
             with self.engine.connect() as conn:
                 conn.execute(text(f"TRUNCATE TABLE `{table_name}`;"))
                 conn.commit()
         except Exception as e:
-            if "1146" in str(e): # Table doesn't exist error code
+            if "1146" in str(e): 
                 self.logger.warning(f"Table {table_name} does not exist. Skipping truncate.")
             else:
                 raise
 
     def write_chunk(self, df: pd.DataFrame, table_name: str) -> None:
-        """Standard insert for dimension tables."""
+        """Insert for dimension tables."""
         with self.engine.connect() as conn:
             df.to_sql(
                 name=table_name,

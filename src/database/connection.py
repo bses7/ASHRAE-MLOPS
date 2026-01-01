@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
 
 class DBClient:
-    """Manages connectivity to MariaDB ColumnStore."""
+    """Connectivity to MariaDB ColumnStore."""
     
     def __init__(self, config: dict):
         self.uri = f"{config['dialect']}://{config['user']}:{config['password']}@{config['host']}:{config['port']}/{config['database']}"
@@ -13,7 +13,6 @@ class DBClient:
     def get_engine(self) -> Engine:
         if self._engine is None:
             try:
-                # local_infile=1 in query string and connect_args is required for Bulk Load
                 self._engine = create_engine(
                     f"{self.uri}?local_infile=1", 
                     pool_pre_ping=True, 

@@ -9,20 +9,15 @@ from src.common.logger import get_logger
 
 
 class MLPreprocessor:
-    """
-    Extreme Memory-Optimized Feature Engineering.
-    Train and inference pipelines are STRICTLY aligned.
-    """
 
     def __init__(self, target_column: str = "meter_reading"):
         self.logger = get_logger("MLPreprocessor")
         self.target_column = target_column
 
-        # Fitted artifacts
-        self.scaler_map = {}          # {col: StandardScaler}
-        self.category_maps = {}       # {col: {category: code}}
+        self.scaler_map = {}          
+        self.category_maps = {}      
 
-        # Column bookkeeping (CRITICAL)
+
         self.categorical_cols = []
         self.numeric_scaled_cols = []
         self.feature_columns_ = None
@@ -31,28 +26,20 @@ class MLPreprocessor:
         self.exclude_numeric_cols = {'site_id', 'building_id', 'meter'}
         self.drop_cols = {'timestamp', 'datetime', 'year_built'}
 
-    # ------------------------------------------------------------------ #
-    # TRAINING PREPROCESSING
-    # ------------------------------------------------------------------ #
     def prepare_ml_features(self, df: pd.DataFrame):
         """
-        Used during TRAINING.
         Fits encoders/scalers and captures column metadata.
-        Operates IN-PLACE to minimize memory.
         """
         self.logger.info("Starting Training Feature Engineering (In-Place)")
 
-        # 1. Extract target
         y = df[self.target_column].values.astype('float32')
         df.drop(columns=[self.target_column], inplace=True)
 
-        # 2. Drop unused columns
         for col in self.drop_cols:
             if col in df.columns:
                 df.drop(columns=[col], inplace=True)
         gc.collect()
 
-        # 3. Categorical Encoding (factorize)
         self.categorical_cols = df.select_dtypes(
             include=['object', 'category']
         ).columns.tolist()
@@ -63,11 +50,9 @@ class MLPreprocessor:
             codes, uniques = pd.factorize(df[col], sort=True)
             df[col] = codes.astype('int16')
 
-            # Save mapping for inference
             self.category_maps[col] = {val: i for i, val in enumerate(uniques)}
             gc.collect()
 
-        # 4. Numeric Scaling (column-by-column)
         numeric_cols = df.select_dtypes(include=['number']).columns.tolist()
 
         for col in numeric_cols:
@@ -87,7 +72,6 @@ class MLPreprocessor:
             self.numeric_scaled_cols.append(col)
             gc.collect()
 
-        # 5. Freeze final feature order
         self.feature_columns_ = df.columns.tolist()
 
         self.logger.info(
@@ -96,23 +80,6 @@ class MLPreprocessor:
 
         return df, y
 
-    # ------------------------------------------------------------------ #
-    # TRAIN / TEST SPLIT
-    # ------------------------------------------------------------------ #
-    def split_data(self, X: pd.DataFrame, y: np.ndarray, test_size=0.2):
-        self.logger.info("Performing train-test split")
-
-        X_train, X_test, y_train, y_test = train_test_split(
-            X,
-            y,
-            test_size=test_size,
-            random_state=42
-        )
-
-        self.logger.info(
-            f"Split complete | Train: {X_train.shape} | Test: {X_test.shape}"
-        )
-        return X_train, X_test, y_train, y_test
 
     def prepare_inference_features(self, df: pd.DataFrame):
         """

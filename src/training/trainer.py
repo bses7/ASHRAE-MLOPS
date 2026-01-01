@@ -17,8 +17,8 @@ class TrainingStage:
     def run(self):
         self.logger.info("--- STARTING TRACKED TRAINING ---")
 
-        X = self.redis_client.load_dataframe("X_train")
-        y = self.redis_client.load_dataframe("y_train").iloc[:, 0]
+        X = self.redis_client.load_dataframe("ashrae_pipeline_X_train")
+        y = self.redis_client.load_dataframe("ashrae_pipeline_y_train").iloc[:, 0]
 
         if self.config['training']['use_sample']:
             size = self.config['training']['sample_size']
@@ -49,21 +49,17 @@ class TrainingStage:
                 X_train, X_val = X.iloc[train_idx], X.iloc[val_idx]
                 y_train, y_val = y.iloc[train_idx], y.iloc[val_idx]
 
-                # Train
                 fold_model = self.model_wrapper.train(X_train, y_train, X_val, y_val, params)
 
-                # Evaluate
                 y_pred = self.model_wrapper.predict(fold_model, X_val)
                 metrics = self.model_wrapper.evaluate(y_val, y_pred)
                 
-                # Prefix metrics with fold number for MLflow
                 fold_logged_metrics = {f"F{fold}_{k}": v for k, v in metrics.items()}
                 self.tracker.log_metadata(params={}, metrics=fold_logged_metrics)
                 
                 all_fold_metrics.append(metrics)
                 self.logger.info(f"Fold {fold} RMSE: {metrics['RMSE']} | R2: {metrics['R2']}")
 
-            # 4. CALCULATE AVERAGE CV SCORE
             avg_metrics = {
                 "avg_rmse": np.mean([m['RMSE'] for m in all_fold_metrics]),
                 "avg_mae": np.mean([m['MAE'] for m in all_fold_metrics]),
@@ -72,7 +68,6 @@ class TrainingStage:
             
             self.tracker.log_metadata(params={}, metrics=avg_metrics)
             
-            # 5. Save the last fold's model as the production candidate
             model_path = self.config['training']['model_save_path']
             self.model_wrapper.save_model(fold_model, model_path)
             self.tracker.log_artifact(model_path)

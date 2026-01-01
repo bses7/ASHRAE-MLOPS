@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "id": "ae76b142-e9c7-4d45-8211-9f726c5098b8",
+      "kwargs": {
+        "column": "building_id"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "70b2955b-cce8-4fdd-bb1c-9859128d2ca5",
+      "kwargs": {
+        "column": "meter"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "be90e793-d7d6-4eeb-800c-2332c4edc287",
+      "kwargs": {
+        "column": "timestamp"
+      },
+      "meta": {},
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "0175dbae-11ae-4682-94f9-69086ad32c68",
+      "kwargs": {
+        "column": "meter_reading",
+        "min_value": 0.0
+      },
+      "meta": {},
+      "type": "expect_column_values_to_be_between"
+    }
+  ],
+  "id": "4c8509ec-130d-40ea-9e62-a1b57cfdda14",
+  "meta": {
+    "great_expectations_version": "1.4.4"
+  },
+  "name": "energy_suite",
+  "notes": null
+}

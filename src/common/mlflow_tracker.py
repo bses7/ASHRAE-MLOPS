@@ -6,13 +6,12 @@ from src.common.logger import get_logger
 
 class MLflowTracker:
     """
-    Centralized utility to handle MLflow experiment tracking.
+    MLflow experiment tracking.
     """
     def __init__(self, config: Dict[str, Any]):
         self.logger = get_logger("MLflowTracker")
         self.cfg = config['mlflow']
         
-        # Configure Connection
         mlflow.set_tracking_uri(self.cfg['tracking_uri'])
         mlflow.set_experiment(self.cfg['experiment_name'])
         
