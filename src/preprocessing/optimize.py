@@ -63,15 +63,14 @@ class Optimizer(BaseDataAssembler):
         self.logger.info("Merging Energy and Building data...")
         df_train = df_power_meter.merge(
             df_building, 
-            on='building_id', 
-            how='left'
+            left_on='building_id',right_on='building_id',how='left'
         )
         
         del df_power_meter
         gc.collect()
 
         self.logger.info("Applying explicit type casting...")
-        df_train['year_built'] = df_train['year_built'].fillna(-1) 
+        # df_train['year_built'] = df_train['year_built'].fillna(-1) 
         df_train = df_train.astype({
             'building_id': 'int16',
             'meter': 'int8',
@@ -96,6 +95,14 @@ class Optimizer(BaseDataAssembler):
         df_train = pd.concat(df_train_list, ignore_index=True)
         del df_train_list
         gc.collect()
+
+        df_train = df_train.dropna()
+
+        null_counts = df_train.isnull().sum()
+        null_columns = null_counts[null_counts > 0]
+
+        print("Columns with missing values:")
+        print(null_columns)
 
         # self.logger.info("Concatenating chunks...")
         # df_train = pd.concat(chunks, ignore_index=True)

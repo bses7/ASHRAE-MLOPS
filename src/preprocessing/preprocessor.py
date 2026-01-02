@@ -47,6 +47,7 @@ class PreprocessingStage:
 
         del df_joined
         gc.collect()
+
         self._save_monitoring_reference(df_engineered)
 
         X, y = self.ml_prep.prepare_ml_features(df_engineered)
@@ -72,18 +73,26 @@ class PreprocessingStage:
         return
     
     def _save_monitoring_reference(self, df: pd.DataFrame):
-        """Saves a sample of engineered data for Evidently AI monitoring."""
+        """Saves a clean sample for Evidently AI monitoring."""
         logger.info("Generating reference dataset for monitoring...")
-        
         ref_path = self.config['monitoring']['reference_data_path']
-        Path(ref_path).parent.mkdir(parents=True, exist_ok=True)
         
+        # 1. Select the columns we need for monitoring
         monitor_cols = list(RAW_DATA_TYPES["inference"].keys())
         available_cols = [c for c in monitor_cols if c in df.columns]
         
-        sample_size = self.config['monitoring']['sample_size']
-        df_ref = df[available_cols].sample(n=min(len(df), sample_size), random_state=42).copy()
+        # 2. Take a slightly larger sample than needed, then drop NaNs
+        # This ensures the final 500 rows are 100% complete
+        df_ref = df[available_cols].sample(n=min(len(df), 2000), random_state=42).copy()
         
+        # Drop rows where critical features are still NaN (like year_built or cloud_coverage)
+        df_ref.dropna(inplace=True)
+        
+        # Final trim to exactly the sample size you want
+        sample_size = self.config['monitoring']['sample_size']
+        df_ref = df_ref.head(sample_size)
+
+        # 3. Inverse Log Transform
         if 'meter_reading' in df_ref.columns:
             df_ref['meter_reading'] = np.expm1(df_ref['meter_reading'].astype(np.float64)).astype(np.float32)
 

@@ -2,13 +2,18 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
+  const baseUrl = process.env.BACKEND_URL || "http://localhost:8000";
+
   try {
-    const response = await fetch("http://localhost:8000/api/v1/monitoring/report", {
-      cache: 'no-store' 
+    const response = await fetch(`${baseUrl}/api/v1/monitoring/report`, {
+      cache: "no-store",
     });
 
     if (!response.ok) {
-      return NextResponse.json({ error: "Failed to fetch report" }, { status: response.status });
+      return NextResponse.json(
+        { error: "Failed to fetch report" },
+        { status: response.status }
+      );
     }
 
     const htmlContent = await response.text();
@@ -20,6 +25,9 @@ export async function GET() {
     });
   } catch (error) {
     console.error("Monitoring API error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
   }
 }

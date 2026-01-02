@@ -25,7 +25,6 @@ class MLPreprocessor:
         self.drop_cols = {'timestamp', 'datetime', 'year_built'}
 
         
-
     def prepare_ml_features(self, df: pd.DataFrame):
         """
         Fits encoders/scalers and captures column metadata.

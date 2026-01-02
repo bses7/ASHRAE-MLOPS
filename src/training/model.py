@@ -28,7 +28,7 @@ class LGBMModel(BaseModel):
             valid_names=['train', 'eval'],
             callbacks=[
                 lgb.early_stopping(stopping_rounds=50),
-                lgb.log_evaluation(period=50)
+                lgb.log_evaluation(period=500)
             ]
         )
         return model

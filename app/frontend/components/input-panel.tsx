@@ -96,24 +96,41 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
   };
 
   const handleInputChange = (key: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [key]: isNaN(Number(value)) ? value : Number(value),
-    }));
+    // Handle empty string - keep it empty, don't default to 0
+    if (value === "") {
+      setFormData((prev) => ({ ...prev, [key]: "" }));
+      return;
+    }
+
+    // Parse number and update
+    const numValue = Number(value);
+    if (!isNaN(numValue)) {
+      setFormData((prev) => ({ ...prev, [key]: numValue }));
+    }
   };
 
   const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (e.target.value === "0") {
-      e.target.select();
+    // Select all text on focus for easy editing
+    e.target.select();
+  };
+
+  const handleInputBlur = (key: string, min: number = 0) => {
+    // On blur, if empty or invalid, set to minimum value
+    const currentValue = formData[key as keyof typeof formData];
+    if (
+      currentValue === "" ||
+      (typeof currentValue === "number" && currentValue < min)
+    ) {
+      setFormData((prev) => ({ ...prev, [key]: min }));
     }
   };
 
   const handlePredict = () => {
     const inputs = {
-      building_id: formData.building_id,
+      building_id: Number(formData.building_id) || 0,
       site_id: formData.site_id,
       primary_use: formData.primary_use,
-      square_feet: formData.square_feet,
+      square_feet: Number(formData.square_feet) || 100000,
       meter: formData.meter,
       air_temperature: formData.air_temperature,
       dew_temperature: formData.dew_temperature,
@@ -132,326 +149,426 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
   };
 
   return (
-    <Card className="lg:col-span-1 border-border bg-card">
+    <Card className="bg-card border-border mb-6">
       <CardHeader>
-        <CardTitle className="text-lg">Input Panel</CardTitle>
-        <CardDescription>Configure prediction parameters</CardDescription>
+        <CardTitle className="text-lg font-light text-foreground">
+          Input Configuration
+        </CardTitle>
+        <CardDescription className="text-muted-foreground">
+          Configure prediction parameters
+        </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-6">
-        {/* Building Profile */}
-        <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-foreground">
-            Building Profile
-          </h3>
+      <CardContent>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Meter Data */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-[#ea580c] mb-4">
+              Meter Data
+            </h3>
 
-          <div className="space-y-2">
-            <Label htmlFor="site-id" className="text-sm">
-              Site ID (0-15)
-            </Label>
-            <Select
-              value={String(formData.site_id)}
-              onValueChange={(value) => handleInputChange("site_id", value)}
-            >
-              <SelectTrigger id="site-id" className="bg-input border-border">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {Array.from({ length: 16 }, (_, i) => i).map((id) => (
-                  <SelectItem key={id} value={String(id)}>
-                    Site {id}
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Site ID (0-15)
+              </Label>
+              <Select
+                value={String(formData.site_id)}
+                onValueChange={(value) => handleInputChange("site_id", value)}
+              >
+                <SelectTrigger className="bg-input border-border text-foreground">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-popover border-border">
+                  {Array.from({ length: 16 }, (_, i) => i).map((id) => (
+                    <SelectItem
+                      key={id}
+                      value={String(id)}
+                      className="text-popover-foreground"
+                    >
+                      Site {id}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Building ID (0-1448)
+              </Label>
+              <Input
+                type="number"
+                value={formData.building_id}
+                onChange={(e) =>
+                  handleInputChange("building_id", e.target.value)
+                }
+                onFocus={handleInputFocus}
+                onBlur={() => handleInputBlur("building_id", 0)}
+                className="bg-input border-border text-foreground [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                min="0"
+                max="1448"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Primary Use
+              </Label>
+              <Select
+                value={formData.primary_use}
+                onValueChange={(value) =>
+                  handleInputChange("primary_use", value)
+                }
+              >
+                <SelectTrigger className="bg-input border-border text-foreground">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-popover border-border">
+                  <SelectItem
+                    value="Education"
+                    className="text-popover-foreground"
+                  >
+                    Education
                   </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="building-id" className="text-sm">
-              Building ID (0-1448)
-            </Label>
-            <Input
-              id="building-id"
-              type="number"
-              value={formData.building_id}
-              onChange={(e) => handleInputChange("building_id", e.target.value)}
-              onFocus={handleInputFocus}
-              className="bg-input border-border"
-              placeholder="Enter building ID"
-              min="0"
-              max="1448"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="primary-use" className="text-sm">
-              Primary Use
-            </Label>
-            <Select
-              value={formData.primary_use}
-              onValueChange={(value) => handleInputChange("primary_use", value)}
-            >
-              <SelectTrigger id="primary-use" className="bg-input">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Education">Education</SelectItem>
-                <SelectItem value="Lodging/residential">
-                  Lodging/residential
-                </SelectItem>
-                <SelectItem value="Office">Office</SelectItem>
-                <SelectItem value="Entertainment/public assembly">
-                  Entertainment/public assembly
-                </SelectItem>
-                <SelectItem value="Other">Other</SelectItem>
-                <SelectItem value="Retail">Retail</SelectItem>
-                <SelectItem value="Parking">Parking</SelectItem>
-                <SelectItem value="Public services">Public services</SelectItem>
-                <SelectItem value="Warehouse/storage">
-                  Warehouse/storage
-                </SelectItem>
-                <SelectItem value="Food sales and service">
-                  Food sales and service
-                </SelectItem>
-                <SelectItem value="Religious worship">
-                  Religious worship
-                </SelectItem>
-                <SelectItem value="Healthcare">Healthcare</SelectItem>
-                <SelectItem value="Utility">Utility</SelectItem>
-                <SelectItem value="Technology/science">
-                  Technology/science
-                </SelectItem>
-                <SelectItem value="Manufacturing/industrial">
-                  Manufacturing/industrial
-                </SelectItem>
-                <SelectItem value="Services">Services</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="square-feet" className="text-sm">
-              Square Feet
-            </Label>
-            <Input
-              id="square-feet"
-              type="number"
-              value={formData.square_feet}
-              onChange={(e) => handleInputChange("square_feet", e.target.value)}
-              onFocus={handleInputFocus}
-              className="bg-input border-border"
-              placeholder="Enter square footage"
-              min="1000"
-              max="1000000"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="meter" className="text-sm">
-              Meter Type
-            </Label>
-            <Select
-              value={String(formData.meter)}
-              onValueChange={(value) => handleInputChange("meter", value)}
-            >
-              <SelectTrigger id="meter" className="bg-input border-border">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="0">Electricity</SelectItem>
-                <SelectItem value="1">Chilled Water</SelectItem>
-                <SelectItem value="2">Steam</SelectItem>
-                <SelectItem value="3">Hot Water</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        {/* Environmental Conditions */}
-        <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-foreground">
-            Environmental Conditions
-          </h3>
-
-          <div className="space-y-2">
-            <Label className="text-sm">
-              Air Temperature: {formData.air_temperature.toFixed(1)}°C
-            </Label>
-            <Slider
-              value={[formData.air_temperature]}
-              onValueChange={(value) =>
-                handleSliderChange("air_temperature", value)
-              }
-              min={-20}
-              max={50}
-              step={0.1}
-              className="w-full"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-sm">
-              Dew Temperature: {formData.dew_temperature.toFixed(1)}°C
-            </Label>
-            <Slider
-              value={[formData.dew_temperature]}
-              onValueChange={(value) =>
-                handleSliderChange("dew_temperature", value)
-              }
-              min={-20}
-              max={40}
-              step={0.1}
-              className="w-full"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-sm">
-              Cloud Coverage: {formData.cloud_coverage} oktas
-            </Label>
-            <Slider
-              value={[formData.cloud_coverage]}
-              onValueChange={(value) =>
-                handleSliderChange("cloud_coverage", value)
-              }
-              min={0}
-              max={8}
-              step={1}
-              className="w-full"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-sm">
-              Sea Level Pressure: {formData.sea_level_pressure} mbar
-            </Label>
-            <Slider
-              value={[formData.sea_level_pressure]}
-              onValueChange={(value) =>
-                handleSliderChange("sea_level_pressure", value)
-              }
-              min={950}
-              max={1050}
-              step={1}
-              className="w-full"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-sm">
-              Wind Speed: {formData.wind_speed.toFixed(1)} m/s
-            </Label>
-            <Slider
-              value={[formData.wind_speed]}
-              onValueChange={(value) => handleSliderChange("wind_speed", value)}
-              min={0}
-              max={30}
-              step={0.1}
-              className="w-full"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-sm">
-              Wind Direction: {formData.wind_direction}°
-            </Label>
-            <Slider
-              value={[formData.wind_direction]}
-              onValueChange={(value) =>
-                handleSliderChange("wind_direction", value)
-              }
-              min={0}
-              max={360}
-              step={1}
-              className="w-full"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-sm">
-              Precipitation: {formData.precip_depth_1_hr.toFixed(1)} mm
-            </Label>
-            <Slider
-              value={[formData.precip_depth_1_hr]}
-              onValueChange={(value) =>
-                handleSliderChange("precip_depth_1_hr", value)
-              }
-              min={0}
-              max={50}
-              step={0.1}
-              className="w-full"
-            />
-          </div>
-        </div>
-
-        {/* Temporal Context */}
-        <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-foreground">
-            Temporal Context
-          </h3>
-
-          <div className="space-y-2">
-            <Label htmlFor="date-picker" className="text-sm">
-              Select Date
-            </Label>
-            <Input
-              id="date-picker"
-              type="date"
-              value={formData.selectedDate.toISOString().split("T")[0]}
-              onChange={handleDateChange}
-              className="bg-input border-border"
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 text-sm">
-            <div className="bg-muted p-3 rounded-md">
-              <div className="text-muted-foreground">Day of Month</div>
-              <div className="font-semibold text-lg">{formData.day}</div>
+                  <SelectItem
+                    value="Lodging/residential"
+                    className="text-popover-foreground"
+                  >
+                    Lodging/residential
+                  </SelectItem>
+                  <SelectItem
+                    value="Office"
+                    className="text-popover-foreground"
+                  >
+                    Office
+                  </SelectItem>
+                  <SelectItem
+                    value="Entertainment/public assembly"
+                    className="text-popover-foreground"
+                  >
+                    Entertainment/public assembly
+                  </SelectItem>
+                  <SelectItem value="Other" className="text-popover-foreground">
+                    Other
+                  </SelectItem>
+                  <SelectItem
+                    value="Retail"
+                    className="text-popover-foreground"
+                  >
+                    Retail
+                  </SelectItem>
+                  <SelectItem
+                    value="Parking"
+                    className="text-popover-foreground"
+                  >
+                    Parking
+                  </SelectItem>
+                  <SelectItem
+                    value="Public services"
+                    className="text-popover-foreground"
+                  >
+                    Public services
+                  </SelectItem>
+                  <SelectItem
+                    value="Warehouse/storage"
+                    className="text-popover-foreground"
+                  >
+                    Warehouse/storage
+                  </SelectItem>
+                  <SelectItem
+                    value="Food sales and service"
+                    className="text-popover-foreground"
+                  >
+                    Food sales and service
+                  </SelectItem>
+                  <SelectItem
+                    value="Religious worship"
+                    className="text-popover-foreground"
+                  >
+                    Religious worship
+                  </SelectItem>
+                  <SelectItem
+                    value="Healthcare"
+                    className="text-popover-foreground"
+                  >
+                    Healthcare
+                  </SelectItem>
+                  <SelectItem
+                    value="Utility"
+                    className="text-popover-foreground"
+                  >
+                    Utility
+                  </SelectItem>
+                  <SelectItem
+                    value="Technology/science"
+                    className="text-popover-foreground"
+                  >
+                    Technology/science
+                  </SelectItem>
+                  <SelectItem
+                    value="Manufacturing/industrial"
+                    className="text-popover-foreground"
+                  >
+                    Manufacturing/industrial
+                  </SelectItem>
+                  <SelectItem
+                    value="Services"
+                    className="text-popover-foreground"
+                  >
+                    Services
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            <div className="bg-muted p-3 rounded-md">
-              <div className="text-muted-foreground">Month</div>
-              <div className="font-semibold text-lg">{formData.month}</div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Square Feet
+              </Label>
+              <Input
+                type="number"
+                value={formData.square_feet}
+                onChange={(e) =>
+                  handleInputChange("square_feet", e.target.value)
+                }
+                onFocus={handleInputFocus}
+                onBlur={() => handleInputBlur("square_feet", 1000)}
+                className="bg-input border-border text-foreground [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                min="1000"
+                max="1000000"
+              />
             </div>
-            <div className="bg-muted p-3 rounded-md">
-              <div className="text-muted-foreground">Week of Year</div>
-              <div className="font-semibold text-lg">{formData.week}</div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Meter Type
+              </Label>
+              <Select
+                value={String(formData.meter)}
+                onValueChange={(value) => handleInputChange("meter", value)}
+              >
+                <SelectTrigger className="bg-input border-border text-foreground">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-popover border-border">
+                  <SelectItem value="0" className="text-popover-foreground">
+                    Electricity
+                  </SelectItem>
+                  <SelectItem value="1" className="text-popover-foreground">
+                    Chilled Water
+                  </SelectItem>
+                  <SelectItem value="2" className="text-popover-foreground">
+                    Steam
+                  </SelectItem>
+                  <SelectItem value="3" className="text-popover-foreground">
+                    Hot Water
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            <div className="bg-muted p-3 rounded-md">
-              <div className="text-muted-foreground">Is Weekend</div>
-              <div className="font-semibold text-lg">
-                {formData.is_weekend ? "Yes" : "No"}
+          </div>
+
+          {/* Weather Data */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-[#ea580c] mb-4">
+              Weather Data
+            </h3>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Air Temperature: {formData.air_temperature.toFixed(1)}°C
+              </Label>
+              <Slider
+                value={[formData.air_temperature]}
+                onValueChange={(value) =>
+                  handleSliderChange("air_temperature", value)
+                }
+                min={-20}
+                max={50}
+                step={0.1}
+                className="[&_[role=slider]]:bg-[#ea580c] [&_[role=slider]]:border-[#ea580c]"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Dew Temperature: {formData.dew_temperature.toFixed(1)}°C
+              </Label>
+              <Slider
+                value={[formData.dew_temperature]}
+                onValueChange={(value) =>
+                  handleSliderChange("dew_temperature", value)
+                }
+                min={-20}
+                max={40}
+                step={0.1}
+                className="[&_[role=slider]]:bg-[#ea580c] [&_[role=slider]]:border-[#ea580c]"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Cloud Coverage: {formData.cloud_coverage} oktas
+              </Label>
+              <Slider
+                value={[formData.cloud_coverage]}
+                onValueChange={(value) =>
+                  handleSliderChange("cloud_coverage", value)
+                }
+                min={0}
+                max={8}
+                step={1}
+                className="[&_[role=slider]]:bg-[#ea580c] [&_[role=slider]]:border-[#ea580c]"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Sea Level Pressure: {formData.sea_level_pressure} mbar
+              </Label>
+              <Slider
+                value={[formData.sea_level_pressure]}
+                onValueChange={(value) =>
+                  handleSliderChange("sea_level_pressure", value)
+                }
+                min={950}
+                max={1050}
+                step={1}
+                className="[&_[role=slider]]:bg-[#ea580c] [&_[role=slider]]:border-[#ea580c]"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Wind Speed: {formData.wind_speed.toFixed(1)} m/s
+              </Label>
+              <Slider
+                value={[formData.wind_speed]}
+                onValueChange={(value) =>
+                  handleSliderChange("wind_speed", value)
+                }
+                min={0}
+                max={30}
+                step={0.1}
+                className="[&_[role=slider]]:bg-[#ea580c] [&_[role=slider]]:border-[#ea580c]"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Wind Direction: {formData.wind_direction}°
+              </Label>
+              <Slider
+                value={[formData.wind_direction]}
+                onValueChange={(value) =>
+                  handleSliderChange("wind_direction", value)
+                }
+                min={0}
+                max={360}
+                step={1}
+                className="[&_[role=slider]]:bg-[#ea580c] [&_[role=slider]]:border-[#ea580c]"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Precipitation: {formData.precip_depth_1_hr.toFixed(1)} mm
+              </Label>
+              <Slider
+                value={[formData.precip_depth_1_hr]}
+                onValueChange={(value) =>
+                  handleSliderChange("precip_depth_1_hr", value)
+                }
+                min={0}
+                max={50}
+                step={0.1}
+                className="[&_[role=slider]]:bg-[#ea580c] [&_[role=slider]]:border-[#ea580c]"
+              />
+            </div>
+          </div>
+
+          {/* Temporal Data */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-[#ea580c] mb-4">
+              Temporal Data
+            </h3>
+
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Select Date
+              </Label>
+              <Input
+                type="date"
+                value={formData.selectedDate.toISOString().split("T")[0]}
+                onChange={handleDateChange}
+                className="bg-input border-border text-foreground"
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-muted p-3 rounded-lg border border-border">
+                <div className="text-xs text-muted-foreground">
+                  Day of Month
+                </div>
+                <div className="font-medium text-lg text-foreground">
+                  {formData.day}
+                </div>
+              </div>
+              <div className="bg-muted p-3 rounded-lg border border-border">
+                <div className="text-xs text-muted-foreground">Month</div>
+                <div className="font-medium text-lg text-foreground">
+                  {formData.month}
+                </div>
+              </div>
+              <div className="bg-muted p-3 rounded-lg border border-border">
+                <div className="text-xs text-muted-foreground">
+                  Week of Year
+                </div>
+                <div className="font-medium text-lg text-foreground">
+                  {formData.week}
+                </div>
+              </div>
+              <div className="bg-muted p-3 rounded-lg border border-border">
+                <div className="text-xs text-muted-foreground">Is Weekend</div>
+                <div className="font-medium text-lg text-foreground">
+                  {formData.is_weekend ? "Yes" : "No"}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="space-y-2">
-            <Label className="text-sm">Hour of Day: {formData.hour}</Label>
-            <Slider
-              value={[formData.hour]}
-              onValueChange={(value) => handleSliderChange("hour", value)}
-              min={0}
-              max={23}
-              step={1}
-              className="w-full"
-            />
+            <div className="space-y-2">
+              <Label className="text-xs text-muted-foreground">
+                Hour of Day: {formData.hour}
+              </Label>
+              <Slider
+                value={[formData.hour]}
+                onValueChange={(value) => handleSliderChange("hour", value)}
+                min={0}
+                max={23}
+                step={1}
+                className="[&_[role=slider]]:bg-[#ea580c] [&_[role=slider]]:border-[#ea580c]"
+              />
+            </div>
           </div>
         </div>
 
         {/* Predict Button */}
-        <Button
-          onClick={handlePredict}
-          disabled={isLoading}
-          size="lg"
-          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
-        >
-          {isLoading ? (
-            <>
-              <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
-              Predicting...
-            </>
-          ) : (
-            "Predict Energy Usage"
-          )}
-        </Button>
+        <div className="mt-8 flex justify-center">
+          <Button
+            onClick={handlePredict}
+            disabled={isLoading}
+            size="lg"
+            className="bg-[#ea580c] hover:bg-[#c2410c] text-white px-12 rounded-lg font-light shadow-lg hover:shadow-xl transition-all"
+          >
+            {isLoading ? (
+              <>
+                <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                Predicting...
+              </>
+            ) : (
+              "Predict Energy Usage"
+            )}
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

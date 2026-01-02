@@ -4,3 +4,14 @@ __pycache__
 
 Raw_Data/*
 !Raw_Data/.gitkeep
+
+mlartifacts
+mlruns
+
+
+mlflow.log
+
+pipeline_execution.log
+
+
+

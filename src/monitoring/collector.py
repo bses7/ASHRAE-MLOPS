@@ -31,7 +31,6 @@ class InferenceLogger:
             sql_type = self.TYPE_MAP.get(str(dtype), "VARCHAR(255)")
             column_defs.append(f"`{col}` {sql_type}")
         
-        # Add an automatic timestamp for lineage
         column_defs.append("`logged_at` DATETIME DEFAULT CURRENT_TIMESTAMP")
         
         create_query = f"""
