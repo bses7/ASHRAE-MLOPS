@@ -8,10 +8,11 @@ mlflow_skinny==3.5.1
 numpy==1.26.4
 pandas==2.1.4
 pyarrow==21.0.0
-pydantic==1.10.24
+pydantic==1.10.13
 python-dotenv==1.2.1
 PyYAML==6.0.2
 redis==7.0.1
 scikit_learn==1.8.0
 SQLAlchemy==1.4.49
 uvicorn==0.38.0
+evidently==0.4.15

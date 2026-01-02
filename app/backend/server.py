@@ -2,12 +2,13 @@ import uvicorn
 from fastapi import FastAPI
 
 # Always import starting from the project root
-from app.backend.routes import predict, health 
+from app.backend.routes import predict, health, monitoring 
 
 app = FastAPI(title="ASHRAE MLOps API")
 
 app.include_router(predict.router)
 app.include_router(health.router)
+app.include_router(monitoring.router)
 
 @app.get("/")
 def root():

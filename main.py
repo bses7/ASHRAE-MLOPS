@@ -1,4 +1,5 @@
 import argparse
+import pyarrow
 import sys
 from src.common.logger import get_logger
 from pathlib import Path

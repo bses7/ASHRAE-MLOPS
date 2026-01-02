@@ -21,9 +21,10 @@ class MLPreprocessor:
         self.numeric_scaled_cols = []
         self.feature_columns_ = None
 
-        # Constants
         self.exclude_numeric_cols = {'site_id', 'building_id', 'meter'}
         self.drop_cols = {'timestamp', 'datetime', 'year_built'}
+
+        
 
     def prepare_ml_features(self, df: pd.DataFrame):
         """

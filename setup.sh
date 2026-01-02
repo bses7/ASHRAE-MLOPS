@@ -50,7 +50,7 @@ case $ENV_CHOICE in
             exit 1
         fi
         echo "Using existing environment: $VENV_NAME"
-        echo "Please ensure you have all required libraries listed in ReadMe (pandas, sqlalchemy, etc.) installed in your '$VENV_NAME'."
+        echo "Please ensure you have all required libraries listed in the ReadMe (pandas, sqlalchemy, etc.) are installed in your '$VENV_NAME'."
         sleep 2
         ;;
     

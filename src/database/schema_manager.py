@@ -54,5 +54,5 @@ class SchemaManager:
             for table_name, ddl_query in table_definitions.items():
                 logger.debug(f"Ensuring table exists: {table_name}")
                 conn.execute(text(ddl_query))
-            conn.commit()
+            # conn.commit()
         logger.info("Schema verification complete.")

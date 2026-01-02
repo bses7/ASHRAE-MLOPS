@@ -5,6 +5,8 @@ import pandas as pd
 import numpy as np
 from src.common.config_loader import load_yaml_config
 from src.preprocessing.preprocessing import MLPreprocessor
+from src.monitoring.collector import InferenceLogger
+from src.database.connection import DBClient
 
 class ModelService:
     _instance = None
@@ -26,6 +28,10 @@ class ModelService:
             print(f"--- Preprocessor loaded from {prep_path} ---")
         else:
             self._preprocessor = MLPreprocessor()
+
+        db_client = DBClient(config['db'])
+        self.inference_logger = InferenceLogger(db_client)
+        print("--- Inference Logger initialized and connected to MariaDB ---")
         
         try:
             mlflow.set_tracking_uri(config['mlflow']['tracking_uri'])
@@ -56,6 +62,11 @@ class ModelService:
 
         log_prediction = self._model.predict(df_processed)
 
-        final_prediction = np.expm1(log_prediction[0])
+        final_prediction = float(np.expm1(log_prediction[0]))
+        final_prediction = max(0, final_prediction)
 
-        return float(max(0, final_prediction))
+        input_data['meter_reading'] = final_prediction
+        
+        self.inference_logger.log_inference(input_data, final_prediction)
+
+        return final_prediction

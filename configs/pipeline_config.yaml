@@ -35,4 +35,7 @@ mlflow:
 training:
   model_save_path: "saved_models/model.pkl"
   sample_size: 500000
-  use_sample: True
+  use_sample: False
+monitoring:
+  reference_data_path: "saved_models/reference_data.parquet"
+  sample_size: 500

@@ -35,7 +35,7 @@ class StagingWriter(BaseWriter):
         try:
             with self.engine.connect() as conn:
                 conn.execute(text(f"TRUNCATE TABLE `{table_name}`;"))
-                conn.commit()
+                # conn.commit()
         except Exception as e:
             if "1146" in str(e): 
                 self.logger.warning(f"Table {table_name} does not exist. Skipping truncate.")

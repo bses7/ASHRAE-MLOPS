@@ -5,7 +5,7 @@ from src.ingestion.csv_reader import CSVIngestor
 from src.database.connection import DBClient
 from src.ingestion.db_writer import StagingWriter
 from src.ingestion.transform import DataTransformer
-from src.database.schema_manager import SchemaManager # Added
+from src.database.schema_manager import SchemaManager 
 from src.common.logger import get_logger
 
 logger = get_logger("IngestionOrchestrator")
