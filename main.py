@@ -8,6 +8,7 @@ from src.common.config_loader import load_yaml_config
 from src.ingestion.ingestion import run_ingestion_stage
 from src.preprocessing.preprocessor import run_preprocessing_stage
 from src.training.trainer import run_training_stage
+from src.deployment.deploy import run_deployment_stage
 
 
 logger = get_logger("MainPipeline")
@@ -70,9 +71,19 @@ def main():
         elif args.stage == "train":
             logger.info("Starting Model Training...")
             metrics = run_training_stage(config)
-            logger.warning("Training stage logic not yet implemented.")
+            logger.warning("Training stage completed successfully.")
 
-        # Add other stages as the pipeline grows...
+        elif args.stage == "deploy":
+            logger.info("Starting Model Deployment...")
+            logger.info("Initiating Model Deployment to Docker...")
+            try:
+                run_deployment_stage()
+                logger.info("Deployment completed. API: http://localhost:8000/docs | UI: http://localhost:3001")
+            except Exception as e:
+                logger.error(f"Deployment Stage Failed: {e}")
+                sys.exit(1)
+            logger.warning("Deployment stage logic not yet implemented.")
+        
 
     except KeyError as e:
         logger.error(f"Configuration error: Missing key {e} in {args.config}")

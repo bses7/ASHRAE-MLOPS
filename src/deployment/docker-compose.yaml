@@ -3,6 +3,7 @@ services:
     build:
       context: .
       dockerfile: backend.Dockerfile
+    container_name: ashrae_backend
     network_mode: "host"
     environment:
       - DB_HOST=127.0.0.1
@@ -15,8 +16,8 @@ services:
     build:
       context: .
       dockerfile: frontend.Dockerfile
+    container_name: ashrae_frontend
     network_mode: "host"
     environment:
       - BACKEND_URL=http://127.0.0.1:8000
       - NEXT_PUBLIC_MLFLOW_URL=http://127.0.0.1:5000
-

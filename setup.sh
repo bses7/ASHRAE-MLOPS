@@ -178,14 +178,14 @@ echo "MLflow started (PID: $!)"
 echo "Logs: $PROJECT_ROOT/mlflow.log"
 echo "NOTE: Kill port 5000 after Airflow run if needed"
 
-# =====================================================
-# 7. Application Containers
-# =====================================================
-echo "--------------------------------"
-echo "Starting Application Containers..."
-echo "--------------------------------"
+# # =====================================================
+# # 7. Application Containers
+# # =====================================================
+# echo "--------------------------------"
+# echo "Starting Application Containers..."
+# echo "--------------------------------"
 
-docker-compose -f docker-compose-app.yaml up -d
+# docker-compose -f docker-compose-app.yaml up -d
 
 # =====================================================
 # 8. Final Info

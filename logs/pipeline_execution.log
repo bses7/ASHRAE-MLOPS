@@ -5917,3 +5917,51 @@ ValueError: Column (hour) is partially present in data
 2026-01-02 21:52:39 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_y_train
 2026-01-02 21:52:39 - RedisClient - INFO - Successfully stored 20216100 rows in Redis at key: ashrae_pipeline_y_train
 2026-01-02 21:52:39 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-02 22:49:19 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-02 22:49:19 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-02 22:49:19 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-02 22:49:19 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-02 22:49:19 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-02 22:49:19 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-02 22:49:30 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-02 22:49:30 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-02 22:49:31 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-02 22:49:35 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-02 22:49:35 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-02 22:49:35 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-02 22:49:35 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-02 22:49:35 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-02 22:49:37 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-02 22:49:38 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-02 22:49:38 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-02 22:49:38 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-02 22:50:20 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1746.59 MB
+2026-01-02 22:50:21 - ASHRAETransformer - INFO - Final memory: 1516.27 MB (Reduced by 13.2%)
+2026-01-02 22:50:21 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-02 22:50:21 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-02 22:50:21 - PreprocessingOrchestrator - INFO - Generating reference dataset for monitoring...
+2026-01-02 22:50:22 - PreprocessingOrchestrator - ERROR - Failed to save reference parquet: Attempted to register factory for scheme 'file' but that scheme is already registered.
+2026-01-02 22:50:22 - PreprocessingOrchestrator - WARNING - Saved fallback reference CSV to saved_models/reference_data.csv
+2026-01-02 22:50:22 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-02 22:50:24 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-02 22:50:25 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-02 22:50:25 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-02 22:50:26 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-02 22:50:26 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-02 22:50:26 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-02 22:50:26 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-02 22:50:27 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-02 22:50:27 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-02 22:50:27 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-02 22:50:27 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-02 22:50:28 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-02 22:50:28 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-02 22:50:28 - MLPreprocessor - INFO - Training features ready. Total features: 16
+2026-01-02 22:50:28 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-02 22:50:28 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_X_train
+2026-01-02 22:50:31 - RedisClient - INFO - Successfully stored 20125605 rows in Redis at key: ashrae_pipeline_X_train
+2026-01-02 22:50:31 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_y_train
+2026-01-02 22:50:32 - RedisClient - INFO - Successfully stored 20125605 rows in Redis at key: ashrae_pipeline_y_train
+2026-01-02 22:50:32 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-02 22:58:36 - ModelMonitor - INFO - Generating Model Health Report...
+2026-01-02 22:58:36 - ModelMonitor - INFO - Running drift analysis with explicit mapping...

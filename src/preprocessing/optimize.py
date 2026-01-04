@@ -98,12 +98,6 @@ class Optimizer(BaseDataAssembler):
 
         df_train = df_train.dropna()
 
-        null_counts = df_train.isnull().sum()
-        null_columns = null_counts[null_counts > 0]
-
-        print("Columns with missing values:")
-        print(null_columns)
-
         # self.logger.info("Concatenating chunks...")
         # df_train = pd.concat(chunks, ignore_index=True)
         

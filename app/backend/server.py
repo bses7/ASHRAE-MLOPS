@@ -15,5 +15,4 @@ def root():
     return {"message": "API is running"}
 
 if __name__ == "__main__":
-    # Use the dot notation so uvicorn can find the app from the root
     uvicorn.run("app.backend.server:app", host="0.0.0.0", port=8000, reload=True)
