@@ -24,7 +24,7 @@ with DAG(
     default_args=default_args,
     description='ASHRAE Great Energy Predictor III MLOPS Opeation',
     schedule_interval=None,
-    start_date=datetime(2023, 1, 1),
+    start_date=datetime(2026, 1, 1),
     catchup=False,
     tags=['mlops', 'ingestion', 'ashrae'],
 ) as dag:
@@ -51,9 +51,20 @@ with DAG(
         task_id='train_model',
         bash_command=f"""
             cd {PROJECT_HOME} &&
+            docker stop mcs_container metabase &&
             {VENV_PATH}  \
             main.py --stage train --config {CONFIG_PATH}
         """
     )
 
-    ingest_data >> preprocess_data >> train_model
+    deploy_model = BashOperator(
+        task_id='deploy_model',
+        bash_command=f"""
+            cd {PROJECT_HOME} &&
+            docker start mcs_container metabase &&
+            {VENV_PATH}  \
+            main.py --stage deploy --config {CONFIG_PATH}
+        """
+    )
+
+    ingest_data >> preprocess_data >> train_model >> deploy_model

@@ -19,6 +19,9 @@ class PredictionInput(BaseModel):
     hour: int = Field(..., example=12)
     is_weekend: int = Field(..., example=0)
 
+    model_version: str = Field(default="latest", description="The version of the model to use for inference")
+
 class PredictionOutput(BaseModel):
     meter_reading: float
     status: str = "success"
+    model_version: str = "latest"

@@ -131,7 +131,7 @@ export default function PredictionDisplay({
               <p className="text-4xl font-light text-[#ea580c]">
                 {prediction.toFixed(2)}
               </p>
-              <p className="text-muted-foreground text-sm mt-1">kWh per day</p>
+              <p className="text-muted-foreground text-sm mt-1">kWh</p>
             </div>
           </div>
         ) : (

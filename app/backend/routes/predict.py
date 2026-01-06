@@ -8,7 +8,8 @@ model_service = ModelService()
 @router.post("/predict", response_model=PredictionOutput)
 async def predict(data: PredictionInput):
     try:
-        result = model_service.predict(data.dict())
+        print(f"Received prediction request: {data}")
+        result = model_service.predict(data.dict(), version=data.model_version)
         return PredictionOutput(meter_reading=result)
     except Exception as e:
         import traceback

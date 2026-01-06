@@ -7,4 +7,6 @@ echo "--------------------------------"
 echo "Starting Application Containers..."
 echo "--------------------------------"
 
-docker-compose up -d
+docker-compose -f docker-compose-app.yaml up -d
+
+docker ps | grep ashrae

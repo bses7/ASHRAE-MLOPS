@@ -11,4 +11,4 @@ def health_check():
 @router.get("/metadata")
 def get_metadata():
     service = ModelService()
-    return service.get_model_metadata()
+    return service.get_detailed_metadata()

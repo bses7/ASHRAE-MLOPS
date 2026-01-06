@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Card,
   CardContent,
@@ -11,6 +11,7 @@ import {
 import InputPanel from "@/components/input-panel";
 import PredictionDisplay from "@/components/prediction-display";
 import MetadataPanel from "@/components/metadata-panel";
+import Image from "next/image";
 
 export default function Dashboard() {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,9 +19,14 @@ export default function Dashboard() {
     "offline"
   );
   const [prediction, setPrediction] = useState<number | null>(null);
+
+  const [selectedVersion, setSelectedVersion] = useState<string>("latest");
+
   const [recentPredictions, setRecentPredictions] = useState<
     Array<{ value: number; timestamp: Date }>
   >([]);
+
+  const resultsSectionRef = useRef<HTMLDivElement>(null);
 
   // Check backend health on mount
   useEffect(() => {
@@ -43,10 +49,15 @@ export default function Dashboard() {
   const handlePredict = async (inputs: any) => {
     setIsLoading(true);
     try {
+      const payload = {
+        ...inputs,
+        model_version: selectedVersion,
+      };
+
       const res = await fetch("/api/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(inputs),
+        body: JSON.stringify(payload),
       });
 
       if (res.ok) {
@@ -57,6 +68,13 @@ export default function Dashboard() {
           { value: predictedValue, timestamp: new Date() },
           ...prev.slice(0, 9),
         ]);
+
+        setTimeout(() => {
+          resultsSectionRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "center", // "center" looks better as it shows both results and metadata
+          });
+        }, 100);
       }
     } catch (error) {
       console.error("Prediction error:", error);
@@ -87,17 +105,27 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border bg-card/80 backdrop-blur-sm">
         <div className="max-w-[1600px] mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-light text-foreground tracking-tight">
-                Energy Prediction
-              </h1>
-              <p className="text-muted-foreground mt-1 text-sm">
-                Real-time building energy forecasting
-              </p>
+            <div className="flex items-center gap-4">
+              <Image
+                src="/logo.png"
+                alt="Energy Prediction System Logo"
+                width={50}
+                height={50}
+                className="object-contain"
+                priority
+              />
+
+              <div>
+                <h1 className="text-2xl font-light text-foreground tracking-tight">
+                  Energy Prediction
+                </h1>
+                <p className="text-muted-foreground mt-1 text-sm">
+                  Building energy consumption estimator
+                </p>
+              </div>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-accent rounded-lg border border-border">
               <div className="w-2 h-2 rounded-full bg-[#ea580c] animate-pulse" />
@@ -107,15 +135,18 @@ export default function Dashboard() {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-[1600px] mx-auto px-8 py-8">
-        {/* Input Panel - Full Width */}
         <InputPanel onPredict={handlePredict} isLoading={isLoading} />
 
-        {/* Bottom Row - Prediction and Metadata */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div
+          ref={resultsSectionRef}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+        >
           <PredictionDisplay prediction={prediction} isLoading={isLoading} />
-          <MetadataPanel recentPredictions={recentPredictions} />
+          <MetadataPanel
+            recentPredictions={recentPredictions}
+            onVersionChange={(version: string) => setSelectedVersion(version)}
+          />
         </div>
       </main>
 
@@ -135,6 +166,10 @@ export default function Dashboard() {
               View Model Lineage in MLflow →
             </a>
           </div>
+          <p className="text-xs text-muted-foreground/80">
+            All predictions and values shown are generated for reference
+            purposes only and should not be considered final or authoritative.
+          </p>
         </div>
       </footer>
     </div>

@@ -9,14 +9,14 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ../requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install pymysql cryptography
 
-COPY ../src/ ./src/
-COPY ../configs/ ./configs/
-COPY ../saved_models/ ./saved_models/
-COPY ../app/backend/ ./app/backend/
+COPY src/ ./src/
+COPY configs/ ./configs/
+COPY saved_models/ ./saved_models/
+COPY app/backend/ ./app/backend/
 
 ENV PYTHONPATH=/app
 

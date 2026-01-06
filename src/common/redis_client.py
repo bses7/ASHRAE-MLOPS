@@ -7,7 +7,8 @@ from src.common.logger import get_logger
 
 class RedisClient:
     """
-    Handles storage and retrieval of DF using Redis. Uses PyArrow for Parquet serialization to preserve memory-optimized schemas.
+    Handles storage and retrieval of DF using Redis. 
+    Uses PyArrow for Parquet serialization to preserve memory-optimized schemas.
     """
 
     def __init__(self, redis_config: dict):

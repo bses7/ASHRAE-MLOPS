@@ -43,11 +43,13 @@ class ModelMonitor:
                 cols_to_drop = ['id', 'logged_at', 'timestamp', 'datetime', 'ingested_at']
                 df.drop(columns=[c for c in cols_to_drop if c in df.columns], inplace=True)
                 
-                if 'primary_use' in df.columns:
-                    df['primary_use'] = df['primary_use'].astype(str)
-                
-                numeric_cols = df.select_dtypes(include=[np.number]).columns
-                df[numeric_cols] = df[numeric_cols].astype(float)
+                cat_cols = ['primary_use', 'is_weekend', 'meter', 'site_id', 'week', 'month', 'day', 'hour']
+                for col in cat_cols:
+                    if col in df.columns:
+                        df[col] = df[col].astype(str)
+
+                num_cols = df.select_dtypes(include=[np.number]).columns
+                df[num_cols] = df[num_cols].astype(float)
 
             column_mapping = ColumnMapping()
             
@@ -55,14 +57,15 @@ class ModelMonitor:
             column_mapping.target = 'meter_reading'    
             column_mapping.prediction = 'meter_reading' 
             
-   
             column_mapping.numerical_features = [
                 'air_temperature', 'cloud_coverage', 'dew_temperature', 
                 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 
-                'wind_speed', 'square_feet', 'day', 'month', 'week', 'site_id', 'meter', 'is_weekend'
+                'wind_speed', 'square_feet'
             ]
+
+         
             column_mapping.categorical_features = [
-                'primary_use',
+                'primary_use', 'is_weekend', 'meter', 'site_id', 'week', 'month', 'day'
             ]
 
             report = Report(metrics=[
@@ -71,12 +74,15 @@ class ModelMonitor:
                 TargetDriftPreset()
             ])
 
-            self.logger.info("Running drift analysis with explicit mapping...")
+            self.logger.info("Running drift analysis with categorical-focused mapping...")
             report.run(
                 reference_data=reference_df, 
                 current_data=current_df,
                 column_mapping=column_mapping 
             )
+
+            report_path = self.report_dir / "latest_monitoring_report.html"
+            report.save_html(str(report_path))
             
             return report.get_html()
 

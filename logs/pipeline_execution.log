@@ -5965,3 +5965,661 @@ ValueError: Column (hour) is partially present in data
 2026-01-02 22:50:32 - MainPipeline - INFO - Preprocessing stage completed successfully.
 2026-01-02 22:58:36 - ModelMonitor - INFO - Generating Model Health Report...
 2026-01-02 22:58:36 - ModelMonitor - INFO - Running drift analysis with explicit mapping...
+2026-01-04 09:35:57 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:35:57 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:35:57 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:35:57 - DeploymentOrchestrator - INFO - Starting production deployment sequence...
+2026-01-04 09:35:57 - DeploymentOrchestrator - ERROR - An unexpected error occurred during deployment: [Errno 2] No such file or directory: 'deployment/deploy.sh'
+2026-01-04 09:35:57 - MainPipeline - ERROR - Deployment Stage Failed: [Errno 2] No such file or directory: 'deployment/deploy.sh'
+2026-01-04 09:37:12 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:37:12 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:37:12 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:37:12 - DeploymentOrchestrator - INFO - Starting production deployment sequence...
+2026-01-04 09:37:12 - DeploymentOrchestrator - ERROR - An unexpected error occurred during deployment: [Errno 2] No such file or directory: 'deployment/deploy.sh'
+2026-01-04 09:37:12 - MainPipeline - ERROR - Deployment Stage Failed: [Errno 2] No such file or directory: 'deployment/deploy.sh'
+2026-01-04 09:37:32 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:37:32 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:37:32 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:37:32 - DeploymentOrchestrator - INFO - Starting production deployment sequence...
+2026-01-04 09:37:32 - DeploymentOrchestrator - ERROR - An unexpected error occurred during deployment: [Errno 2] No such file or directory: 'deploy.sh'
+2026-01-04 09:37:32 - MainPipeline - ERROR - Deployment Stage Failed: [Errno 2] No such file or directory: 'deploy.sh'
+2026-01-04 09:37:46 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:37:46 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:37:46 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:37:46 - DeploymentOrchestrator - INFO - Starting production deployment sequence...
+2026-01-04 09:37:46 - DeploymentOrchestrator - ERROR - An unexpected error occurred during deployment: [Errno 2] No such file or directory: './deploy.sh'
+2026-01-04 09:37:46 - MainPipeline - ERROR - Deployment Stage Failed: [Errno 2] No such file or directory: './deploy.sh'
+2026-01-04 09:39:37 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:39:37 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:39:37 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:39:37 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 09:39:37 - DeploymentOrchestrator - ERROR - An unexpected error occurred during deployment: Deploy script not found at /home/bishesh/mlops/deployment/deploy.sh
+2026-01-04 09:39:37 - MainPipeline - ERROR - Deployment Stage Failed: Deploy script not found at /home/bishesh/mlops/deployment/deploy.sh
+2026-01-04 09:40:05 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:40:05 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:40:05 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:40:05 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 09:40:05 - DeploymentOrchestrator - INFO - Deployment script output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 09:40:05 - DeploymentOrchestrator - INFO - Successfully deployed Backend and Frontend containers.
+2026-01-04 09:40:05 - MainPipeline - INFO - Deployment completed. API: http://localhost:8000/docs | UI: http://localhost:3001
+2026-01-04 09:40:05 - MainPipeline - WARNING - Deployment stage logic not yet implemented.
+2026-01-04 09:40:57 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:40:57 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:40:57 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:40:57 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 09:40:57 - DeploymentOrchestrator - INFO - Deployment script output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 09:40:57 - DeploymentOrchestrator - INFO - Successfully deployed Backend and Frontend containers.
+2026-01-04 09:40:57 - MainPipeline - INFO - Deployment completed. API: http://localhost:8000/docs | UI: http://localhost:3001
+2026-01-04 09:40:57 - MainPipeline - WARNING - Deployment stage logic not yet implemented.
+2026-01-04 09:54:01 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:54:01 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:54:01 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:54:01 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 09:54:01 - DeploymentOrchestrator - ERROR - Deployment failed! Error output:
+.FileNotFoundError: [Errno 2] No such file or directory: './../../docker-compose-app.yaml'
+
+2026-01-04 09:54:01 - DeploymentOrchestrator - ERROR - Stdout output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 09:54:01 - MainPipeline - ERROR - Deployment Stage Failed: Command '['/home/bishesh/mlops/src/deployment/deploy.sh']' returned non-zero exit status 1.
+2026-01-04 09:56:14 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:56:14 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:56:14 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:56:14 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 09:56:15 - DeploymentOrchestrator - INFO - Deployment script output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 09:56:15 - DeploymentOrchestrator - INFO - Successfully deployed Backend and Frontend containers.
+2026-01-04 09:56:15 - MainPipeline - INFO - Deployment completed. API: http://localhost:8000/docs | UI: http://localhost:3001
+2026-01-04 09:56:15 - MainPipeline - WARNING - Deployment stage logic not yet implemented.
+2026-01-04 09:57:01 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:57:01 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:57:01 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:57:01 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 09:57:01 - DeploymentOrchestrator - INFO - Deployment script output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 09:57:01 - DeploymentOrchestrator - INFO - Successfully deployed Backend and Frontend containers.
+2026-01-04 09:57:01 - MainPipeline - INFO - Deployment completed. API: http://localhost:8000/docs | UI: http://localhost:3001
+2026-01-04 09:57:01 - MainPipeline - WARNING - Deployment stage logic not yet implemented.
+2026-01-04 09:57:46 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 09:57:46 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 09:57:46 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 09:57:46 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 09:57:47 - DeploymentOrchestrator - INFO - Deployment script output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+c2d9567d931d   mlops_backend         "uvicorn app.backend…"   1 second ago   Up Less than a second                                               ashrae_backend
+1b8379a2898e   mlops_frontend        "docker-entrypoint.s…"   1 second ago   Up Less than a second                                               ashrae_frontend
+
+2026-01-04 09:57:47 - DeploymentOrchestrator - INFO - Successfully deployed Backend and Frontend containers.
+2026-01-04 09:57:47 - MainPipeline - INFO - Deployment completed. API: http://localhost:8000/docs | UI: http://localhost:3001
+2026-01-04 09:57:47 - MainPipeline - WARNING - Deployment stage logic not yet implemented.
+2026-01-04 11:28:53 - ModelMonitor - INFO - Generating Model Health Report...
+2026-01-04 11:28:53 - ModelMonitor - INFO - Running drift analysis with explicit mapping...
+2026-01-04 11:29:03 - ModelMonitor - INFO - Generating Model Health Report...
+2026-01-04 11:29:03 - ModelMonitor - INFO - Running drift analysis with explicit mapping...
+2026-01-04 12:55:35 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 12:55:35 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2026-01-04 12:55:35 - IngestionOrchestrator - INFO - Starting Ingestion Stage...
+2026-01-04 12:55:36 - IngestionOrchestrator - INFO - Direct Bulk Loading train -> fact_energy_usage
+2026-01-04 12:56:00 - IngestionOrchestrator - INFO - Chunked ETL process for building -> dim_building
+2026-01-04 12:56:00 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/building_metadata.csv
+2026-01-04 12:56:00 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-04 12:56:00 - IngestionOrchestrator - INFO - Chunked ETL process for weather -> dim_weather
+2026-01-04 12:56:00 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/weather_train.csv
+2026-01-04 12:56:00 - DataTransformer - INFO - Transforming weather data: Using column-specific imputation...
+2026-01-04 12:56:00 - DataTransformer - INFO - Weather imputation complete.
+2026-01-04 12:56:29 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-04 12:56:29 - IngestionOrchestrator - INFO - --- INGESTION SUMMARY ---
+2026-01-04 12:56:29 - IngestionOrchestrator - INFO - TABLE: TRAIN | ROWS: N/A (Bulk) | TIME: 23.44s
+2026-01-04 12:56:29 - IngestionOrchestrator - INFO - TABLE: BUILDING | ROWS: 1449 | TIME: 0.38s
+2026-01-04 12:56:29 - IngestionOrchestrator - INFO - TABLE: WEATHER | ROWS: 139773 | TIME: 28.83s
+2026-01-04 12:56:29 - MainPipeline - INFO - Ingestion stage completed successfully.
+2026-01-04 12:56:33 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 12:56:33 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-04 12:56:33 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-04 12:56:33 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-04 12:56:33 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-04 12:56:33 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-04 12:56:45 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-04 12:56:45 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-04 12:56:46 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-04 12:56:51 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-04 12:56:51 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-04 12:56:51 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-04 12:56:52 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-04 12:56:52 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-04 12:56:55 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-04 12:56:56 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-04 12:56:56 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-04 12:56:56 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-04 12:57:43 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1746.59 MB
+2026-01-04 12:57:44 - ASHRAETransformer - INFO - Final memory: 1516.27 MB (Reduced by 13.2%)
+2026-01-04 12:57:44 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 12:57:44 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-04 12:57:44 - PreprocessingOrchestrator - INFO - Generating reference dataset for monitoring...
+2026-01-04 12:57:45 - PreprocessingOrchestrator - INFO - Reference data (size: 500) saved successfully to saved_models/reference_data.parquet
+2026-01-04 12:57:45 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-04 12:57:47 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-04 12:57:48 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-04 12:57:48 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-04 12:57:48 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-04 12:57:48 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-04 12:57:49 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-04 12:57:49 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-04 12:57:49 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-04 12:57:49 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-04 12:57:50 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-04 12:57:50 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-04 12:57:50 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-04 12:57:50 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-04 12:57:51 - MLPreprocessor - INFO - Training features ready. Total features: 16
+2026-01-04 12:57:51 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-04 12:57:51 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_X_train
+2026-01-04 12:57:54 - RedisClient - INFO - Successfully stored 20125605 rows in Redis at key: ashrae_pipeline_X_train
+2026-01-04 12:57:54 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_y_train
+2026-01-04 12:57:54 - RedisClient - INFO - Successfully stored 20125605 rows in Redis at key: ashrae_pipeline_y_train
+2026-01-04 12:57:54 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-04 13:03:15 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 13:03:15 - MainPipeline - INFO - Starting Model Training...
+2026-01-04 13:03:15 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-04 13:03:16 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2026-01-04 13:03:16 - RedisClient - INFO - Retrieving binary data from Redis key: ashrae_pipeline_X_train
+2026-01-04 13:03:17 - RedisClient - INFO - Successfully retrieved 20125605 rows from Redis key: ashrae_pipeline_X_train
+2026-01-04 13:03:17 - RedisClient - INFO - Retrieving binary data from Redis key: ashrae_pipeline_y_train
+2026-01-04 13:03:17 - RedisClient - INFO - Successfully retrieved 20125605 rows from Redis key: ashrae_pipeline_y_train
+2026-01-04 13:03:17 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 13:03:18 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2026-01-04 13:03:24 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 13:03:24 - TrainingOrchestrator - INFO - Fold 1 RMSE: 0.4524 | R2: 0.9601
+2026-01-04 13:03:24 - TrainingOrchestrator - INFO - --- Processing Fold 2 ---
+2026-01-04 13:03:30 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 13:03:30 - TrainingOrchestrator - INFO - Fold 2 RMSE: 0.4554 | R2: 0.9596
+2026-01-04 13:03:30 - TrainingOrchestrator - INFO - --- Processing Fold 3 ---
+2026-01-04 13:03:36 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 13:03:36 - TrainingOrchestrator - INFO - Fold 3 RMSE: 0.4529 | R2: 0.96
+2026-01-04 13:03:36 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 13:03:36 - LGBMModel - INFO - Fold model saved locally at: saved_models/model.pkl
+2026-01-04 13:03:36 - MLflowTracker - INFO - Artifact saved_models/model.pkl uploaded to MLflow.
+2026-01-04 13:03:41 - MLflowTracker - INFO - Model logged to MLflow Registry as 'LGBM_Energy_Model'
+2026-01-04 13:03:41 - TrainingOrchestrator - INFO - CV Training Complete. Average RMSE: 0.4536
+2026-01-04 13:03:41 - MainPipeline - WARNING - Training stage completed successfully.
+2026-01-04 13:03:47 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 13:03:47 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 13:03:47 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 13:03:47 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 13:03:48 - DeploymentOrchestrator - ERROR - Deployment failed! Error output:
+Found orphan containers (mcs_container, metabase) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
+Building backend
+ERROR: resolve : lstat /home/bishesh/mlops/src/deployment/dockerfile: no such file or directory
+Service 'backend' failed to build : Build failed
+
+2026-01-04 13:03:48 - DeploymentOrchestrator - ERROR - Stdout output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 13:03:48 - MainPipeline - ERROR - Deployment Stage Failed: Command '['/home/bishesh/mlops/src/deployment/deploy.sh']' returned non-zero exit status 1.
+2026-01-04 13:05:31 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 13:05:31 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 13:05:31 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 13:05:31 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 13:05:32 - DeploymentOrchestrator - ERROR - Deployment failed! Error output:
+Found orphan containers (metabase, mcs_container) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
+Building backend
+ERROR: resolve : lstat /home/bishesh/mlops/src/deployment/dockerfile: no such file or directory
+Service 'backend' failed to build : Build failed
+
+2026-01-04 13:05:32 - DeploymentOrchestrator - ERROR - Stdout output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 13:05:32 - MainPipeline - ERROR - Deployment Stage Failed: Command '['/home/bishesh/mlops/src/deployment/deploy.sh']' returned non-zero exit status 1.
+2026-01-04 13:05:56 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 13:05:56 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 13:05:56 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 13:05:56 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 13:05:57 - DeploymentOrchestrator - ERROR - Deployment failed! Error output:
+.FileNotFoundError: [Errno 2] No such file or directory: './../../docker-compose-app.yaml'
+
+2026-01-04 13:05:57 - DeploymentOrchestrator - ERROR - Stdout output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 13:05:57 - MainPipeline - ERROR - Deployment Stage Failed: Command '['/home/bishesh/mlops/src/deployment/deploy.sh']' returned non-zero exit status 1.
+2026-01-04 13:06:54 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 13:06:54 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 13:06:54 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 13:06:54 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 13:06:55 - DeploymentOrchestrator - ERROR - Deployment failed! Error output:
+.FileNotFoundError: [Errno 2] No such file or directory: './../../docker-compose-app.yaml'
+
+2026-01-04 13:06:55 - DeploymentOrchestrator - ERROR - Stdout output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 13:06:55 - MainPipeline - ERROR - Deployment Stage Failed: Command '['/home/bishesh/mlops/src/deployment/deploy.sh']' returned non-zero exit status 1.
+2026-01-04 13:07:07 - MainPipeline - INFO - Configuration loaded from configs/pipeline_config.yaml
+2026-01-04 13:07:07 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 13:07:07 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 13:07:07 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 13:07:07 - DeploymentOrchestrator - ERROR - Deployment failed! Error output:
+.FileNotFoundError: [Errno 2] No such file or directory: './../../docker-compose-app.yaml'
+
+2026-01-04 13:07:07 - DeploymentOrchestrator - ERROR - Stdout output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+
+2026-01-04 13:07:07 - MainPipeline - ERROR - Deployment Stage Failed: Command '['/home/bishesh/mlops/src/deployment/deploy.sh']' returned non-zero exit status 1.
+2026-01-04 13:07:44 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 13:07:44 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 13:07:44 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 13:07:44 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 13:10:20 - DeploymentOrchestrator - INFO - Deployment script output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+b8fdb67d4bc4   mlops_backend         "uvicorn app.backend…"   Less than a second ago   Up Less than a second                                               ashrae_backend
+9618a17f18f1   mlops_frontend        "docker-entrypoint.s…"   Less than a second ago   Up Less than a second                                               ashrae_frontend
+
+2026-01-04 13:10:20 - DeploymentOrchestrator - INFO - Successfully deployed Backend and Frontend containers.
+2026-01-04 13:10:20 - MainPipeline - INFO - Deployment completed. API: http://localhost:8000/docs | UI: http://localhost:3001
+2026-01-04 13:10:20 - MainPipeline - WARNING - Deployment stage logic not yet implemented.
+2026-01-04 13:22:20 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:22:20 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'model_version', 'timestamp']
+2026-01-04 13:22:50 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:22:50 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'model_version', 'timestamp']
+2026-01-04 13:23:17 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:23:17 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'model_version', 'timestamp']
+2026-01-04 13:23:34 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:23:34 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'model_version', 'timestamp']
+2026-01-04 13:23:34 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:23:34 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'model_version', 'timestamp']
+2026-01-04 13:24:01 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:24:01 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'model_version', 'timestamp']
+2026-01-04 13:30:39 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:30:39 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 13:31:11 - ModelMonitor - INFO - Generating Model Health Report...
+2026-01-04 13:31:11 - ModelMonitor - INFO - Running drift analysis with explicit mapping...
+2026-01-04 13:31:51 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:31:51 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 13:32:04 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:32:04 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 13:32:08 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 13:32:08 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 13:47:21 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 13:47:21 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2026-01-04 13:47:21 - IngestionOrchestrator - INFO - Starting Ingestion Stage...
+2026-01-04 13:47:22 - IngestionOrchestrator - INFO - Direct Bulk Loading train -> fact_energy_usage
+2026-01-04 13:47:45 - IngestionOrchestrator - INFO - Chunked ETL process for building -> dim_building
+2026-01-04 13:47:45 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/building_metadata.csv
+2026-01-04 13:47:46 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-04 13:47:46 - IngestionOrchestrator - INFO - Chunked ETL process for weather -> dim_weather
+2026-01-04 13:47:46 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/weather_train.csv
+2026-01-04 13:47:46 - DataTransformer - INFO - Transforming weather data: Using column-specific imputation...
+2026-01-04 13:47:46 - DataTransformer - INFO - Weather imputation complete.
+2026-01-04 13:48:15 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-04 13:48:15 - IngestionOrchestrator - INFO - --- INGESTION SUMMARY ---
+2026-01-04 13:48:15 - IngestionOrchestrator - INFO - TABLE: TRAIN | ROWS: N/A (Bulk) | TIME: 23.35s
+2026-01-04 13:48:15 - IngestionOrchestrator - INFO - TABLE: BUILDING | ROWS: 1449 | TIME: 0.41s
+2026-01-04 13:48:15 - IngestionOrchestrator - INFO - TABLE: WEATHER | ROWS: 139773 | TIME: 28.91s
+2026-01-04 13:48:15 - MainPipeline - INFO - Ingestion stage completed successfully.
+2026-01-04 13:48:19 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 13:48:19 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-04 13:48:19 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-04 13:48:19 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-04 13:48:19 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-04 13:48:19 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-04 13:48:30 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-04 13:48:30 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-04 13:48:32 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-04 13:48:36 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-04 13:48:36 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-04 13:48:36 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-04 13:48:37 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-04 13:48:37 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-04 13:48:40 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-04 13:48:41 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-04 13:48:41 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-04 13:48:41 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-04 13:54:31 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 13:54:31 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-04 13:54:31 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-04 13:54:31 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-04 13:54:31 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-04 13:54:31 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-04 13:54:42 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-04 13:54:43 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-04 13:54:44 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-04 13:54:48 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-04 13:54:48 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-04 13:54:48 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-04 13:54:48 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-04 13:54:48 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-04 13:54:50 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-04 13:54:51 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-04 13:54:51 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-04 13:54:51 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-04 14:03:37 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 14:03:37 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2026-01-04 14:03:37 - IngestionOrchestrator - INFO - Starting Ingestion Stage...
+2026-01-04 14:03:37 - MainPipeline - CRITICAL - Pipeline failed at stage [ingestion]: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Traceback (most recent call last):
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 661, in connect
+    sock = socket.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/socket.py", line 863, in create_connection
+    raise exceptions[0]
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/socket.py", line 848, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 365, in __init__
+    self.connect()
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 723, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/main.py", line 59, in main
+    metrics = run_ingestion_stage(config)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/ingestion/ingestion.py", line 78, in run_ingestion_stage
+    return stage.run()
+           ^^^^^^^^^^^
+  File "/home/bishesh/mlops/src/ingestion/ingestion.py", line 24, in run
+    self.schema_manager.create_production_tables()
+  File "/home/bishesh/mlops/src/database/schema_manager.py", line 53, in create_production_tables
+    with self.engine.connect() as conn:
+         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3325, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3404, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3374, in _wrap_pool_connect
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2208, in _handle_dbapi_exception_noconnection
+    util.raise_(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3371, in _wrap_pool_connect
+    return fn()
+           ^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 145, in _do_get
+    with util.safe_reraise():
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 143, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 690, in __connect
+    with util.safe_reraise():
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 365, in __init__
+    self.connect()
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/pymysql/connections.py", line 723, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([Errno 111] Connection refused)")
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+2026-01-04 14:07:14 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 14:07:14 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2026-01-04 14:07:14 - IngestionOrchestrator - INFO - Starting Ingestion Stage...
+2026-01-04 14:07:21 - IngestionOrchestrator - INFO - Direct Bulk Loading train -> fact_energy_usage
+2026-01-04 14:07:43 - IngestionOrchestrator - INFO - Chunked ETL process for building -> dim_building
+2026-01-04 14:07:43 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/building_metadata.csv
+2026-01-04 14:07:43 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-04 14:07:43 - IngestionOrchestrator - INFO - Chunked ETL process for weather -> dim_weather
+2026-01-04 14:07:43 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/weather_train.csv
+2026-01-04 14:07:44 - DataTransformer - INFO - Transforming weather data: Using column-specific imputation...
+2026-01-04 14:07:44 - DataTransformer - INFO - Weather imputation complete.
+2026-01-04 14:08:09 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-04 14:08:09 - IngestionOrchestrator - INFO - --- INGESTION SUMMARY ---
+2026-01-04 14:08:09 - IngestionOrchestrator - INFO - TABLE: TRAIN | ROWS: N/A (Bulk) | TIME: 22.39s
+2026-01-04 14:08:09 - IngestionOrchestrator - INFO - TABLE: BUILDING | ROWS: 1449 | TIME: 0.39s
+2026-01-04 14:08:09 - IngestionOrchestrator - INFO - TABLE: WEATHER | ROWS: 139773 | TIME: 25.61s
+2026-01-04 14:08:09 - MainPipeline - INFO - Ingestion stage completed successfully.
+2026-01-04 14:08:13 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 14:08:13 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-04 14:08:13 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/mlops/src/validation/great_expectations/index.html
+2026-01-04 14:08:13 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-04 14:08:13 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-04 14:08:13 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-04 14:08:23 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-04 14:08:24 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-04 14:08:25 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-04 14:08:30 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-04 14:08:30 - ASHRAETransformer - INFO - Starting Processing Stage...
+2026-01-04 14:08:30 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-04 14:08:30 - ASHRAETransformer - INFO - Final memory: 385.59 MB (Reduced by 41.2%)
+2026-01-04 14:08:30 - ASHRAETransformer - INFO - Merging Energy and Building data...
+2026-01-04 14:08:33 - ASHRAETransformer - INFO - Applying explicit type casting...
+2026-01-04 14:08:34 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 13.86 MB
+2026-01-04 14:08:34 - ASHRAETransformer - INFO - Final memory: 6.40 MB (Reduced by 53.8%)
+2026-01-04 14:08:34 - ASHRAETransformer - INFO - Performing chunked merge with weather data (500 splits)...
+2026-01-04 14:09:20 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1746.59 MB
+2026-01-04 14:09:21 - ASHRAETransformer - INFO - Final memory: 1516.27 MB (Reduced by 13.2%)
+2026-01-04 14:09:21 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 14:09:21 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend']
+2026-01-04 14:09:21 - PreprocessingOrchestrator - INFO - Generating reference dataset for monitoring...
+2026-01-04 14:09:22 - PreprocessingOrchestrator - ERROR - Failed to save reference parquet: Attempted to register factory for scheme 'file' but that scheme is already registered.
+2026-01-04 14:09:22 - PreprocessingOrchestrator - WARNING - Saved fallback reference CSV to saved_models/reference_data.csv
+2026-01-04 14:09:22 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-04 14:09:24 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-04 14:09:25 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-04 14:09:25 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-04 14:09:25 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-04 14:09:25 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-04 14:09:26 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-04 14:09:26 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-04 14:09:26 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-04 14:09:26 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-04 14:09:27 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-04 14:09:27 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-04 14:09:27 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-04 14:09:27 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-04 14:09:28 - MLPreprocessor - INFO - Training features ready. Total features: 16
+2026-01-04 14:09:28 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-04 14:09:28 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_X_train
+2026-01-04 14:09:31 - RedisClient - INFO - Successfully stored 20125605 rows in Redis at key: ashrae_pipeline_X_train
+2026-01-04 14:09:31 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_y_train
+2026-01-04 14:09:31 - RedisClient - INFO - Successfully stored 20125605 rows in Redis at key: ashrae_pipeline_y_train
+2026-01-04 14:09:31 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-04 14:09:47 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 14:09:47 - MainPipeline - INFO - Starting Model Training...
+2026-01-04 14:09:47 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-04 14:09:47 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2026-01-04 14:09:47 - RedisClient - INFO - Retrieving binary data from Redis key: ashrae_pipeline_X_train
+2026-01-04 14:09:48 - RedisClient - INFO - Successfully retrieved 20125605 rows from Redis key: ashrae_pipeline_X_train
+2026-01-04 14:09:48 - RedisClient - INFO - Retrieving binary data from Redis key: ashrae_pipeline_y_train
+2026-01-04 14:09:48 - RedisClient - INFO - Successfully retrieved 20125605 rows from Redis key: ashrae_pipeline_y_train
+2026-01-04 14:09:48 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 14:10:09 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2026-01-04 14:13:35 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 14:13:35 - TrainingOrchestrator - INFO - Fold 1 RMSE: 0.7553 | R2: 0.8763
+2026-01-04 14:13:35 - TrainingOrchestrator - INFO - --- Processing Fold 2 ---
+2026-01-04 14:16:51 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 14:16:51 - TrainingOrchestrator - INFO - Fold 2 RMSE: 0.7526 | R2: 0.8771
+2026-01-04 14:16:51 - TrainingOrchestrator - INFO - --- Processing Fold 3 ---
+2026-01-04 14:19:57 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 14:19:57 - TrainingOrchestrator - INFO - Fold 3 RMSE: 0.7533 | R2: 0.8767
+2026-01-04 14:19:57 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-04 14:19:57 - LGBMModel - INFO - Fold model saved locally at: saved_models/model.pkl
+2026-01-04 14:19:58 - MLflowTracker - INFO - Artifact saved_models/model.pkl uploaded to MLflow.
+2026-01-04 14:20:03 - MLflowTracker - INFO - Model logged to MLflow Registry as 'LGBM_Energy_Model'
+2026-01-04 14:20:03 - TrainingOrchestrator - INFO - CV Training Complete. Average RMSE: 0.7537
+2026-01-04 14:20:03 - MainPipeline - WARNING - Training stage completed successfully.
+2026-01-04 14:20:16 - MainPipeline - INFO - Configuration loaded from /home/bishesh/mlops/configs/pipeline_config.yaml
+2026-01-04 14:20:16 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-04 14:20:16 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-04 14:20:16 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/mlops
+2026-01-04 14:20:51 - DeploymentOrchestrator - INFO - Deployment script output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+90b3ed5357c7   mlops_backend         "uvicorn app.backend…"   Less than a second ago   Up Less than a second                                               ashrae_backend
+87d7ae2c7a74   mlops_frontend        "docker-entrypoint.s…"   Less than a second ago   Up Less than a second                                               ashrae_frontend
+
+2026-01-04 14:20:51 - DeploymentOrchestrator - INFO - Successfully deployed Backend and Frontend containers.
+2026-01-04 14:20:51 - MainPipeline - INFO - Deployment completed. API: http://localhost:8000/docs | UI: http://localhost:3001
+2026-01-04 14:20:51 - MainPipeline - WARNING - Deployment stage logic not yet implemented.
+2026-01-04 14:53:04 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 14:53:04 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 14:53:44 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 14:53:44 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 14:57:11 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 14:57:11 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:09:41 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:09:42 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:10:07 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:10:07 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:10:23 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:10:23 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:10:29 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:10:29 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:10:34 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:10:34 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:10:46 - ModelMonitor - INFO - Generating Model Health Report...
+2026-01-04 15:10:46 - ModelMonitor - INFO - Running drift analysis with explicit mapping...
+2026-01-04 15:19:00 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:19:01 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:19:10 - ModelMonitor - INFO - Generating Model Health Report...
+2026-01-04 15:19:10 - ModelMonitor - INFO - Running drift analysis with categorical-focused mapping...
+2026-01-04 15:19:10 - ModelMonitor - ERROR - Failed to generate monitoring report: Column (hour) is partially present in data
+Traceback (most recent call last):
+  File "/home/bishesh/mlops/src/monitoring/monitor.py", line 84, in generate_html_report
+    report.run(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/evidently/report/report.py", line 96, in run
+    data_definition = self._inner_suite.context.engine.get_data_definition(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/evidently/calculation_engine/python_engine.py", line 45, in get_data_definition
+    return create_data_definition(reference_data, current_data, column_mapping)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/evidently/utils/data_preprocessing.py", line 391, in create_data_definition
+    [
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/evidently/utils/data_preprocessing.py", line 392, in <listcomp>
+    _process_column(
+  File "/home/bishesh/miniconda3/envs/myenv/lib/python3.11/site-packages/evidently/utils/data_preprocessing.py", line 176, in _process_column
+    raise ValueError(f"Column ({column_name}) is partially present in data")
+ValueError: Column (hour) is partially present in data
+2026-01-04 15:19:51 - ModelMonitor - INFO - Generating Model Health Report...
+2026-01-04 15:19:51 - ModelMonitor - INFO - Running drift analysis with categorical-focused mapping...
+2026-01-04 15:24:38 - ModelMonitor - INFO - Generating Model Health Report...
+2026-01-04 15:24:38 - ModelMonitor - INFO - Running drift analysis with categorical-focused mapping...
+2026-01-04 15:27:52 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:27:52 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:30:46 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:30:46 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:30:51 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:30:51 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:30:56 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:30:56 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-04 15:31:04 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-04 15:31:05 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-06 09:32:45 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-06 09:32:46 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-06 09:33:03 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-06 09:33:03 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-06 09:33:10 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-06 09:33:10 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
+2026-01-06 09:33:18 - ModelMonitor - INFO - Generating Model Health Report...
+2026-01-06 09:33:18 - ModelMonitor - INFO - Running drift analysis with categorical-focused mapping...

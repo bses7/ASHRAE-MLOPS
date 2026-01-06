@@ -50,7 +50,7 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
     building_id: 0,
     site_id: 0,
     primary_use: "Office",
-    square_feet: 100000,
+    square_feet: 1000,
     meter: 0,
     air_temperature: 20.0,
     dew_temperature: 15.0,
@@ -96,26 +96,26 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
   };
 
   const handleInputChange = (key: string, value: string) => {
-    // Handle empty string - keep it empty, don't default to 0
     if (value === "") {
       setFormData((prev) => ({ ...prev, [key]: "" }));
       return;
     }
 
-    // Parse number and update
-    const numValue = Number(value);
-    if (!isNaN(numValue)) {
-      setFormData((prev) => ({ ...prev, [key]: numValue }));
+    if (key === "primary_use") {
+      setFormData((prev) => ({ ...prev, [key]: value }));
+    } else {
+      const numValue = Number(value);
+      if (!isNaN(numValue)) {
+        setFormData((prev) => ({ ...prev, [key]: numValue }));
+      }
     }
   };
 
   const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    // Select all text on focus for easy editing
     e.target.select();
   };
 
   const handleInputBlur = (key: string, min: number = 0) => {
-    // On blur, if empty or invalid, set to minimum value
     const currentValue = formData[key as keyof typeof formData];
     if (
       currentValue === "" ||
@@ -160,7 +160,6 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Meter Data */}
           <div className="space-y-4">
             <h3 className="text-sm font-medium text-[#ea580c] mb-4">
               Meter Data
