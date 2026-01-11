@@ -62,7 +62,7 @@ class DataValidator:
             self._run_validation(df_energy, "energy_suite", "energy_asset", self._add_energy_expectations),
             self._run_validation(df_building, "building_suite", "building_asset", self._add_building_expectations),
             self._run_validation(df_weather, "weather_suite", "weather_asset", self._add_weather_expectations)
-        ]
+        ] 
         
         self.context.build_data_docs()
         self.logger.info("Visual Data Validation Docs generated inside validation/great_expectations/index.html")
