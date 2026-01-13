@@ -71,7 +71,13 @@ class TrainingStage:
             model_path = self.config['training']['model_save_path']
             self.model_wrapper.save_model(fold_model, model_path)
             self.tracker.log_artifact(model_path)
-            self.tracker.log_model(fold_model, model_type="lightgbm")
+
+            input_example = X_train.head(5)
+            self.tracker.log_model(
+                fold_model,
+                model_type="lightgbm",
+                input_example=input_example
+            )
 
             self.logger.info(f"CV Training Complete. Average RMSE: {avg_metrics['avg_rmse']:.4f}")
 

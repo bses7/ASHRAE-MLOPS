@@ -92,7 +92,7 @@ class DataValidator:
 
         self.context.suites.add_or_update(validator.get_expectation_suite())
 
-        validation_result = validator.validate()
+        validation_result = validator.validate(result_format="SUMMARY")
         
         self._print_detailed_report(validation_result, suite_name)
         

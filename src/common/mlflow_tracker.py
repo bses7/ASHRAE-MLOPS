@@ -3,6 +3,7 @@ import mlflow.lightgbm
 import pandas as pd
 from typing import Dict, Any, Optional
 from src.common.logger import get_logger
+from mlflow.models import infer_signature
 
 class MLflowTracker:
     """
@@ -25,21 +26,24 @@ class MLflowTracker:
         mlflow.log_metrics(metrics)
         self.logger.info("Metadata logged to MLflow.")
 
-    def log_model(self, model: Any, model_type: str = "lightgbm"):
+    def log_model(self, model: Any, model_type: str = "lightgbm", input_example=None):
         """Logs the model to the MLflow Registry."""
         if model_type == "lightgbm":
+            signature = None
+            if input_example is not None:
+                signature = infer_signature(input_example, model.predict(input_example))
+
             mlflow.lightgbm.log_model(
                 lgb_model=model,
                 artifact_path="model",
-                registered_model_name=self.cfg['model_name']
+                registered_model_name=self.cfg['model_name'],
+                input_example=input_example,
+                signature=signature
             )
-        elif model_type == "sklearn":
-            mlflow.sklearn.log_model(
-                sk_model=model,
-                artifact_path="model",
-                registered_model_name=self.cfg['model_name']
-            )
-        self.logger.info(f"Model logged to MLflow Registry as '{self.cfg['model_name']}'")
+
+        self.logger.info(
+            f"Model logged to MLflow Registry as '{self.cfg['model_name']}'"
+        )
 
     def log_artifact(self, local_path: str):
         """Uploads a local file (like model.pkl) to MLflow."""

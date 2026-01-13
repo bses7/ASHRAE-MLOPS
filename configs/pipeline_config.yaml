@@ -21,6 +21,7 @@ ingestion:
 db:
   dialect: "mysql+pymysql"
   host: "localhost"
+  docker_host: "mcs_container"
   port: 3306
   database: "ashrae_db"
   user: "student"

@@ -10,6 +10,7 @@ from src.preprocessing.preprocessing import MLPreprocessor
 from src.monitoring.collector import InferenceLogger
 from src.database.connection import DBClient
 from src.preprocessing.feature_engineering import FeatureEngineer
+import time
 
 class ModelService:
     _instance = None
@@ -30,13 +31,19 @@ class ModelService:
         self._preprocessor = joblib.load(prep_path) if os.path.exists(prep_path) else MLPreprocessor()
         self._feature_eng = FeatureEngineer()
 
-        try:
-            db_client = DBClient(self.config['db'])
-            self.inference_logger = InferenceLogger(db_client)
-            print("--- Inference Logger initialized and connected to MariaDB ---")
-        except Exception as e:
+        max_retries = 3
+        for i in range(max_retries):
+            try:
+                db_client = DBClient(self.config['db'])
+                self.inference_logger = InferenceLogger(db_client)
+                print("--- Inference Logger connected ---")
+                break
+            except Exception as e:
+                print(f"--- Connection attempt {i+1} failed. Retrying... ---")
+                time.sleep(5)
+        else:
             self.inference_logger = None
-            print(f"--- Warning: Inference Logger Offline: {e} ---")
+            print("--- Inference Logger Offline permanently ---")
         
         mlflow.set_tracking_uri(self.config['mlflow']['tracking_uri'])
 

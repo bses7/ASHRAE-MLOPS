@@ -160,25 +160,25 @@ src/
 1. Data Ingestion Stage:
 
    ```bash
-   python main.py --stage ingestion --config ./configs/ingestion_config.yaml
+   python main.py --stage ingestion --config ./configs/pipeline_config.yaml
    ```
 
 2. Data Preprocessing Stage:
 
    ```bash
-   python main.py --stage preprocessing --config ./configs/ingestion_config.yaml
+   python main.py --stage preprocessing --config ./configs/pipeline_config.yaml
    ```
 
 3. Train a model:
 
    ```bash
-   python main.py --stage model_training --config ./configs/ingestion_config.yaml
+   python main.py --stage train --config ./configs/pipeline_config.yaml
    ```
 
 4. Deploy the model:
 
    ```bash
-   python main.py --stage model_deployment --config ./configs/ingestion_config.yaml
+   python main.py --stage deploy --config ./configs/pipeline_config.yaml
    ```
 
 5. After Deployment you can use the app at: localhost:3001

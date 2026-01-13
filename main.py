@@ -9,6 +9,7 @@ from src.ingestion.ingestion import run_ingestion_stage
 from src.preprocessing.preprocessor import run_preprocessing_stage
 from src.training.trainer import run_training_stage
 from src.deployment.deploy import run_deployment_stage
+from src.evaluation.evaluation import run_evaluation_stage
 
 
 logger = get_logger("MainPipeline")
@@ -73,6 +74,11 @@ def main():
             metrics = run_training_stage(config)
             logger.warning("Training stage completed successfully.")
 
+        elif args.stage == "evaluate":
+            logger.info("Starting Model Evaluation (LIME)...")
+            run_evaluation_stage(config)
+            logger.warning("Evaluation stage completed successfully.")
+
         elif args.stage == "deploy":
             logger.info("Starting Model Deployment...")
             logger.info("Initiating Model Deployment to Docker...")
@@ -82,7 +88,7 @@ def main():
             except Exception as e:
                 logger.error(f"Deployment Stage Failed: {e}")
                 sys.exit(1)
-            logger.warning("Deployment stage logic not yet implemented.")
+            logger.warning("Deployment stage completed successfully.")
         
 
     except KeyError as e:

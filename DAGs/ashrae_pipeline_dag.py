@@ -42,6 +42,7 @@ with DAG(
         task_id='preprocess_data',
         bash_command=f"""
             cd {PROJECT_HOME} &&
+            docker stop metabase &&
             {VENV_PATH} \
             main.py --stage preprocessing --config {CONFIG_PATH}
         """
@@ -51,9 +52,19 @@ with DAG(
         task_id='train_model',
         bash_command=f"""
             cd {PROJECT_HOME} &&
-            docker stop mcs_container metabase &&
+            docker stop mcs_container &&
             {VENV_PATH}  \
             main.py --stage train --config {CONFIG_PATH}
+        """
+    )
+
+    evaluate_model = BashOperator(
+        task_id='evaluate_model',
+        bash_command=f"""
+            cd {PROJECT_HOME} &&
+            docker start mcs_container metabase &&
+            {VENV_PATH}  \
+            main.py --stage evaluate --config {CONFIG_PATH}
         """
     )
 
@@ -61,10 +72,9 @@ with DAG(
         task_id='deploy_model',
         bash_command=f"""
             cd {PROJECT_HOME} &&
-            docker start mcs_container metabase &&
             {VENV_PATH}  \
             main.py --stage deploy --config {CONFIG_PATH}
         """
     )
 
-    ingest_data >> preprocess_data >> train_model >> deploy_model
+    ingest_data >> preprocess_data >> train_model >> evaluate_model >> deploy_model

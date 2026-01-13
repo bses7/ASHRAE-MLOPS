@@ -29,6 +29,8 @@ class FeatureEngineer:
         dow = df['timestamp'].dt.dayofweek.astype(np.int8)
         df['is_weekend'] = (dow >= 5).astype(np.int8)
 
+        df['hour'] = df['timestamp'].dt.hour.astype(np.int8)
+
         del dow
         gc.collect()
 

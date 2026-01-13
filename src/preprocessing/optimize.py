@@ -52,59 +52,98 @@ class Optimizer(BaseDataAssembler):
         self.logger.info(f"Final memory: {end_mem:.2f} MB (Reduced by {100 * (start_mem - end_mem) / start_mem:.1f}%)")
         return df
 
+    # def process(self, df_power_meter, df_building, df_weather):
+    #     """
+    #     Executes merge
+    #     """
+    #     self.logger.info("Starting Processing Stage...")
+
+    #     df_power_meter = self.reduce_mem_usage(df_power_meter)
+
+    #     self.logger.info("Merging Energy and Building data...")
+    #     df_train = df_power_meter.merge(
+    #         df_building, 
+    #         left_on='building_id',right_on='building_id',how='left'
+    #     )
+        
+    #     del df_power_meter
+    #     gc.collect()
+
+    #     self.logger.info("Applying explicit type casting...")
+    #     # df_train['year_built'] = df_train['year_built'].fillna(-1) 
+    #     df_train = df_train.astype({
+    #         'building_id': 'int16',
+    #         'meter': 'int8',
+    #         'site_id': 'int8',
+    #         'square_feet': 'int32',
+    #         'year_built': 'int16'
+    #     })
+    #     df_train['primary_use'] = df_train['primary_use'].astype('category')
+
+    #     df_weather = self.reduce_mem_usage(df_weather)
+
+    #     self.logger.info("Performing chunked merge with weather data (500 splits)...")
+    #     df_train_list = []
+
+    #     for chunk in np.array_split(df_train, 500):
+    #         df_train_list.append(
+    #             chunk.merge(df_weather, on=['site_id', 'timestamp'], how='left')
+    #         )
+    #         del chunk
+    #         gc.collect()
+
+    #     df_train = pd.concat(df_train_list, ignore_index=True)
+    #     del df_train_list
+    #     gc.collect()
+
+    #     df_train = df_train.dropna()
+
+    #     # self.logger.info("Concatenating chunks...")
+    #     # df_train = pd.concat(chunks, ignore_index=True)
+        
+    #     # del chunks
+    #     # gc.collect()
+
+    #     df_train.columns = [re.sub(r'[\s\-]+', '_', col.lower().strip()) for col in df_train.columns]
+    #     df_train = self.reduce_mem_usage(df_train)
+
+    #     return df_train
+
     def process(self, df_power_meter, df_building, df_weather):
-        """
-        Executes merge
-        """
-        self.logger.info("Starting Processing Stage...")
+        self.logger.info("Starting High-Efficiency Processing Stage...")
 
-        df_power_meter = self.reduce_mem_usage(df_power_meter)
-
-        self.logger.info("Merging Energy and Building data...")
-        df_train = df_power_meter.merge(
-            df_building, 
-            left_on='building_id',right_on='building_id',how='left'
-        )
+        # 1. Optimize Building Data (Small)
+        df_building['primary_use'] = df_building['primary_use'].astype('category')
+        df_building = self.reduce_mem_usage(df_building, use_float16=True)
         
-        del df_power_meter
+        df_weather['timestamp'] = pd.to_datetime(df_weather['timestamp'])
+    
+        df_weather = df_weather.set_index(['site_id', 'timestamp'])
+        df_weather = self.reduce_mem_usage(df_weather, use_float16=True)
+
+        df_power_meter['timestamp'] = pd.to_datetime(df_power_meter['timestamp'])
+        df_power_meter = self.reduce_mem_usage(df_power_meter, use_float16=True)
+
+     
+        self.logger.info("Mapping Building data...")
+        df_building = df_building.set_index('building_id')
+        
+        df_train = df_power_meter.join(df_building, on='building_id', how='left')
+        
+        del df_power_meter, df_building
         gc.collect()
 
-        self.logger.info("Applying explicit type casting...")
-        # df_train['year_built'] = df_train['year_built'].fillna(-1) 
-        df_train = df_train.astype({
-            'building_id': 'int16',
-            'meter': 'int8',
-            'site_id': 'int8',
-            'square_feet': 'int32',
-            'year_built': 'int16'
-        })
-        df_train['primary_use'] = df_train['primary_use'].astype('category')
-
-        df_weather = self.reduce_mem_usage(df_weather)
-
-        self.logger.info("Performing chunked merge with weather data (500 splits)...")
-        df_train_list = []
-
-        for chunk in np.array_split(df_train, 500):
-            df_train_list.append(
-                chunk.merge(df_weather, on=['site_id', 'timestamp'], how='left')
-            )
-            del chunk
-            gc.collect()
-
-        df_train = pd.concat(df_train_list, ignore_index=True)
-        del df_train_list
+        self.logger.info("Joining Weather data...")
+        df_train = df_train.join(df_weather, on=['site_id', 'timestamp'], how='left')
+        
+        del df_weather
         gc.collect()
 
-        df_train = df_train.dropna()
-
-        # self.logger.info("Concatenating chunks...")
-        # df_train = pd.concat(chunks, ignore_index=True)
+        self.logger.info("Cleaning up...")
+        df_train.dropna(inplace=True)
         
-        # del chunks
-        # gc.collect()
-
         df_train.columns = [re.sub(r'[\s\-]+', '_', col.lower().strip()) for col in df_train.columns]
-        df_train = self.reduce_mem_usage(df_train)
+        
+        df_train = self.reduce_mem_usage(df_train, use_float16=True)
 
         return df_train

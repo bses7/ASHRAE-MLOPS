@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from typing import Generator, Any
 from pandas.api.types import is_datetime64_any_dtype as is_datetime
-from pandas.api.types import is_categorical_dtype
+from pandas import CategoricalDtype
 
 from src.common.logger import get_logger
 from src.ingestion.base import BaseReader
@@ -33,7 +33,7 @@ class CSVIngestor(BaseReader):
         start_mem = df.memory_usage().sum() / 1024**2
         
         for col in df.columns:
-            if is_datetime(df[col]) or is_categorical_dtype(df[col]):
+            if is_datetime(df[col]) or isinstance(df[col].dtype, CategoricalDtype):
                 continue
                 
             col_type = df[col].dtype

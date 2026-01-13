@@ -65,7 +65,7 @@ class ModelMonitor:
 
          
             column_mapping.categorical_features = [
-                'primary_use', 'is_weekend', 'meter', 'site_id', 'week', 'month', 'day'
+                'primary_use', 'is_weekend', 'meter', 'site_id', 'week', 'month', 'day', 'hour',
             ]
 
             report = Report(metrics=[
@@ -75,6 +75,10 @@ class ModelMonitor:
             ])
 
             self.logger.info("Running drift analysis with categorical-focused mapping...")
+
+            print("Test1", reference_df.dtypes)
+            print("Test2", current_df.dtypes)
+
             report.run(
                 reference_data=reference_df, 
                 current_data=current_df,
