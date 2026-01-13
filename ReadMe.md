@@ -1,4 +1,4 @@
-# ASHRAE GREAT ENERGY PREDICTOR MLOps Project
+# ASHRAE GREAT ENERGY PREDICTOR (MLOPS PROJECT)
 
 Welcome to the ASHRAE MLOps project! This repository is designed to streamline and automate the machine learning lifecycle, from development to deployment and monitoring.
 
@@ -21,40 +21,36 @@ Welcome to the ASHRAE MLOps project! This repository is designed to streamline a
 - Miniconda
 - Git
 
-## Installation
+## Cloning the repo
 
-1. Clone the repository:
+```bash
+  git clone <Repo_URL>
+  cd <path_to_mlops_project>
+```
 
-   ```bash
-   git clone <Repo_URL>
-   cd mlops
-   ```
+## Folder Structure
 
-2. Create a virtual environment
+```bash
+mlops/
+├── app/                     # Application (API / service)
+├── configs/       # Configuration files (YAML,env, etc.)
+├── DAGs/                    # Airflow DAGs
+├── Notebooks/       # Jupyter notebooks (EDA,experiments)
+├── Raw_Data/                # Raw / source datasets
+├── logs/                    # Application & pipeline logs
+├── saved_models/            # Exported / offline models
+├── src/                     # Core source code
+│
+├── docker-compose.yaml    # Database Docker Compose setup
+├── docker-compose-app.yaml  # App-specific Docker services
+├── requirements.txt         # Python dependencies
+├── setup.sh         # Environment / service setup script
+├── main.py             # Entry point (training /inference)
+├── LICENSE                  # Project license
+├── ReadMe.md                # Project documentation
+```
 
-   ```bash
-   conda create -n <venv_name> python=3.9
-   conda activate <venv_name>
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Initialize the DB and Analytics Environment (DB will be running in :3306 port and MetaBase Will be running in :3000)
-
-   ```bash
-   sudo chmod -R 0755 ./start.sh
-
-    # Uses the docker-compose.yaml available
-   ./start.sh
-   ```
-
-5. Create a .env file referencing the .env_sample provided inside the mlops directory
-
-## Dataset Download & Setup
+## Dataset Download & Setup (IMPORTANT)
 
 ### Dataset Source
 
@@ -88,7 +84,78 @@ mlops/
 └── docker-compose.yml
 ```
 
-## Usage
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <Repo_URL>
+   cd mlops
+   ```
+
+2. Run setup.sh file
+
+   ```bash
+   chmod +x setup.sh
+   ./setup.sh
+   ```
+
+3. Follow the Prompts:
+   Choose to create a new virtual environment (recommended).
+
+4. Post-Installation:
+   - The Virtual Environment will be activated.
+   - Airflow environment variables will be configured.
+   - MLflow Server will start at: http://localhost:5000
+
+## Orchestration Using Airflow
+
+The main pipeline is managed via the ashrae_pipeline_dag.py.
+
+- DAG Location: Ensure the file in DAGs/ is copied to your Airflow home dags/ folder.
+
+- Processing the full 20 million records takes approximately 17 minutes.
+
+- To test quickly, modify configs/pipeline_config.yaml to use a sample:
+
+```bash
+training:
+  model_save_path: "saved_models/model.pkl"
+  sample_size: 500000
+  use_sample: True
+```
+
+### Available Service Endpoints (After Orchestration)
+
+| Service                | URL                        |
+| ---------------------- | -------------------------- |
+| MLFlow Server          | http://localhost:5000      |
+| MetaBase (BI & Viz)    | http://localhost:3000      |
+| FastAPI Backend (Docs) | http://localhost:8000/docs |
+| Frontend Application   | http://localhost:3001      |
+| MariaDB                | localhost:3306             |
+| Redis                  | localhost:6379             |
+
+### Generated Reports
+
+The reports generated from The Great Expectation and EvidentlyAI are available inside:
+
+1. The Great Expectation
+
+```bash
+src/
+   validation/
+```
+
+2. EvidentlyAI
+
+```bash
+src/
+   monitoring/
+      reports/
+```
+
+## Manual Usage (Without Airflow)
 
 1. Data Ingestion Stage:
 
@@ -114,21 +181,15 @@ mlops/
    python main.py --stage model_deployment --config ./configs/ingestion_config.yaml
    ```
 
-5. Monitor the model:
-   ```bash
-   python monitor.py
-   ```
-
-## Orchestration Using Airflow
-
-The dags folder contain the dag of the project. 
-
-You can copy this dag to your airflow folder's dag 
-
+5. After Deployment you can use the app at: localhost:3001
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request.
+Contributions are welcome!
+
+1. Fork the project.
+2. Create your feature branch.
+3. Submit a pull request.
 
 ## License
 
