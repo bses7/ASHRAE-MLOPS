@@ -37,6 +37,7 @@ mlops/
 ├── DAGs/                    # Airflow DAGs
 ├── Notebooks/       # Jupyter notebooks (EDA,experiments)
 ├── Raw_Data/                # Raw / source datasets
+├── reports/                # Evaluation & Monitoring Report
 ├── logs/                    # Application & pipeline logs
 ├── saved_models/            # Exported / offline models
 ├── src/                     # Core source code
@@ -175,13 +176,19 @@ src/
    python main.py --stage train --config ./configs/pipeline_config.yaml
    ```
 
-4. Deploy the model:
+4. Evaluate model:
+
+   ```bash
+   python main.py --stage evaluate --config ./configs/pipeline_config.yaml
+   ```
+
+5. Deploy the model:
 
    ```bash
    python main.py --stage deploy --config ./configs/pipeline_config.yaml
    ```
 
-5. After Deployment you can use the app at: localhost:3001
+6. After Deployment you can use the app at: localhost:3001
 
 ## Contributing
 

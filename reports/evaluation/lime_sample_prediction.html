@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divFR43R1I032Q3M56"></div>
+        <div class="lime top_div" id="top_divC9U4LZBTLA5NCO6"></div>
         
         <script>
-        var top_div = d3.select('#top_divFR43R1I032Q3M56').classed('lime top_div', true);
+        var top_div = d3.select('#top_divC9U4LZBTLA5NCO6').classed('lime top_div', true);
         
         
                     var pp_div = top_div.append('div')
                                         .classed('lime predicted_value', true);
                     var pp_svg = pp_div.append('svg').style('width', '100%');
-                    var pp = new lime.PredictedValue(pp_svg, 0.45534443647928957, -1.301338436308557, 8.802746349966668);
+                    var pp = new lime.PredictedValue(pp_svg, 6.744056015576762, -2.4069085692842016, 10.403760921207885);
                     
         var exp_div;
             var exp = new lime.Explanation(["negative", "positive"]);
         
             exp_div = top_div.append('div').classed('lime explanation', true);
-            exp.show([["square_feet <= -0.66", -1.3485720267217], ["meter <= 0.00", 0.29039847227928356], ["building_id <= 119.75", -0.23480981075819515], ["cloud_coverage <= 1.41", 0.1701678838853532], ["site_id <= 1.00", -0.12164488041166156], ["primary_use <= 0.00", 0.09634649425985749], ["air_temperature > -0.04", -0.04861114372250623], ["dew_temperature > -0.53", 0.03287278471017952], ["wind_direction <= 0.62", 0.0061089636259923944], ["-0.07 < sea_level_pressure <= 0.51", 0.003970349126740674]], 1, exp_div);
+            exp.show([["0.00 < meter <= 1.00", -2.1446202045293505], ["-0.35 < square_feet <= 0.07", 0.24442873125123812], ["120.75 < building_id <= 1319.00", -0.1628297541583126], ["1.00 < site_id <= 14.00", -0.1524002436548233], ["wind_speed > 0.10", 0.13621423330931526], ["-0.33 < dew_temperature <= 0.11", 0.09420081132836314], ["cloud_coverage <= 0.44", 0.08477739855059498], ["hour <= -0.51", -0.07904632870862477], ["sea_level_pressure <= -0.94", 0.06899478092340211], ["4.00 < primary_use <= 6.00", 0.06123901761456682]], 1, exp_div);
             
         var raw_div = top_div.append('div');
-            exp.show_raw_tabular([["square_feet", "-0.86", -1.3485720267217], ["meter", "0.00", 0.29039847227928356], ["building_id", "0.00", -0.23480981075819515], ["cloud_coverage", "1.41", 0.1701678838853532], ["site_id", "0.00", -0.12164488041166156], ["primary_use", "0.00", 0.09634649425985749], ["air_temperature", "0.82", -0.04861114372250623], ["dew_temperature", "1.20", 0.03287278471017952], ["wind_direction", "-1.53", 0.0061089636259923944], ["sea_level_pressure", "0.51", 0.003970349126740674]], 1, raw_div);
+            exp.show_raw_tabular([["meter", "1.00", -2.1446202045293505], ["square_feet", "-0.15", 0.24442873125123812], ["building_id", "1302.00", -0.1628297541583126], ["site_id", "14.00", -0.1524002436548233], ["wind_speed", "1.91", 0.13621423330931526], ["dew_temperature", "0.11", 0.09420081132836314], ["cloud_coverage", "0.44", 0.08477739855059498], ["hour", "-0.51", -0.07904632870862477], ["sea_level_pressure", "-1.01", 0.06899478092340211], ["primary_use", "6.00", 0.06123901761456682]], 1, raw_div);
         
         </script>
         </body></html>

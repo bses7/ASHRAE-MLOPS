@@ -69,10 +69,10 @@ class ModelService:
         input_data.pop('model_version', None)
 
         df = pd.DataFrame([input_data])
-        if 'timestamp' not in df.columns:
-            df['timestamp'] = pd.to_datetime(f"2025-{input_data['month']}-{input_data['day']} {input_data['hour']}:00:00")
+        # if 'timestamp' not in df.columns:
+        #     df['timestamp'] = pd.to_datetime(f"2025-{input_data['month']}-{input_data['day']} {input_data['hour']}:00:00")
         
-        df = self._feature_eng.engineer(df)
+        # df = self._feature_eng.engineer(df)
         df_processed = self._preprocessor.prepare_inference_features(df)
 
         log_prediction = model.predict(df_processed)
