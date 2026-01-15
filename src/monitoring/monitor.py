@@ -40,7 +40,7 @@ class ModelMonitor:
                 return "<html><body><h1>No data collected yet.</h1></body></html>"
 
             for df in [reference_df, current_df]:
-                cols_to_drop = ['id', 'logged_at', 'timestamp', 'datetime', 'ingested_at']
+                cols_to_drop = ['id', 'logged_at', 'timestamp', 'datetime', 'ingested_at', 'model_version']
                 df.drop(columns=[c for c in cols_to_drop if c in df.columns], inplace=True)
                 
                 cat_cols = ['primary_use', 'is_weekend', 'meter', 'site_id', 'week', 'month', 'day', 'hour']

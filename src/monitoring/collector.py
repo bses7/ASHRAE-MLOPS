@@ -43,12 +43,12 @@ class InferenceLogger:
         with self.engine.begin() as conn:
             conn.execute(text(create_query))
 
-    def log_inference(self, input_data: dict, prediction: float):
+    def log_inference(self, input_data: dict, prediction: float, version: str):
         """
         Saves a single inference event to the database.
         """
         try:
-            log_entry = {**input_data, "meter_reading": prediction}
+            log_entry = {**input_data, "meter_reading": prediction, "model_version": version}
             df = pd.DataFrame([log_entry])
             
             schema = RAW_DATA_TYPES["inference"]

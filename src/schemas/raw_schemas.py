@@ -44,6 +44,7 @@ RAW_DATA_TYPES: Dict[str, Dict] = {
         "week": "int8",
         "hour": "int8",
         "is_weekend": "int8",
+        "model_version": "category",
         "meter_reading": "float32" 
     }
 }

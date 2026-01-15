@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
+import { AlertCircle } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -67,6 +68,8 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
     is_weekend: [0, 6].includes(new Date().getDay()) ? 1 : 0,
   });
 
+  const [buildingError, setBuildingError] = useState<string | null>(null);
+
   function getWeekOfYear(date: Date): number {
     const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
     const pastDaysOfYear =
@@ -98,6 +101,7 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
   const handleInputChange = (key: string, value: string) => {
     if (value === "") {
       setFormData((prev) => ({ ...prev, [key]: "" }));
+      if (key === "building_id") setBuildingError(null);
       return;
     }
 
@@ -107,6 +111,14 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
       const numValue = Number(value);
       if (!isNaN(numValue)) {
         setFormData((prev) => ({ ...prev, [key]: numValue }));
+
+        if (key === "building_id") {
+          if (numValue > 1448) {
+            setBuildingError("Building ID must be between 0 and 1448");
+          } else {
+            setBuildingError(null);
+          }
+        }
       }
     }
   };
@@ -126,6 +138,8 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
   };
 
   const handlePredict = () => {
+    if (buildingError || formData.building_id == null) return;
+
     const inputs = {
       building_id: Number(formData.building_id) || 0,
       site_id: formData.site_id,
@@ -191,7 +205,11 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-xs text-muted-foreground">
+              <Label
+                className={`text-xs ${
+                  buildingError ? "text-destructive" : "text-muted-foreground"
+                }`}
+              >
                 Building ID (0-1448)
               </Label>
               <Input
@@ -202,10 +220,22 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
                 }
                 onFocus={handleInputFocus}
                 onBlur={() => handleInputBlur("building_id", 0)}
-                className="bg-input border-border text-foreground [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                // Dynamic border color based on error
+                className={`bg-input text-foreground [appearance:textfield] ${
+                  buildingError
+                    ? "border-destructive focus-visible:ring-destructive"
+                    : "border-border"
+                }`}
                 min="0"
                 max="1448"
               />
+              {/* VISUAL ERROR MESSAGE */}
+              {buildingError && (
+                <div className="flex items-center gap-1 mt-1 text-[10px] text-destructive font-medium animate-in fade-in slide-in-from-top-1">
+                  <AlertCircle size={12} />
+                  <span>{buildingError}</span>
+                </div>
+              )}
             </div>
 
             <div className="space-y-2">
@@ -554,9 +584,9 @@ export default function InputPanel({ onPredict, isLoading }: InputPanelProps) {
         <div className="mt-8 flex justify-center">
           <Button
             onClick={handlePredict}
-            disabled={isLoading}
+            disabled={isLoading || !!buildingError || formData.building_id == null}
             size="lg"
-            className="bg-[#ea580c] hover:bg-[#c2410c] text-white px-12 rounded-lg font-light shadow-lg hover:shadow-xl transition-all"
+            className="bg-[#ea580c] hover:bg-[#c2410c] text-white px-12 rounded-lg font-light shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? (
               <>
