@@ -190,6 +190,25 @@ src/
 
 6. After Deployment you can use the app at: localhost:3001
 
+## Accessing the MariaDB Database
+
+After the completion of the orchestration the mariadb container is available at:
+
+localhost:3306
+
+You can access the database using:
+
+```bash
+user: student
+password: Student@123!
+```
+
+And use the database using,
+
+```bash
+USE ashrae_db;
+```
+
 ## Contributing
 
 Contributions are welcome!

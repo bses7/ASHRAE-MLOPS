@@ -1452,3 +1452,117 @@ be7c49850317   ashrae-mlops_backend    "uvicorn app.backend…"   1 second ago  
 2026-01-15 23:29:05 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'site_id', 'primary_use', 'square_feet', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'day', 'month', 'week', 'hour', 'is_weekend', 'timestamp']
 2026-01-15 23:29:09 - ModelMonitor - INFO - Generating Model Health Report...
 2026-01-15 23:29:09 - ModelMonitor - INFO - Running drift analysis with categorical-focused mapping...
+2026-01-15 23:38:55 - MainPipeline - INFO - Configuration loaded from /home/bishesh/ASHRAE-MLOPS/configs/pipeline_config.yaml
+2026-01-15 23:38:55 - MainPipeline - INFO - --- STAGE: DATA INGESTION ---
+2026-01-15 23:38:55 - IngestionOrchestrator - INFO - Starting Ingestion Stage...
+2026-01-15 23:39:02 - IngestionOrchestrator - INFO - Direct Bulk Loading train -> fact_energy_usage
+2026-01-15 23:39:25 - IngestionOrchestrator - INFO - Chunked ETL process for building -> dim_building
+2026-01-15 23:39:25 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/building_metadata.csv
+2026-01-15 23:39:26 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-15 23:39:26 - IngestionOrchestrator - INFO - Chunked ETL process for weather -> dim_weather
+2026-01-15 23:39:26 - CSVIngestor - INFO - Starting chunked read for ./Raw_Data/weather_train.csv
+2026-01-15 23:39:26 - DataTransformer - INFO - Transforming weather data: Using column-specific imputation...
+2026-01-15 23:39:26 - DataTransformer - INFO - Weather imputation complete.
+2026-01-15 23:39:57 - CSVIngestor - INFO - Processed batch 1 (500000 rows)...
+2026-01-15 23:39:57 - IngestionOrchestrator - INFO - --- INGESTION SUMMARY ---
+2026-01-15 23:39:57 - IngestionOrchestrator - INFO - TABLE: TRAIN | ROWS: N/A (Bulk) | TIME: 23.42s
+2026-01-15 23:39:57 - IngestionOrchestrator - INFO - TABLE: BUILDING | ROWS: 1449 | TIME: 0.41s
+2026-01-15 23:39:57 - IngestionOrchestrator - INFO - TABLE: WEATHER | ROWS: 139773 | TIME: 31.85s
+2026-01-15 23:39:57 - MainPipeline - INFO - Ingestion stage completed successfully.
+2026-01-15 23:40:04 - MainPipeline - INFO - Configuration loaded from /home/bishesh/ASHRAE-MLOPS/configs/pipeline_config.yaml
+2026-01-15 23:40:04 - MainPipeline - INFO - --- STAGE: DATA PREPROCESSING ---
+2026-01-15 23:40:04 - DataValidator - INFO - Great Expectations Data Docs will be written to: /home/bishesh/ASHRAE-MLOPS/src/validation/great_expectations/index.html
+2026-01-15 23:40:04 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-15 23:40:04 - PreprocessingOrchestrator - INFO - --- PREPROCESSING STAGE START ---
+2026-01-15 23:40:04 - DatabaseReader - INFO - Retrieving fact_energy_usage
+2026-01-15 23:40:22 - DatabaseReader - INFO - Retrieving dim_building
+2026-01-15 23:40:22 - DatabaseReader - INFO - Retrieving dim_weather
+2026-01-15 23:40:24 - DataValidator - INFO - Starting Data Validation Stage...
+2026-01-15 23:40:32 - DataValidator - INFO - Visual Data Validation Docs generated inside validation/great_expectations/index.html
+2026-01-15 23:40:32 - ASHRAETransformer - INFO - Starting High-Efficiency Processing Stage...
+2026-01-15 23:40:32 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 0.05 MB
+2026-01-15 23:40:32 - ASHRAETransformer - INFO - Final memory: 0.01 MB (Reduced by 68.5%)
+2026-01-15 23:40:32 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 12.45 MB
+2026-01-15 23:40:32 - ASHRAETransformer - INFO - Final memory: 4.05 MB (Reduced by 67.5%)
+2026-01-15 23:40:32 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 655.51 MB
+2026-01-15 23:40:33 - ASHRAETransformer - INFO - Final memory: 308.47 MB (Reduced by 52.9%)
+2026-01-15 23:40:33 - ASHRAETransformer - INFO - Mapping Building data...
+2026-01-15 23:40:35 - ASHRAETransformer - INFO - Joining Weather data...
+2026-01-15 23:40:43 - ASHRAETransformer - INFO - Cleaning up...
+2026-01-15 23:40:45 - ASHRAETransformer - INFO - Memory optimization pass started. Current: 1497.08 MB
+2026-01-15 23:40:48 - ASHRAETransformer - INFO - Final memory: 1151.60 MB (Reduced by 23.1%)
+2026-01-15 23:40:48 - FeatureEngineer - INFO - Starting Feature Engineering on joined data...
+2026-01-15 23:40:49 - FeatureEngineer - INFO - Feature engineering complete. Columns: ['building_id', 'meter', 'timestamp', 'meter_reading', 'site_id', 'primary_use', 'square_feet', 'year_built', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed', 'datetime', 'day', 'month', 'week', 'is_weekend', 'hour']
+2026-01-15 23:40:49 - PreprocessingOrchestrator - INFO - Generating reference dataset for monitoring...
+2026-01-15 23:40:51 - PreprocessingOrchestrator - INFO - Reference data (size: 500) saved successfully to saved_models/reference_data.parquet
+2026-01-15 23:40:51 - MLPreprocessor - INFO - Starting Training Feature Engineering (In-Place)
+2026-01-15 23:40:55 - MLPreprocessor - INFO - Encoding categorical: primary_use
+2026-01-15 23:40:56 - MLPreprocessor - INFO - Scaling numeric: square_feet
+2026-01-15 23:40:56 - MLPreprocessor - INFO - Scaling numeric: air_temperature
+2026-01-15 23:40:57 - MLPreprocessor - INFO - Scaling numeric: cloud_coverage
+2026-01-15 23:40:57 - MLPreprocessor - INFO - Scaling numeric: dew_temperature
+2026-01-15 23:40:58 - MLPreprocessor - INFO - Scaling numeric: precip_depth_1_hr
+2026-01-15 23:40:58 - MLPreprocessor - INFO - Scaling numeric: sea_level_pressure
+2026-01-15 23:40:59 - MLPreprocessor - INFO - Scaling numeric: wind_direction
+2026-01-15 23:40:59 - MLPreprocessor - INFO - Scaling numeric: wind_speed
+2026-01-15 23:41:00 - MLPreprocessor - INFO - Scaling numeric: day
+2026-01-15 23:41:00 - MLPreprocessor - INFO - Scaling numeric: month
+2026-01-15 23:41:01 - MLPreprocessor - INFO - Scaling numeric: week
+2026-01-15 23:41:01 - MLPreprocessor - INFO - Scaling numeric: is_weekend
+2026-01-15 23:41:01 - MLPreprocessor - INFO - Scaling numeric: hour
+2026-01-15 23:41:02 - MLPreprocessor - INFO - Training features ready. Total features: 17
+2026-01-15 23:41:02 - PreprocessingOrchestrator - INFO - Caching split data in Redis...
+2026-01-15 23:41:02 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_X_train
+2026-01-15 23:41:07 - RedisClient - INFO - Successfully stored 20125605 rows in Redis at key: ashrae_pipeline_X_train
+2026-01-15 23:41:07 - RedisClient - INFO - Serializing DataFrame to Parquet for Redis key: ashrae_pipeline_y_train
+2026-01-15 23:41:08 - RedisClient - INFO - Successfully stored 20125605 rows in Redis at key: ashrae_pipeline_y_train
+2026-01-15 23:41:08 - MainPipeline - INFO - Preprocessing stage completed successfully.
+2026-01-15 23:41:27 - MainPipeline - INFO - Configuration loaded from /home/bishesh/ASHRAE-MLOPS/configs/pipeline_config.yaml
+2026-01-15 23:41:27 - MainPipeline - INFO - Starting Model Training...
+2026-01-15 23:41:27 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-15 23:41:27 - TrainingOrchestrator - INFO - --- STARTING TRACKED TRAINING ---
+2026-01-15 23:41:27 - RedisClient - INFO - Retrieving binary data from Redis key: ashrae_pipeline_X_train
+2026-01-15 23:41:29 - RedisClient - INFO - Successfully retrieved 20125605 rows from Redis key: ashrae_pipeline_X_train
+2026-01-15 23:41:29 - RedisClient - INFO - Retrieving binary data from Redis key: ashrae_pipeline_y_train
+2026-01-15 23:41:29 - RedisClient - INFO - Successfully retrieved 20125605 rows from Redis key: ashrae_pipeline_y_train
+2026-01-15 23:41:30 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-15 23:41:30 - TrainingOrchestrator - INFO - --- Processing Fold 1 ---
+2026-01-15 23:41:41 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-15 23:41:41 - TrainingOrchestrator - INFO - Fold 1 RMSE: 0.4284 | R2: 0.9642
+2026-01-15 23:41:41 - TrainingOrchestrator - INFO - --- Processing Fold 2 ---
+2026-01-15 23:41:50 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-15 23:41:50 - TrainingOrchestrator - INFO - Fold 2 RMSE: 0.4314 | R2: 0.9637
+2026-01-15 23:41:50 - TrainingOrchestrator - INFO - --- Processing Fold 3 ---
+2026-01-15 23:41:59 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-15 23:41:59 - TrainingOrchestrator - INFO - Fold 3 RMSE: 0.4205 | R2: 0.9655
+2026-01-15 23:41:59 - MLflowTracker - INFO - Metadata logged to MLflow.
+2026-01-15 23:41:59 - LGBMModel - INFO - Fold model saved locally at: saved_models/model.pkl
+2026-01-15 23:41:59 - MLflowTracker - INFO - Artifact saved_models/model.pkl uploaded to MLflow.
+2026-01-15 23:42:05 - MLflowTracker - INFO - Model logged to MLflow Registry as 'LGBM_Energy_Model'
+2026-01-15 23:42:05 - TrainingOrchestrator - INFO - CV Training Complete. Average RMSE: 0.4268
+2026-01-15 23:42:05 - MainPipeline - WARNING - Training stage completed successfully.
+2026-01-15 23:42:13 - MainPipeline - INFO - Configuration loaded from /home/bishesh/ASHRAE-MLOPS/configs/pipeline_config.yaml
+2026-01-15 23:42:13 - MainPipeline - INFO - Starting Model Evaluation (LIME)...
+2026-01-15 23:42:13 - RedisClient - INFO - Connected to Redis at 127.0.0.1:6379
+2026-01-15 23:42:14 - EvaluationOrchestrator - INFO - --- STARTING MODEL EVALUATION & XAI STAGE ---
+2026-01-15 23:42:14 - RedisClient - INFO - Retrieving binary data from Redis key: ashrae_pipeline_X_train
+2026-01-15 23:42:15 - RedisClient - INFO - Successfully retrieved 20125605 rows from Redis key: ashrae_pipeline_X_train
+2026-01-15 23:42:19 - LimeExplainer - INFO - Generating LIME explanation for sample_prediction...
+2026-01-15 23:42:20 - MLflowTracker - INFO - Artifact reports/evaluation/lime_sample_prediction.html uploaded to MLflow.
+2026-01-15 23:42:20 - EvaluationOrchestrator - INFO - LIME explanation logged to MLflow artifacts.
+2026-01-15 23:42:20 - EvaluationOrchestrator - INFO - --- EVALUATION STAGE COMPLETE ---
+2026-01-15 23:42:20 - MainPipeline - WARNING - Evaluation stage completed successfully.
+2026-01-15 23:42:26 - MainPipeline - INFO - Configuration loaded from /home/bishesh/ASHRAE-MLOPS/configs/pipeline_config.yaml
+2026-01-15 23:42:26 - MainPipeline - INFO - Starting Model Deployment...
+2026-01-15 23:42:26 - MainPipeline - INFO - Initiating Model Deployment to Docker...
+2026-01-15 23:42:26 - DeploymentOrchestrator - INFO - Starting production deployment from root: /home/bishesh/ASHRAE-MLOPS
+2026-01-15 23:43:44 - DeploymentOrchestrator - INFO - Deployment script output:
+--------------------------------
+Starting Application Containers...
+--------------------------------
+0e1b635857fb   ashrae-mlops_backend    "uvicorn app.backend…"   1 second ago    Up Less than a second                                               ashrae_backend
+d66b9e507d58   ashrae-mlops_frontend   "docker-entrypoint.s…"   1 second ago    Up Less than a second                                               ashrae_frontend
+
+2026-01-15 23:43:44 - DeploymentOrchestrator - INFO - Successfully deployed Backend and Frontend containers.
+2026-01-15 23:43:44 - MainPipeline - INFO - Deployment completed. API: http://localhost:8000/docs | UI: http://localhost:3001
+2026-01-15 23:43:44 - MainPipeline - WARNING - Deployment stage completed successfully.

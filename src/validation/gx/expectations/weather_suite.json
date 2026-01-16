@@ -1,7 +1,7 @@
 {
   "expectations": [
     {
-      "id": "b3f21f45-82f2-4a13-b949-05a3c741d4fe",
+      "id": "4a9b6a3c-b15f-44ca-9314-73908e9d2f0c",
       "kwargs": {
         "column": "site_id"
       },
@@ -9,7 +9,7 @@
       "type": "expect_column_values_to_not_be_null"
     },
     {
-      "id": "1c03fb88-ea8c-4a4c-b496-4b6db6744a9d",
+      "id": "01b36d9b-700e-4d0c-b273-3dd4968934c1",
       "kwargs": {
         "column": "timestamp"
       },
@@ -17,7 +17,7 @@
       "type": "expect_column_values_to_not_be_null"
     },
     {
-      "id": "33761dc4-fbb6-476e-aaca-b5a48dccd8de",
+      "id": "ae6aa32c-a951-4ad4-b945-bead0cf6e724",
       "kwargs": {
         "column": "air_temperature"
       },
@@ -25,7 +25,7 @@
       "type": "expect_column_values_to_not_be_null"
     },
     {
-      "id": "99fa20b5-bd0b-4c8c-8ad9-ab7d4b3c965b",
+      "id": "e653adc4-9d3b-450b-b444-3ca659d7de8d",
       "kwargs": {
         "column": "air_temperature",
         "max_value": 60.0,
