@@ -2,6 +2,17 @@
 
 Welcome to the ASHRAE MLOps project! This repository is designed to streamline and automate the machine learning lifecycle, from development to deployment and monitoring.
 
+[![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Next.js](https://img.shields.io/badge/Frontend-Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![Redis](https://img.shields.io/badge/Cache-Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
+[![Docker](https://img.shields.io/badge/DevOps-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![MLflow](https://img.shields.io/badge/MLOps-MLflow-0194E2?style=for-the-badge&logo=mlflow&logoColor=white)](https://mlflow.org/)
+[![Apache Airflow](https://img.shields.io/badge/Workflow-Airflow-017CEE?style=for-the-badge&logo=apacheairflow&logoColor=white)](https://airflow.apache.org/)
+[![PyArrow](https://img.shields.io/badge/Data-PyArrow-3A75C4?style=for-the-badge&logo=apachearrow&logoColor=white)](https://arrow.apache.org/)
+[![LightGBM](https://img.shields.io/badge/ML-LightGBM-5C2D91?style=for-the-badge)](https://lightgbm.readthedocs.io/)
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Scikit-Learn](https://img.shields.io/badge/ML-Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+
 ## Features
 
 - **Data Ingestion**: Automate the data ingestion to the database.
