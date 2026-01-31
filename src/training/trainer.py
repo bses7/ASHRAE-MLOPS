@@ -34,7 +34,10 @@ class TrainingStage:
             'boosting_type': 'gbdt',
             'objective': 'regression',
             'metric': 'rmse',
-            'learning_rate': 0.3,
+            'learning_rate': 0.5,
+            'feature_fraction': 0.8,
+            'bagging_fraction': 0.8,
+            'bagging_freq' : 5,
             'verbosity': -1
         }
 

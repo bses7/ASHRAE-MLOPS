@@ -1,7 +1,7 @@
 {
   "expectations": [
     {
-      "id": "4a5234ba-5cfd-413c-bd75-1de4e717ed52",
+      "id": "fc631e12-c640-43b3-bde1-c98adeed3569",
       "kwargs": {
         "column": "building_id"
       },
@@ -9,7 +9,7 @@
       "type": "expect_column_values_to_not_be_null"
     },
     {
-      "id": "efbe016c-e687-4233-b82c-0aea65a6f950",
+      "id": "e2820657-e4b0-45f9-a218-9181c7cd42f7",
       "kwargs": {
         "column": "site_id"
       },
@@ -17,7 +17,7 @@
       "type": "expect_column_values_to_not_be_null"
     },
     {
-      "id": "f12a270c-4a22-4c68-8a3d-e35c4927ae31",
+      "id": "49a494e1-2b09-47aa-bcde-a1a5992d7e84",
       "kwargs": {
         "column": "square_feet"
       },
@@ -25,7 +25,7 @@
       "type": "expect_column_values_to_not_be_null"
     },
     {
-      "id": "1938ea00-f9ea-4a54-af26-8b248c0acdbc",
+      "id": "55b01e81-fa85-46a6-9e8b-7d8b6203b067",
       "kwargs": {
         "column": "primary_use",
         "value_set": [

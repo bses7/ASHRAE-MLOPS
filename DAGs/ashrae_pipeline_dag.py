@@ -23,7 +23,7 @@ with DAG(
     'ashrae_pipeline_dag',
     default_args=default_args,
     description='ASHRAE Great Energy Predictor III MLOPS Opeation',
-    schedule_interval=None,
+    schedule_interval="0 1 * * 1",
     start_date=datetime(2026, 1, 1),
     catchup=False,
     tags=['mlops', 'ingestion', 'ashrae'],
